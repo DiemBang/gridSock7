@@ -94,3 +94,35 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+/* Start chat name rules */
+.chat-name {
+  display: inline-block;
+}
+
+/* Colors for userID (chat name) */
+#user0 {
+  color: violet;
+}
+
+#user1 {
+  color: indigo
+}
+
+#user2 {
+  color: green;
+}
+
+#user3 {
+  color: yellow;
+}
+
+#user4 {
+  color: orange;
+}
+
+#user5 {
+  color: red;
+}
+
+/* End chat name rules */
