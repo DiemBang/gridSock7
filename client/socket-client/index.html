@@ -2,17 +2,20 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+
+    <!-- // Import style.css // -->
+    <link rel="stylesheet" href="style.css" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite App</title>
   </head>
   <body>
     <div>
-      Chat name <input type="text" id="chatName"><br>
+      Chat name <input type="text" id="chatName" /><br />
       Message <input type="text" id="sendMessage" />
       <button id="sendBtn">Skicka</button>
     </div>
-    <ul id="chatList"></ul>
+    <ul class="chat-list" id="chatList"></ul>
     <script type="module" src="/main.js"></script>
   </body>
 </html>

@@ -94,3 +94,20 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+/* UPDATE: styling for messages */
+
+.chat-list {
+  display: flex;
+  flex-direction: column;
+}
+.own-msg {
+  text-align: right;
+  background-color: blueviolet;
+}
+
+.other-user-msg {
+  text-align: left;
+  /*background-color: yellow;
+  color: black;*/
+}
