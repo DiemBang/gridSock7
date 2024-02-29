@@ -14,9 +14,13 @@ app.get("/test", (req, res) => {
 
 io.on("connection", (socket) => {
     //console.log("connection", socket)
-    socket.emit("chat", "Hello World")
+    //socket.emit("chat", {name: "computer", message:"Hello World", timestamp: "2024"})
 
     socket.on("chat", (arg) => {
+        let currentTime = new Date();
+
+        let timestamp = currentTime.toTimeString();
+        arg.timestamp = timestamp;
         console.log("incoming chat", arg);
         io.emit("chat", arg);
     })
