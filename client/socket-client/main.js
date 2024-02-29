@@ -20,23 +20,28 @@ socket.on("chat", (arg) =>{
 
 function updateChat(chat) {
   let li = document.createElement("li"); 
-  li.innerText = chat.name + ' ' + '['+chat.timestamp+']' + ' ' +chat.message;
+  let userId = assignIdToUser(chat.name);
+  console.log("user id is", userId);
+  li.innerHTML = `
+  <div class = "chat-name" id ="user${userId}">${chat.name}</div>[${chat.timestamp}]<br>${chat.message}
+  `;
   chatList.appendChild(li);
 }
 
 // create an empty list for users
 // if new user, add new user to list
-// if existing user, get index fron list and use as id
+// if existing user, get index from list and use as id
 // create div with id (for CSS purpose)
 
 let userList = [];
 
 function assignIdToUser(user) {
   if (userList.includes(user)) {
-      let userId = userList.findIndex(user);
+      console.log("userList", userList);
+      let userId = userList.indexOf(user);
       return userId;
   } else { 
     let userListLength = userList.push(user);
     return userListLength - 1;
   }
-}
+};
