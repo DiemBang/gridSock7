@@ -18,8 +18,6 @@ io.on("connection", (socket) => {
 
   socket.on("chat", (arg) => {
     let currentTime = new Date();
-
-    // UPDATE: format time stamp
     let options = { year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit" };
     let timestamp = currentTime.toLocaleString("sv-SE", options);
     arg.timestamp = timestamp;
