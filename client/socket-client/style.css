@@ -1,4 +1,4 @@
-:root {
+/* :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
@@ -93,4 +93,12 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+} */
+
+.chatList-container {
+  height: 300px;
+  width: 400px;
+  border: 2px solid black;
+  border-radius: 3px;
+  overflow: auto;
 }
