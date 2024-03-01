@@ -26,9 +26,10 @@ io.on("connection", (socket) => {
         let timestamp = currentTime.toTimeString();
         arg.timestamp = timestamp;
         console.log("incoming chat", arg);
+
+        let room = arg.room || "main";
         
-        io.to(mainRoom).emit("chat", arg);
-        io.to(arg.room).emit("chat", arg);
+        io.to(room).emit("chat", arg);
     })
     //An eventlistener for "joinRoom" where the user exits the mainroom and joins the choosen room
     socket.on("joinRoom", (room) => {
