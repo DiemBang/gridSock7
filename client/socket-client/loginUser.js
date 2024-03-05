@@ -1,19 +1,23 @@
 import { io } from "socket.io-client";
 const socket = io("http://localhost:3000");
-const joinGameBtn = document.getElementById("joinGameBtn");
-const userName = document.getElementById("userName");
+
+function loginUser() {
+  const joinGameBtn = document.getElementById("joinGameBtn");
+  const userName = document.getElementById("userName");
 
 joinGameBtn.addEventListener("click", (event) => {
   event.preventDefault();
   const username = userName.value;
 
   if (username) {
-	const userId = assignIdToUser(username);
   console.log("username", username);
-	socket.emit("login", { username, userId });
+	socket.emit("login", { username });
   }
 
 });
+
+}
+
 
 //eventlistener that listen for a login confirmation and 
 //displays a successmessage in the console log
@@ -22,7 +26,7 @@ socket.on("loginConfirmation", (userData) => {
   console.log(`Successful login for user ${username} with userId ${userId}`);
 });
 
-
+/*
 let userList = [];
 
 function assignIdToUser(user) {
@@ -35,5 +39,5 @@ function assignIdToUser(user) {
     return userListLength - 1;
   }
 };
-
-export { assignIdToUser };
+*/
+export { loginUser }; 

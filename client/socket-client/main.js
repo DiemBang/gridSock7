@@ -1,6 +1,6 @@
 import { io } from "socket.io-client";
 import { displayGrid } from "./displayGrid.js";
-import { assignIdToUser } from "./loginUser.js";
+import { loginUser } from "./loginUser.js";
 
 const socket = io("http://localhost:3000");
 
@@ -34,10 +34,9 @@ roomBtn.addEventListener("click", () => {
 
 function updateChat(chat) {
   let li = document.createElement("li");
-  let userId = assignIdToUser(chat.name);
-  console.log("user id is", userId);
+
   li.innerHTML = `
-  <div class = "chat-name" id ="user${userId}">${chat.name}</div>[${chat.timestamp}]<br>${chat.message}
+    <div class="chat-name">${chat.name}</div>[${chat.timestamp}]<br>${chat.message}
   `;
 
   // Adds class to messages for styling of own/others messages
@@ -50,5 +49,6 @@ function updateChat(chat) {
   chatList.appendChild(li);
 }
 
+loginUser();
 
 //displayGrid();
