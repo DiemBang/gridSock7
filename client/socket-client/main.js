@@ -66,5 +66,6 @@ function assignIdToUser(user) {
     return userListLength - 1;
   }
   // use as addeventlistener for join game button - remove this when done
-  displayGrid();
 };
+
+displayGrid();
