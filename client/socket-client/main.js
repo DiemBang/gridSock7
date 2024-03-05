@@ -16,6 +16,7 @@ sendBtn.addEventListener("click", () => {
     message: sendMessage.value,
     room: roomInput.value || "main",
   });
+  sendMessage.value = "";
 });
 
 socket.on("chat", (arg) => {
