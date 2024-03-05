@@ -29,8 +29,8 @@ function emptyGrid() {
   return grid;
 }
 
-const grid = emptyGrid();
-console.log(grid);
+const globalGrid = emptyGrid();
+console.log(globalGrid);
 
 io.on("connection", (socket) => {
   console.log("opened connection");
