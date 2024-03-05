@@ -15,6 +15,7 @@ app.get("/test", (req, res) => {
 const mainRoom = "main";
 
 io.on("connection", (socket) => {
+  console.log("opened connection");
   // When a user connects they enter the mainroom
   socket.join(mainRoom);
   //console.log("connection", socket)
@@ -50,11 +51,12 @@ io.on("connection", (socket) => {
         room: room,
       });
     });
-
-    socket.on("main", (gridPosition) => {
-      console.log(gridPosition);
-    });
   });
+
+  socket.on("grid", (gridPosition) => {
+    console.log(gridPosition);
+  });
+
   //An eventlistener for "joinRoom" where the user exits the mainroom and joins the choosen room
   socket.on("joinRoom", (room) => {
     socket.leave(mainRoom);

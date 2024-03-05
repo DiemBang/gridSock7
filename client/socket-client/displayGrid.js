@@ -21,7 +21,7 @@ function displayGrid() {
 function addColor(x, y) {
   // TODO: send coordinates to backend in order to update color matrix  
   console.log("clicked " + x + " " + y);
-  socket.emit("main", {
+  socket.emit("grid", {
     "x": x , "y": y});
 }
 
