@@ -9,13 +9,19 @@ joinGameBtn.addEventListener("click", (event) => {
 
   if (username) {
 	const userId = assignIdToUser(username);
-  console.log("username", username, userId);
-// Skicka användarnamnet och ID:et till servern för att servern ska kunna ha koll på hur 
-// många användare som har loggat in i ett senare i skede
+  console.log("username", username);
 	socket.emit("login", { username, userId });
   }
 
 });
+
+//eventlistener that listen for a login confirmation and 
+//displays a successmessage in the console log
+socket.on("loginConfirmation", (userData) => {
+  const { username, userId } = userData;
+  console.log(`Successful login for user ${username} with userId ${userId}`);
+});
+
 
 let userList = [];
 
