@@ -43,6 +43,10 @@ io.on("connection", (socket) => {
             room: room,
         });
       });
+
+    socket.on("main", (gridPosition) => {
+        console.log(gridPosition);
+    })
     
     
 })

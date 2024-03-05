@@ -1,3 +1,5 @@
+import { socket } from "./main.js"; 
+
 let gridContainer = document.getElementById("grid-container");
 
 function displayGrid() {
@@ -17,6 +19,8 @@ function displayGrid() {
 function addColor(x, y) {
   // TODO: send coordinates to backend in order to update color matrix  
   console.log("clicked " + x + " " + y);
+  socket.emit("main", {
+    "x": x , "y": y});
 }
 
 export { displayGrid }; 
