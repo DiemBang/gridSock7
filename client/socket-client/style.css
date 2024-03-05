@@ -134,3 +134,19 @@ button:focus-visible {
 }
 
 /* End chat name rules */
+
+#grid-container {
+  display: inline-grid;
+  grid-template-columns: repeat(15, 1fr);
+  grid-template-rows: repeat(15, 1fr);
+  background-color: #2196F3;
+  padding: 10px;
+}
+
+.grid-item {
+  display: inline-block;
+  background-color: white;
+  width: 40px;
+  height: 40px;
+  outline: solid black;
+}
