@@ -14,6 +14,24 @@ app.get("/test", (req, res) => {
 
 const mainRoom = "main";
 
+//Create an empty grid
+function emptyGrid() {
+  let grid = [];
+  let rows = 15;
+  let columns = 15;
+
+  for (let x = 0; x < rows; x++) {
+    grid[x] = [];
+    for (let y = 0; y < columns; y++) {
+      grid[x][y] = "grey";
+    }
+  }
+  return grid;
+}
+
+const grid = emptyGrid();
+console.log(grid);
+
 io.on("connection", (socket) => {
   console.log("opened connection");
   // When a user connects they enter the mainroom
@@ -69,6 +87,8 @@ io.on("connection", (socket) => {
       room: room,
     });
   });
+
+  //socket.on();
 });
 
 server.listen(3000);
