@@ -59,4 +59,4 @@ function assignIdToUser(user) {
   }
 };
 
-displayGrid(); 
+// displayGrid(); 
