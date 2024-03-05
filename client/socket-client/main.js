@@ -16,6 +16,7 @@ sendBtn.addEventListener("click", () => {
     message: sendMessage.value,
     room: roomInput.value || "main",
   });
+  sendMessage.value = "";
 });
 
 socket.on("chat", (arg) => {
@@ -65,5 +66,6 @@ function assignIdToUser(user) {
     return userListLength - 1;
   }
 }
+
 
 displayGrid();
