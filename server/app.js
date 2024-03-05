@@ -71,8 +71,11 @@ io.on("connection", (socket) => {
     });
   });
 
-  socket.on("grid", (gridPosition) => {
-    console.log(gridPosition);
+  socket.on("grid", (gridPositionAndColor) => {
+    console.log(gridPositionAndColor);
+    globalGrid[gridPositionAndColor.x][gridPositionAndColor.y] = gridPositionAndColor.color;
+    console.log(globalGrid);
+
   });
 
   //An eventlistener for "joinRoom" where the user exits the mainroom and joins the choosen room
@@ -88,7 +91,6 @@ io.on("connection", (socket) => {
     });
   });
 
-  //socket.on();
 });
 
 server.listen(3000);
