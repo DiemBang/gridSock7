@@ -1,4 +1,4 @@
-import { io } from  "socket.io-client";
+import { io } from "socket.io-client";
 import { displayGrid } from "./displayGrid.js";
 
 const socket = io("http://localhost:3000");
@@ -9,35 +9,42 @@ let sendBtn = document.getElementById("sendBtn");
 let chatList = document.getElementById("chatList");
 let roomBtn = document.getElementById("roomBtn");
 
-
 sendBtn.addEventListener("click", () => {
   console.log("send chat", sendMessage.value);
   socket.emit("chat", {
-    name: chatName.value, 
+    name: chatName.value,
     message: sendMessage.value,
     room: roomInput.value || "main",
-  }); 
-})
+  });
+});
 
-socket.on("chat", (arg) =>{
+socket.on("chat", (arg) => {
   console.log("socket", arg);
   updateChat(arg);
-})
+});
 
-//When the user clicks on the room button the user enters the choosen room, if nothing is written in 
+//When the user clicks on the room button the user enters the choosen room, if nothing is written in
 //the room input, then the user stays in the main room
-roomBtn.addEventListener('click', () => {
+roomBtn.addEventListener("click", () => {
   let room = roomInput.value || "main";
   socket.emit("joinRoom", room);
-})
+});
 
 function updateChat(chat) {
-  let li = document.createElement("li"); 
+  let li = document.createElement("li");
   let userId = assignIdToUser(chat.name);
   console.log("user id is", userId);
   li.innerHTML = `
   <div class = "chat-name" id ="user${userId}">${chat.name}</div>[${chat.timestamp}]<br>${chat.message}
   `;
+
+  // Adds class to messages for styling of own/others messages
+  if (chat.name === chatName.value) {
+    li.classList.add("own-msg");
+  } else {
+    li.classList.add("other-user-msg");
+  }
+
   chatList.appendChild(li);
 }
 
@@ -50,13 +57,14 @@ let userList = [];
 
 function assignIdToUser(user) {
   if (userList.includes(user)) {
-      console.log("userList", userList);
-      let userId = userList.indexOf(user);
-      return userId;
-  } else { 
+    console.log("userList", userList);
+    let userId = userList.indexOf(user);
+    return userId;
+  } else {
     let userListLength = userList.push(user);
     return userListLength - 1;
   }
-};
+}
 
-// displayGrid(); 
+
+displayGrid();
