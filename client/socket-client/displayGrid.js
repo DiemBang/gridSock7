@@ -2,6 +2,7 @@ import { socket } from "./main.js";
 
 let gridContainer = document.getElementById("grid-container");
 
+
 function displayGrid() {
   for (let y = 0; y < 15; y++) {
     for (let x = 0; x < 15; x++) {
@@ -11,6 +12,7 @@ function displayGrid() {
       gridItem.addEventListener("click", function() {
         addColor(x, y);
       });
+
       gridContainer.append(gridItem);
     }
   }
@@ -24,3 +26,4 @@ function addColor(x, y) {
 }
 
 export { displayGrid }; 
+
