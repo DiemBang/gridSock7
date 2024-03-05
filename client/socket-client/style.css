@@ -114,7 +114,7 @@ button:focus-visible {
 }
 
 #user1 {
-  color: indigo
+  color: indigo;
 }
 
 #user2 {
@@ -135,11 +135,23 @@ button:focus-visible {
 
 /* End chat name rules */
 
+/* Style chat messages*/
+
+.own-msg {
+  text-align: right;
+  background-color: #2196f3;
+}
+
+.other-user-msg {
+  text-align: left;
+}
+
+/* Style grid container */
 #grid-container {
   display: inline-grid;
   grid-template-columns: repeat(15, 1fr);
   grid-template-rows: repeat(15, 1fr);
-  background-color: #2196F3;
+  background-color: #2196f3;
   padding: 10px;
 }
 
