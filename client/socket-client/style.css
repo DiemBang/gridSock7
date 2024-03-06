@@ -144,6 +144,15 @@ header h1 {
   overflow: auto;
 }
 
+.game-page {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.chat-section {
+  align-self: flex-end;
+}
+
 /* Start chat name rules */
 .chat-name {
   display: inline-block;
