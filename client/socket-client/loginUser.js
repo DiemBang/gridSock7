@@ -1,5 +1,8 @@
 import { io } from "socket.io-client";
 const socket = io("http://localhost:3000");
+import { chatListContainer, chatList, messageList, sendMessage, sendBtn, messageLabel } from "./chatElements.js";
+
+const chatSection = document.getElementById("chatSection");
 
 function loginUser() {
   const joinGameBtn = document.getElementById("joinGameBtn");
@@ -14,10 +17,16 @@ joinGameBtn.addEventListener("click", (event) => {
 	socket.emit("login", { username });
   }
 
+  chatList.appendChild(messageList);
+  chatListContainer.appendChild(chatList);
+  chatSection.appendChild(chatListContainer);
+  chatSection.appendChild(messageLabel);
+  chatSection.appendChild(sendMessage);
+  chatSection.appendChild(sendBtn);
+
 });
 
 }
-
 
 //eventlistener that listen for a login confirmation and 
 //displays a successmessage in the console log
