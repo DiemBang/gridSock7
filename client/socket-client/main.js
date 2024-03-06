@@ -1,7 +1,7 @@
-import { io } from "socket.io-client";
+import { io } from  "socket.io-client";
 import { displayGrid } from "./displayGrid.js";
 
-const socket = io("http://localhost:3000");
+export const socket = io("http://localhost:3000");
 
 let chatName = document.getElementById("chatName");
 let sendMessage = document.getElementById("sendMessage");
@@ -65,7 +65,7 @@ function assignIdToUser(user) {
     let userListLength = userList.push(user);
     return userListLength - 1;
   }
-}
-
+  // use as addeventlistener for join game button - remove this when done
+};
 
 displayGrid();
