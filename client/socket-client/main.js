@@ -1,5 +1,5 @@
 import { io } from  "socket.io-client";
-import { displayGrid } from "./displayGrid.js";
+import { displayGrid, printUpdatedGrid } from "./displayGrid.js";
 
 export const socket = io("http://localhost:3000");
 
@@ -67,5 +67,12 @@ function assignIdToUser(user) {
   }
   // use as addeventlistener for join game button - remove this when done
 };
+
+//Receive updated grid from backend
+socket.on("grid", (gridUpdate) => {
+  console.log("update", gridUpdate);
+  //add function to print updated grid
+  printUpdatedGrid(gridUpdate);
+})
 
 displayGrid();

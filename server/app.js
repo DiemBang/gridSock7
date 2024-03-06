@@ -71,11 +71,12 @@ io.on("connection", (socket) => {
     });
   });
 
+  //Receive grid position and color from frontend
   socket.on("grid", (gridPositionAndColor) => {
     console.log(gridPositionAndColor);
     globalGrid[gridPositionAndColor.x][gridPositionAndColor.y] = gridPositionAndColor.color;
     console.log(globalGrid);
-
+    socket.emit("grid", globalGrid);
   });
 
   //An eventlistener for "joinRoom" where the user exits the mainroom and joins the choosen room
