@@ -2,6 +2,7 @@ import { io } from "socket.io-client";
 import { displayGrid, printUpdatedGrid } from "./displayGrid.js";
 import { loginUser } from "./loginUser.js";
 import { chameleonImg, fishImg } from "../../server/imageArrays.js";
+import "./fourPlayersConnected.js";
 import { chatList, sendBtn, sendMessage } from "./chatElements.js";
 
 export const socket = io("http://localhost:3000");
@@ -57,8 +58,8 @@ socket.on("grid", (gridUpdate) => {
   printUpdatedGrid(gridUpdate);
 })
 
-socket.on("fourPlayersConnected", () => {
-  console.log("Four players connected");
-})
+// socket.on("fourPlayersConnected", () => {
+//   console.log("Four players connected");
+// })
 
 displayGrid();
