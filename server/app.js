@@ -8,6 +8,8 @@ const io = require("socket.io")(server, {
   },
 });
 
+const userColors = ["black", "white", "blue", "red"];
+
 app.get("/test", (req, res) => {
   res.send("<h1>Socket</h1>");
 });
@@ -57,8 +59,10 @@ io.on("connection", (socket) => {
       //the new userId gets pushed to the userList
       userList.push(username);
     }
+
+    let userColor = userColors[userId];
     //a login confirmation is sent to the client side with username and userId
-    socket.emit("loginConfirmation", { username, userId });
+    socket.emit("loginConfirmation", { username, userId, userColor });
   })
 
   socket.on("chat", (arg) => {

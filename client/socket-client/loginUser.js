@@ -1,5 +1,6 @@
 import { io } from "socket.io-client";
 const socket = io("http://localhost:3000");
+let userColor; 
 
 function loginUser() {
   const joinGameBtn = document.getElementById("joinGameBtn");
@@ -22,8 +23,8 @@ joinGameBtn.addEventListener("click", (event) => {
 //eventlistener that listen for a login confirmation and 
 //displays a successmessage in the console log
 socket.on("loginConfirmation", (userData) => {
-  const { username, userId } = userData;
-  console.log(`Successful login for user ${username} with userId ${userId}`);
+  const { username, userId, userColor } = userData;
+  console.log(`Successful login for user ${username} with userId ${userId} and userColor ${userColor}`);
 });
 
 /*
