@@ -1,8 +1,9 @@
 import { io } from "socket.io-client";
 import { displayGrid } from "./displayGrid.js";
 import { loginUser } from "./loginUser.js";
+import { chameleonImg, fishImg } from "../../server/imageArrays.js";
 
-const socket = io("http://localhost:3000");
+export const socket = io("http://localhost:3000");
 
 let userName = document.getElementById("userName");
 let sendMessage = document.getElementById("sendMessage");
