@@ -2,7 +2,7 @@ import { io } from "socket.io-client";
 import { displayGrid, printUpdatedGrid } from "./displayGrid.js";
 import { loginUser } from "./loginUser.js";
 import { chameleonImg, fishImg } from "../../server/imageArrays.js";
-import { chatListContainer, chatList, messageList, sendBtn, sendMessage } from "./chatElements.js";
+import { chatList, sendBtn, sendMessage } from "./chatElements.js";
 
 export const socket = io("http://localhost:3000");
 
