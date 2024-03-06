@@ -2,7 +2,7 @@ import { io } from "socket.io-client";
 import { displayGrid } from "./displayGrid.js";
 import { chameleonImg, fishImg } from "../../server/imageArrays.js";
 
-const socket = io("http://localhost:3000");
+export const socket = io("http://localhost:3000");
 
 let chatName = document.getElementById("chatName");
 let sendMessage = document.getElementById("sendMessage");
@@ -17,6 +17,7 @@ sendBtn.addEventListener("click", () => {
     message: sendMessage.value,
     room: roomInput.value || "main",
   });
+  sendMessage.value = "";
 });
 
 socket.on("chat", (arg) => {
@@ -38,6 +39,14 @@ function updateChat(chat) {
   li.innerHTML = `
   <div class = "chat-name" id ="user${userId}">${chat.name}</div>[${chat.timestamp}]<br>${chat.message}
   `;
+
+  // Adds class to messages for styling of own/others messages
+  if (chat.name === chatName.value) {
+    li.classList.add("own-msg");
+  } else {
+    li.classList.add("other-user-msg");
+  }
+
   chatList.appendChild(li);
 }
 
@@ -57,6 +66,7 @@ function assignIdToUser(user) {
     let userListLength = userList.push(user);
     return userListLength - 1;
   }
-}
-
+};
+// use as addeventlistener for join game button - remove this when done
 displayGrid();
+

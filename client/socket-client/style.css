@@ -95,6 +95,47 @@ button:focus-visible {
   }
 } */
 
+body {
+  margin: 0;
+}
+
+header {
+  background-color: white;
+  color: black;
+  padding: 10px;
+  text-align: center;
+}
+
+header h1 {
+  margin: 0;
+}
+
+.startPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 90vh;
+}
+
+.startPage input[type="text"] {
+  width: 200px;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1.5px solid black;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.joinGameBtn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: blueviolet;
+  color: white;
+  cursor: pointer;
+}
+
 .chatList-container {
   height: 300px;
   width: 400px;
@@ -114,7 +155,7 @@ button:focus-visible {
 }
 
 #user1 {
-  color: indigo
+  color: indigo;
 }
 
 #user2 {
@@ -135,11 +176,23 @@ button:focus-visible {
 
 /* End chat name rules */
 
+/* Style chat messages*/
+
+.own-msg {
+  text-align: right;
+  background-color: #2196f3;
+}
+
+.other-user-msg {
+  text-align: left;
+}
+
+/* Style grid container */
 #grid-container {
   display: inline-grid;
   grid-template-columns: repeat(15, 1fr);
   grid-template-rows: repeat(15, 1fr);
-  background-color: #2196F3;
+  /* background-color: #2196f3; */
   padding: 10px;
 }
 
