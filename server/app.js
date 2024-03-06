@@ -12,6 +12,7 @@ app.get("/test", (req, res) => {
   res.send("<h1>Socket</h1>");
 });
 
+let connectedPlayers = 0;
 const mainRoom = "main";
 
 io.on("connection", (socket) => {
@@ -19,6 +20,13 @@ io.on("connection", (socket) => {
   socket.join(mainRoom);
   //console.log("connection", socket)
   //socket.emit("chat", {name: "computer", message:"Hello World", timestamp: "2024"})
+
+  connectedPlayers++;
+
+  // if 4 players connected, send it to the frontend
+  if (connectedPlayers === 4) {
+    io.emit("fourPlayersConnected");
+  }
 
   socket.on("chat", (arg) => {
     let currentTime = new Date();
