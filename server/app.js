@@ -13,6 +13,10 @@ app.get("/test", (req, res) => {
 });
 
 const mainRoom = "main";
+//userlist för logged in users
+let userList = [];
+//variabel for checking which userId was assigned the latest
+let latestUserId = 0;
 
 io.on("connection", (socket) => {
   console.log("opened connection");
@@ -20,6 +24,24 @@ io.on("connection", (socket) => {
   socket.join(mainRoom);
   //console.log("connection", socket)
   //socket.emit("chat", {name: "computer", message:"Hello World", timestamp: "2024"})
+
+  //eventlistener for event login
+  socket.on("login", (userData) => {
+    const { username } = userData;
+    let userId;
+    
+  //if a user already exists in the userList the assigned userId is the index in the list
+    if(userList.includes(username)) {
+      userId = userList.indexOf(username);
+    } else { 
+      //if the user doesn't exist in the list the assined userId is +1 of the latest assigned userId
+      userId = latestUserId++;
+      //the new userId gets pushed to the userList
+      userList.push(username);
+    }
+    //a login confirmation is sent to the client side with username and userId
+    socket.emit("loginConfirmation", { username, userId });
+  })
 
   socket.on("chat", (arg) => {
     let currentTime = new Date();
