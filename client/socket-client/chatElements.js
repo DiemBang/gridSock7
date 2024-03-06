@@ -11,13 +11,15 @@ chatList.id = "chatList";
 messageList.id = "messageList";
 sendMessage.id = "sendMessage";
 sendBtn.id = "sendBtn";
+messageLabel.id ="messageLabel"
 
 
 chatListContainer.classList.add("chat-list-container");
-chatList.classList.add("chatlist");
-messageList.classList.add("messagelist");
+chatList.classList.add("chat-list");
+messageList.classList.add("message-list");
 sendMessage.classList.add("send-message");
 sendBtn.classList.add("send-btn");
+messageLabel.classList.add("message-label");
 
 
 sendMessage.type = "text";
