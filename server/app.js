@@ -100,7 +100,7 @@ io.on("connection", (socket) => {
     console.log(gridPositionAndColor);
     globalGrid[gridPositionAndColor.x][gridPositionAndColor.y] = gridPositionAndColor.color;
     console.log(globalGrid);
-    socket.emit("grid", globalGrid);
+    io.emit("grid", globalGrid);
   });
 
   //An eventlistener for "joinRoom" where the user exits the mainroom and joins the choosen room
