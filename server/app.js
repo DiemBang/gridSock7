@@ -12,6 +12,7 @@ app.get("/test", (req, res) => {
   res.send("<h1>Socket</h1>");
 });
 
+let connectedPlayers = 0;
 const mainRoom = "main";
 //userlist för logged in users
 let userList = [];
@@ -37,7 +38,7 @@ const globalGrid = emptyGrid();
 console.log(globalGrid);
 
 io.on("connection", (socket) => {
-  console.log("opened connection");
+  // console.log("opened connection");
   // When a user connects they enter the mainroom
   socket.join(mainRoom);
   //console.log("connection", socket)
@@ -54,6 +55,10 @@ io.on("connection", (socket) => {
     } else { 
       //if the user doesn't exist in the list the assined userId is +1 of the latest assigned userId
       userId = latestUserId++;
+      if (latestUserId === 4) {
+        io.emit("fourPlayersConnected");
+        console.log("four user connected");
+      }
       //the new userId gets pushed to the userList
       userList.push(username);
     }

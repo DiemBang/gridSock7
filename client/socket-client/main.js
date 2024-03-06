@@ -59,4 +59,8 @@ socket.on("grid", (gridUpdate) => {
   printUpdatedGrid(gridUpdate);
 })
 
+socket.on("fourPlayersConnected", () => {
+  console.log("Four players connected");
+})
+
 displayGrid();
