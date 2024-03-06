@@ -1,5 +1,5 @@
 import { io } from "socket.io-client";
-import { displayGrid } from "./displayGrid.js";
+import { displayGrid, printUpdatedGrid } from "./displayGrid.js";
 import { loginUser } from "./loginUser.js";
 import { chameleonImg, fishImg } from "../../server/imageArrays.js";
 
@@ -52,4 +52,11 @@ function updateChat(chat) {
 
 loginUser();
 
-//displayGrid();
+//Receive updated grid from backend
+socket.on("grid", (gridUpdate) => {
+  console.log("update", gridUpdate);
+  //add function to print updated grid
+  printUpdatedGrid(gridUpdate);
+})
+
+displayGrid();

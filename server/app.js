@@ -18,6 +18,24 @@ let userList = [];
 //variabel for checking which userId was assigned the latest
 let latestUserId = 0;
 
+//Create an empty grid
+function emptyGrid() {
+  let grid = [];
+  let rows = 15;
+  let columns = 15;
+
+  for (let x = 0; x < rows; x++) {
+    grid[x] = [];
+    for (let y = 0; y < columns; y++) {
+      grid[x][y] = "grey";
+    }
+  }
+  return grid;
+}
+
+const globalGrid = emptyGrid();
+console.log(globalGrid);
+
 io.on("connection", (socket) => {
   console.log("opened connection");
   // When a user connects they enter the mainroom
@@ -54,7 +72,7 @@ io.on("connection", (socket) => {
       minute: "2-digit",
     };
 
-    let timestamp = currentTime.toLocaleTimeString("sv-SE", options);
+    timestamp = currentTime.toLocaleTimeString("sv-SE", options);
     arg.timestamp = timestamp;
     console.log("incoming chat", arg);
 
@@ -75,10 +93,28 @@ io.on("connection", (socket) => {
         room: room,
       });
     });
+  //});
+
+  //Receive grid position and color from frontend
+  socket.on("grid", (gridPositionAndColor) => {
+    console.log(gridPositionAndColor);
+    globalGrid[gridPositionAndColor.x][gridPositionAndColor.y] = gridPositionAndColor.color;
+    console.log(globalGrid);
+    socket.emit("grid", globalGrid);
   });
 
-  socket.on("grid", (gridPosition) => {
-    console.log(gridPosition);
+  //An eventlistener for "joinRoom" where the user exits the mainroom and joins the choosen room
+  socket.on("joinRoom", (room) => {
+    socket.leave(mainRoom);
+    socket.join(room);
+    //A message is displayed that says which room the user has entered
+    socket.emit("chat", {
+      name: "System",
+      message: `You have entered the ${room} room.`,
+      timestamp: new Date().toTimeString(),
+      room: room,
+    });
   });
+});
 
 server.listen(3000);
