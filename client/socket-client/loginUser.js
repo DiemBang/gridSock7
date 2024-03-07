@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function() {
   joinGameBtn.addEventListener("click", loginUser);
 });
 
-let userColor; 
+let globalUserColor; 
 
 function loginUser() {
   const joinGameBtn = document.getElementById("joinGameBtn");
@@ -48,6 +48,7 @@ joinGameBtn.addEventListener("click", (event) => {
 //displays a successmessage in the console log
 socket.on("loginConfirmation", (userData) => {
   const { username, userId, userColor } = userData;
+  globalUserColor = userColor;
   console.log(`Successful login for user ${username} with userId ${userId} and userColor ${userColor}`);
 });
 
@@ -65,4 +66,4 @@ function assignIdToUser(user) {
   }
 };
 */
-export { loginUser }; 
+export { loginUser, globalUserColor }; 

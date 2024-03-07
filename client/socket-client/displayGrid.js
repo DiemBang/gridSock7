@@ -1,4 +1,5 @@
 import { socket } from "./main.js"; 
+import { globalUserColor } from "./loginUser.js";
 
 let gridContainer = document.getElementById("grid-container");
 
@@ -22,7 +23,7 @@ function addColor(x, y) {
   // TODO: send coordinates to backend in order to update color matrix  
   console.log("clicked " + x + " " + y);
   // To be updated when color has been assigned to user
-  let color = "black";
+  let color = globalUserColor;
   socket.emit("grid", {
     "x": x , "y": y, "color": color});
 }
