@@ -3,33 +3,31 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
     <title>Vite App</title>
   </head>
   <body>
-
     <header>
       <h1>What's the name of the game?</h1>
     </header>
 
-    <div id="startPage" class="startPage">
-      <input type="text" id="userName" placeholder="Name">
-      <button id="joinGameBtn" class="joinGameBtn">Join Game</button>
+    <div class="start-page" id="startPage">
+      <input type="text" id="userName" placeholder="Name" />
+      <button class="join-game-btn" id="joinGameBtn">Join Game</button>
     </div>
-    
-    <div id="grid-container">
-    </div>
+
+    <div class="grid-container" id="gridContainer"></div>
 
     <div>
       Message <input type="text" id="sendMessage" />
       <label for="room-input">Room</label>
-      <input type="text" id="roomInput"> 
-      <button type="text" id="roomBtn">Join room</button> 
+      <input type="text" id="roomInput" />
+      <button type="text" id="roomBtn">Join room</button>
       <button id="sendBtn">Send</button>
     </div>
-    <div id="chatList-container" class="chatList-container">
+    <div class="chat-list-container" id="chatListContainer">
       <ul id="chatList"></ul>
     </div>
     <script type="module" src="/main.js"></script>

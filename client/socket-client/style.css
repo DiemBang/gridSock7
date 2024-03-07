@@ -110,7 +110,7 @@ header h1 {
   margin: 0;
 }
 
-.startPage {
+.start-page {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -118,7 +118,7 @@ header h1 {
   height: 90vh;
 }
 
-.startPage input[type="text"] {
+.start-page input[type="text"] {
   width: 200px;
   padding: 10px;
   margin-bottom: 10px;
@@ -127,7 +127,7 @@ header h1 {
   box-sizing: border-box;
 }
 
-.joinGameBtn {
+.join-game-btn {
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
@@ -136,7 +136,7 @@ header h1 {
   cursor: pointer;
 }
 
-.chatList-container {
+.chat-list-container {
   height: 300px;
   width: 400px;
   border: 2px solid black;
@@ -188,7 +188,7 @@ header h1 {
 }
 
 /* Style grid container */
-#grid-container {
+.grid-container {
   display: inline-grid;
   grid-template-columns: repeat(15, 1fr);
   grid-template-rows: repeat(15, 1fr);
@@ -203,7 +203,6 @@ header h1 {
   height: 40px;
   outline: solid black;
 }
-
 
 /* Color palette */
 
