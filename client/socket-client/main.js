@@ -3,21 +3,19 @@ import { displayGrid, printUpdatedGrid } from "./displayGrid.js";
 import { loginUser } from "./loginUser.js";
 import { chameleonImg, fishImg } from "../../server/imageArrays.js";
 import "./fourPlayersConnected.js";
+import { chatList, sendBtn, sendMessage } from "./chatElements.js";
 
 export const socket = io("http://localhost:3000");
 
 let userName = document.getElementById("userName");
-let sendMessage = document.getElementById("sendMessage");
-let sendBtn = document.getElementById("sendBtn");
-let chatList = document.getElementById("chatList");
-let roomBtn = document.getElementById("roomBtn");
+//let roomBtn = document.getElementById("roomBtn");
+let chatSection = document.getElementById("chatSection");
 
 sendBtn.addEventListener("click", () => {
   console.log("send chat", sendMessage.value);
   socket.emit("chat", {
     name: userName.value,
     message: sendMessage.value,
-    room: roomInput.value || "main",
   });
   sendMessage.value = "";
 });
@@ -29,10 +27,10 @@ socket.on("chat", (arg) => {
 
 //When the user clicks on the room button the user enters the choosen room, if nothing is written in
 //the room input, then the user stays in the main room
-roomBtn.addEventListener("click", () => {
+/*roomBtn.addEventListener("click", () => {
   let room = roomInput.value || "main";
   socket.emit("joinRoom", room);
-});
+});*/
 
 function updateChat(chat) {
   let li = document.createElement("li");
@@ -64,4 +62,3 @@ socket.on("grid", (gridUpdate) => {
 //   console.log("Four players connected");
 // })
 
-displayGrid();

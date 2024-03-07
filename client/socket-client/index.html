@@ -13,10 +13,17 @@
       <h1>What's the name of the game?</h1>
     </header>
 
-    <div class="start-page" id="startPage">
-      <input type="text" id="userName" placeholder="Name" />
-      <button class="join-game-btn" id="joinGameBtn">Join Game</button>
+    <div id="startPage" class="start-page hidden">
+      <input type="text" id="userName" placeholder="Name">
+      <button id="joinGameBtn" class="joinGameBtn">Join Game</button>
     </div>
+    
+    <div id="gamePage" class="game-page hidden">
+      <div class="grid-container" id="gridContainer">
+      </div>
+      <div id="chatSection" class="chat-section"></div>
+    </div>
+    
 
     <div class="grid-container" id="gridContainer"></div>
 
