@@ -1,16 +1,15 @@
 import { socket } from "./main.js"; 
 import { globalUserColor } from "./loginUser.js";
 
-let gridContainer = document.getElementById("grid-container");
-
+let gridContainer = document.getElementById("gridContainer");
 
 function displayGrid() {
   for (let y = 0; y < 15; y++) {
     for (let x = 0; x < 15; x++) {
       let gridItem = document.createElement("div");
       gridItem.classList.add("grid-item");
-  
-      gridItem.addEventListener("click", function() {
+
+      gridItem.addEventListener("click", function () {
         addColor(x, y);
       });
 
@@ -20,12 +19,15 @@ function displayGrid() {
 }
 
 function addColor(x, y) {
-  // TODO: send coordinates to backend in order to update color matrix  
+  // TODO: send coordinates to backend in order to update color matrix
   console.log("clicked " + x + " " + y);
   // To be updated when color has been assigned to user
   let color = globalUserColor;
   socket.emit("grid", {
-    "x": x , "y": y, "color": color});
+    x: x,
+    y: y,
+    color: color,
+  });
 }
 
 function printUpdatedGrid(gridUpdate) {
@@ -34,8 +36,8 @@ function printUpdatedGrid(gridUpdate) {
     for (let x = 0; x < 15; x++) {
       let gridItem = document.createElement("div");
       gridItem.classList.add("grid-item");
-  
-      gridItem.addEventListener("click", function() {
+
+      gridItem.addEventListener("click", function () {
         addColor(x, y);
       });
       let color = gridUpdate[x][y];
@@ -45,5 +47,4 @@ function printUpdatedGrid(gridUpdate) {
     }
   }
 }
-export { displayGrid, printUpdatedGrid }; 
-
+export { displayGrid, printUpdatedGrid };

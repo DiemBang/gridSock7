@@ -36,7 +36,7 @@ function updateChat(chat) {
   let li = document.createElement("li");
 
   li.innerHTML = `
-    <div class="chat-name">${chat.name}</div>[${chat.timestamp}]<br>${chat.message}
+    <div class="chat-name">${chat.name}</div>&nbsp;[${chat.timestamp}]<br>${chat.message}
   `;
 
   // Adds class to messages for styling of own/others messages
@@ -56,7 +56,7 @@ socket.on("grid", (gridUpdate) => {
   console.log("update", gridUpdate);
   //add function to print updated grid
   printUpdatedGrid(gridUpdate);
-})
+});
 
 // socket.on("fourPlayersConnected", () => {
 //   console.log("Four players connected");

@@ -128,7 +128,7 @@ header h1 {
   box-sizing: border-box;
 }
 
-.joinGameBtn {
+.join-game-btn {
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
@@ -225,7 +225,7 @@ header h1 {
 }
 
 /* Style grid container */
-#grid-container {
+.grid-container {
   display: inline-grid;
   grid-template-columns: repeat(15, 1fr);
   grid-template-rows: repeat(15, 1fr);
@@ -240,7 +240,6 @@ header h1 {
   height: 40px;
   outline: solid black;
 }
-
 
 /* Color palette */
 
