@@ -1,5 +1,6 @@
 const app = require("express")();
 const server = require("http").createServer(app);
+require('./mongodDB.js');
 
 const io = require("socket.io")(server, {
   cors: {
