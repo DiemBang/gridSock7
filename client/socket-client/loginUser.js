@@ -1,5 +1,18 @@
 import { io } from "socket.io-client";
 const socket = io("http://localhost:3000");
+import { chatListContainer, chatList, messageList, sendMessage, sendBtn, messageLabel } from "./chatElements.js";
+import { displayGrid } from "./displayGrid.js";
+
+const gamePage = document.getElementById("gamePage");
+const startPage = document.getElementById("startPage");
+const chatSection = document.getElementById("chatSection");
+
+document.addEventListener("DOMContentLoaded", function() {
+  startPage.classList.remove("hidden");
+
+  joinGameBtn.addEventListener("click", loginUser);
+});
+
 
 function loginUser() {
   const joinGameBtn = document.getElementById("joinGameBtn");
@@ -14,10 +27,21 @@ joinGameBtn.addEventListener("click", (event) => {
 	socket.emit("login", { username });
   }
 
+  chatList.appendChild(messageList);
+  chatListContainer.appendChild(chatList);
+  chatSection.appendChild(messageLabel);
+  chatSection.appendChild(sendMessage);
+  chatSection.appendChild(sendBtn);
+  chatSection.appendChild(chatListContainer);
+  
+  displayGrid();
+
 });
 
-}
+  startPage.classList.add("hidden");
+  gamePage.classList.remove("hidden");
 
+}
 
 //eventlistener that listen for a login confirmation and 
 //displays a successmessage in the console log
