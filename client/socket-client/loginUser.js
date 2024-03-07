@@ -1,11 +1,13 @@
 import { io } from "socket.io-client";
 const socket = io("http://localhost:3000");
-import { chatListContainer, chatList, messageList, sendMessage, sendBtn, messageLabel } from "./chatElements.js";
+import { chatListContainer, chatList, messageList, sendMessage, 
+  sendBtn, messageLabel, onlineUsersHeading, onlineUsersList, } from "./chatElements.js";
 import { displayGrid } from "./displayGrid.js";
 
 const gamePage = document.getElementById("gamePage");
 const startPage = document.getElementById("startPage");
 const chatSection = document.getElementById("chatSection");
+const chatContainer = document.getElementById("chatContainer");
 
 document.addEventListener("DOMContentLoaded", function() {
   startPage.classList.remove("hidden");
@@ -30,6 +32,9 @@ joinGameBtn.addEventListener("click", (event) => {
 
   chatList.appendChild(messageList);
   chatListContainer.appendChild(chatList);
+  onlineUsersHeading.appendChild(onlineUsersList);
+  chatSection.appendChild(onlineUsersHeading);
+  chatSection.appendChild(onlineUsersList);
   chatSection.appendChild(messageLabel);
   chatSection.appendChild(sendMessage);
   chatSection.appendChild(sendBtn);
@@ -44,12 +49,39 @@ joinGameBtn.addEventListener("click", (event) => {
 
 }
 
+socket.on("updateOnlineUsers", (onlineUsers) => {
+  updateOnlineUsersList(onlineUsers);
+})
+
+function updateOnlineUsersList(onlineUsers) {
+  onlineUsers.forEach((user) => {
+    let userExists = false;
+
+    for (let i = 0; i < onlineUsersList.children.length; i++) {
+      if (onlineUsersList.children[i].innerHTML === user) {
+        userExists = true;
+        break; 
+      }
+    }
+
+    if (!userExists) {
+      let newUserItem = document.createElement("li");
+      newUserItem.innerHTML = user;
+      onlineUsersList.appendChild(newUserItem);
+      newUserItem.classList.add("new-user-item");
+    }
+  });
+}
+
+
+
 //eventlistener that listen for a login confirmation and 
 //displays a successmessage in the console log
 socket.on("loginConfirmation", (userData) => {
   const { username, userId, userColor } = userData;
   globalUserColor = userColor;
   console.log(`Successful login for user ${username} with userId ${userId} and userColor ${userColor}`);
+
 });
 
 /*
@@ -65,5 +97,20 @@ function assignIdToUser(user) {
     return userListLength - 1;
   }
 };
-*/
+
+
+
+  /*const usersOnlineDiv = document.getElementById("onlineUsers");
+  const usersOnlineContainer = document.createElement("div");
+  const onlineUsersHeading = document.createElement("h2");
+  const onlineUsersList = document.createElement("li");
+  onlineUsersList.className = "user-online";
+  onlineUsersHeading.textContent = "Online users"
+
+  
+  usersOnlineContainer.appendChild(onlineUsersHeading);
+  usersOnlineContainer.appendChild(onlineUsersList);
+  usersOnlineDiv.appendChild(usersOnlineContainer);
+  chatContainer.appendChild(usersOnlineDiv);*/
+
 export { loginUser, globalUserColor }; 
