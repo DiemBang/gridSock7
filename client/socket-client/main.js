@@ -5,6 +5,7 @@ import { chameleonImg, fishImg } from "../../server/imageArrays.js";
 import "./fourPlayersConnected.js";
 import { chatList, sendBtn, sendMessage } from "./chatElements.js";
 import { printStartImage } from "./printStartImage.js";
+import { beforeGameStart } from "./countdownStartGame.js";
 
 export const socket = io("http://localhost:3000");
 
@@ -32,6 +33,9 @@ socket.on("chat", (arg) => {
   let room = roomInput.value || "main";
   socket.emit("joinRoom", room);
 });*/
+
+// putting this here to test the function
+beforeGameStart();
 
 function updateChat(chat) {
   let li = document.createElement("li");
