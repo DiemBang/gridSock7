@@ -24,10 +24,11 @@ function loginUser() {
 joinGameBtn.addEventListener("click", (event) => {
   event.preventDefault();
   const username = userName.value;
+  const socketId = socket.id;
 
   if (username) {
   console.log("username", username);
-	socket.emit("login", { username });
+	socket.emit("login", { username, socketId });
   }
 
   chatList.appendChild(messageList);
@@ -71,6 +72,8 @@ function updateOnlineUsersList(onlineUsers) {
       newUserItem.classList.add("new-user-item");
     }
   });
+
+  console.log("Online users updated list", onlineUsersList.innerHTML);
 }
 
 
@@ -78,9 +81,9 @@ function updateOnlineUsersList(onlineUsers) {
 //eventlistener that listen for a login confirmation and 
 //displays a successmessage in the console log
 socket.on("loginConfirmation", (userData) => {
-  const { username, userId, userColor } = userData;
+  const { username, userId, userColor, socketId } = userData;
   globalUserColor = userColor;
-  console.log(`Successful login for user ${username} with userId ${userId} and userColor ${userColor}`);
+  console.log(`Successful login for user ${username} with userId ${userId} and userColor ${userColor} and socketId ${socketId}`);
 
 });
 
