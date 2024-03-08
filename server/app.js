@@ -43,7 +43,8 @@ console.log(globalGrid);
 const onlineUsers = []; 
 
 io.on("connection", (socket) => {
-  // console.log("opened connection");
+  console.log(socket.id);
+
   // When a user connects they enter the mainroom
   socket.join(mainRoom);
   //console.log("connection", socket)
@@ -75,7 +76,21 @@ io.on("connection", (socket) => {
 
     onlineUsers.push(username);
     io.emit("updateOnlineUsers", onlineUsers);
+    
   })
+
+  socket.on("disconnect", () => {
+    console.log(`${socket.id} disconnected`);
+
+    const usernameToRemove = Object.keys(userList).find(
+      (key) => userList[key] === socket.id
+    );
+
+    if (usernameToRemove) {
+      delete userList[usernameToRemove];
+      io.emit("updateOnlineUsers", Object.keys(userList));
+    }
+  });
 
   socket.on("chat", (arg) => {
     let currentTime = new Date();
