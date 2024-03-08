@@ -22,8 +22,8 @@ let userList = [];
 //variabel for checking which userId was assigned the latest
 let latestUserId = 0;
 
-//Create an empty grid
-function emptyGrid() {
+//Create the initial grid that will be used as the game board
+function initialGrid() {
   let grid = [];
   let rows = 15;
   let columns = 15;
@@ -37,7 +37,7 @@ function emptyGrid() {
   return grid;
 }
 
-const globalGrid = emptyGrid();
+const globalGrid = initialGrid();
 console.log(globalGrid);
 
 const onlineUsers = []; 
