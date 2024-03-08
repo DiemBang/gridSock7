@@ -40,7 +40,7 @@ function emptyGrid() {
 const globalGrid = emptyGrid();
 console.log(globalGrid);
 
-const onlineUsers = []; 
+let onlineUsers = []; 
 
 io.on("connection", (socket) => {
   console.log(socket.id);
@@ -74,7 +74,7 @@ io.on("connection", (socket) => {
     //a login confirmation is sent to the client side with username and userId
     socket.emit("loginConfirmation", { username, userId, userColor, socketId });
 
-    onlineUsers.push(username, socketId);
+    onlineUsers.push({userName: username, socketId: socketId});
     io.emit("updateOnlineUsers", onlineUsers);
     
   })

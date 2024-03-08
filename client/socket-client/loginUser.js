@@ -70,7 +70,7 @@ function updateOnlineUsersList(onlineUsers) {
 
     if (!userExists) {
       let newUserItem = document.createElement("li");
-      newUserItem.innerHTML = user;
+      newUserItem.innerHTML = user.userName;
       onlineUsersList.appendChild(newUserItem);
       newUserItem.classList.add("new-user-item");
     }
