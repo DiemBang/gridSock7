@@ -3,6 +3,8 @@ const socket = io("http://localhost:3000");
 import { chatListContainer, chatList, messageList, sendMessage, sendBtn, messageLabel, onlineUsersHeading, onlineUsersList } from "./chatElements.js";
 import { displayGrid } from "./displayGrid.js";
 import { gridContainer } from "./displayGrid.js";
+("");
+import { beforeGameStart } from "./countdownStartGame.js";
 
 const gamePage = document.getElementById("gamePage");
 const startPage = document.getElementById("startPage");
@@ -29,6 +31,7 @@ function loginUser() {
   gridContainer.innerHTML = "";
   console.log(instructions);
   instructions.classList.remove("hidden");
+  beforeGameStart();
 
   joinGameBtn.addEventListener("click", (event) => {
     event.preventDefault();

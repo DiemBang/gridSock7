@@ -35,7 +35,7 @@ socket.on("chat", (arg) => {
 });*/
 
 // putting this here to test the function
-beforeGameStart();
+//beforeGameStart();
 
 function updateChat(chat) {
   let li = document.createElement("li");
