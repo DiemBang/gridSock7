@@ -114,7 +114,14 @@ io.on("connection", (socket) => {
   //Receive grid position and color from frontend
   socket.on("grid", (gridPositionAndColor) => {
     console.log(gridPositionAndColor);
-    globalGrid[gridPositionAndColor.x][gridPositionAndColor.y] = gridPositionAndColor.color;
+    
+    let currentColorOnPosition = globalGrid[gridPositionAndColor.x][gridPositionAndColor.y];
+
+    if (gridPositionAndColor.color === currentColorOnPosition) {
+        globalGrid[gridPositionAndColor.x][gridPositionAndColor.y] = "grey";
+    } else {
+        globalGrid[gridPositionAndColor.x][gridPositionAndColor.y] = gridPositionAndColor.color;
+    }
     console.log(globalGrid);
     io.emit("grid", globalGrid);
   });
