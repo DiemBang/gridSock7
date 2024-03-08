@@ -4,7 +4,7 @@ import { loginUser } from "./loginUser.js";
 import { chameleonImg, fishImg } from "../../server/imageArrays.js";
 import "./fourPlayersConnected.js";
 import { chatList, sendBtn, sendMessage } from "./chatElements.js";
-import { createGrid, printImage } from "./printImages.js";
+import { printStartImage } from "./printStartImage.js";
 
 export const socket = io("http://localhost:3000");
 
@@ -66,14 +66,4 @@ socket.on("fourPlayersConnected", () => {
 // Commented out to test printStartImage
 //displayGrid();
 
-/**
- * Function: print image at start of game
- */
-
-function printStartImage() {
-  createGrid();
-  // TODO: change number of seconds to appropriate value
-  setTimeout(displayGrid, 3000);
-}
-
-printStartImage();
+//printStartImage();

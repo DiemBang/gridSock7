@@ -1,5 +1,7 @@
 import { chameleonImg, fishImg } from "../../server/imageArrays.js";
 
+export { createGrid, printImage };
+
 // Creates array from all start images
 let imgs = [chameleonImg, fishImg];
 
@@ -14,7 +16,7 @@ function getRandomImage(imgs) {
 // Creates a new grid to display chosen image in
 function createGrid() {
   console.log("createGrid körs!");
-  const gridContainerPrintImg = document.getElementById("grid-container");
+  const gridContainerPrintImg = document.getElementById("gridContainer");
   gridContainerPrintImg.innerHTML = "";
 
   // assigns variable randomImg the value that was randomised in getRandomImage
@@ -46,5 +48,3 @@ function printImage(img) {
 
 // createGrid();
 // printImage(chameleonImg);
-
-export { createGrid, printImage };
