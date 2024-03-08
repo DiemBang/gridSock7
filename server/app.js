@@ -40,6 +40,8 @@ function emptyGrid() {
 const globalGrid = emptyGrid();
 console.log(globalGrid);
 
+const onlineUsers = []; 
+
 io.on("connection", (socket) => {
   // console.log("opened connection");
   // When a user connects they enter the mainroom
@@ -64,11 +66,15 @@ io.on("connection", (socket) => {
       }
       //the new userId gets pushed to the userList
       userList.push(username);
+      io.emit("updatedOnlineUsers", onlineUsers)
     }
 
     let userColor = userColors[userId];
     //a login confirmation is sent to the client side with username and userId
     socket.emit("loginConfirmation", { username, userId, userColor });
+
+    onlineUsers.push(username);
+    io.emit("updateOnlineUsers", onlineUsers);
   })
 
   socket.on("chat", (arg) => {
