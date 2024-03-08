@@ -1,6 +1,6 @@
 const app = require("express")();
 const server = require("http").createServer(app);
-require('./mongodDB.js');
+require("./mongodDB.js");
 
 const io = require("socket.io")(server, {
   cors: {
@@ -38,9 +38,9 @@ function emptyGrid() {
 }
 
 const globalGrid = emptyGrid();
-console.log(globalGrid);
+//console.log(globalGrid);
 
-const onlineUsers = []; 
+const onlineUsers = [];
 
 io.on("connection", (socket) => {
   // console.log("opened connection");
@@ -53,11 +53,11 @@ io.on("connection", (socket) => {
   socket.on("login", (userData) => {
     const { username } = userData;
     let userId;
-    
-  //if a user already exists in the userList the assigned userId is the index in the list
-    if(userList.includes(username)) {
+
+    //if a user already exists in the userList the assigned userId is the index in the list
+    if (userList.includes(username)) {
       userId = userList.indexOf(username);
-    } else { 
+    } else {
       //if the user doesn't exist in the list the assined userId is +1 of the latest assigned userId
       userId = latestUserId++;
       if (latestUserId === 4) {
@@ -66,7 +66,7 @@ io.on("connection", (socket) => {
       }
       //the new userId gets pushed to the userList
       userList.push(username);
-      io.emit("updatedOnlineUsers", onlineUsers)
+      io.emit("updatedOnlineUsers", onlineUsers);
     }
 
     let userColor = userColors[userId];
@@ -75,7 +75,7 @@ io.on("connection", (socket) => {
 
     onlineUsers.push(username);
     io.emit("updateOnlineUsers", onlineUsers);
-  })
+  });
 
   socket.on("chat", (arg) => {
     let currentTime = new Date();
@@ -97,30 +97,30 @@ io.on("connection", (socket) => {
     io.to(room).emit("chat", arg);
   });
 
-    //An eventlistener for "joinRoom" where the user exits the mainroom and joins the choosen room
-    socket.on("joinRoom", (room) => {
-      socket.leave(mainRoom);
-      socket.join(room);
-      //A message is displayed that says which room the user has entered
-      socket.emit("chat", {
-        name: "System",
-        message: `You have entered the ${room} room.`,
-        timestamp: new Date().toTimeString(),
-        room: room,
-      });
+  //An eventlistener for "joinRoom" where the user exits the mainroom and joins the choosen room
+  socket.on("joinRoom", (room) => {
+    socket.leave(mainRoom);
+    socket.join(room);
+    //A message is displayed that says which room the user has entered
+    socket.emit("chat", {
+      name: "System",
+      message: `You have entered the ${room} room.`,
+      timestamp: new Date().toTimeString(),
+      room: room,
     });
+  });
   //});
 
   //Receive grid position and color from frontend
   socket.on("grid", (gridPositionAndColor) => {
     console.log(gridPositionAndColor);
-    
+
     let currentColorOnPosition = globalGrid[gridPositionAndColor.x][gridPositionAndColor.y];
 
     if (gridPositionAndColor.color === currentColorOnPosition) {
-        globalGrid[gridPositionAndColor.x][gridPositionAndColor.y] = "grey";
+      globalGrid[gridPositionAndColor.x][gridPositionAndColor.y] = "grey";
     } else {
-        globalGrid[gridPositionAndColor.x][gridPositionAndColor.y] = gridPositionAndColor.color;
+      globalGrid[gridPositionAndColor.x][gridPositionAndColor.y] = gridPositionAndColor.color;
     }
     console.log(globalGrid);
     io.emit("grid", globalGrid);

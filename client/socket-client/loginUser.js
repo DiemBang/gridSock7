@@ -1,57 +1,65 @@
 import { io } from "socket.io-client";
 const socket = io("http://localhost:3000");
-import { chatListContainer, chatList, messageList, sendMessage, 
-  sendBtn, messageLabel, onlineUsersHeading, onlineUsersList, } from "./chatElements.js";
+import { chatListContainer, chatList, messageList, sendMessage, sendBtn, messageLabel, onlineUsersHeading, onlineUsersList } from "./chatElements.js";
 import { displayGrid } from "./displayGrid.js";
+import { gridContainer } from "./displayGrid.js";
 
 const gamePage = document.getElementById("gamePage");
 const startPage = document.getElementById("startPage");
 const chatSection = document.getElementById("chatSection");
 const chatContainer = document.getElementById("chatContainer");
+// Added this to be able to remove "hidden"
+const instructions = document.getElementById("instructions");
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
   startPage.classList.remove("hidden");
 
   joinGameBtn.addEventListener("click", loginUser);
 });
 
-let globalUserColor; 
+let globalUserColor;
 
 function loginUser() {
   const joinGameBtn = document.getElementById("joinGameBtn");
   const userName = document.getElementById("userName");
 
-joinGameBtn.addEventListener("click", (event) => {
-  event.preventDefault();
-  const username = userName.value;
+  // Clear the inneHTML of gridContainer
+  // Not sure if this will be needed?
+  // Depends on where and when displayGrid is called
+  gridContainer.innerHTML = "";
+  console.log(instructions);
+  instructions.classList.remove("hidden");
 
-  if (username) {
-  console.log("username", username);
-	socket.emit("login", { username });
-  }
+  joinGameBtn.addEventListener("click", (event) => {
+    event.preventDefault();
+    const username = userName.value;
 
-  chatList.appendChild(messageList);
-  chatListContainer.appendChild(chatList);
-  onlineUsersHeading.appendChild(onlineUsersList);
-  chatSection.appendChild(onlineUsersHeading);
-  chatSection.appendChild(onlineUsersList);
-  chatSection.appendChild(messageLabel);
-  chatSection.appendChild(sendMessage);
-  chatSection.appendChild(sendBtn);
-  chatSection.appendChild(chatListContainer);
-  
-  displayGrid();
+    if (username) {
+      console.log("username", username);
+      socket.emit("login", { username });
+    }
 
-});
+    chatList.appendChild(messageList);
+    chatListContainer.appendChild(chatList);
+    onlineUsersHeading.appendChild(onlineUsersList);
+    chatSection.appendChild(onlineUsersHeading);
+    chatSection.appendChild(onlineUsersList);
+    chatSection.appendChild(messageLabel);
+    chatSection.appendChild(sendMessage);
+    chatSection.appendChild(sendBtn);
+    chatSection.appendChild(chatListContainer);
+    // commented this out to be able to display instructions for game.
+    // Will this function be called here, or somewhere else?
+    //displayGrid();
+  });
 
   startPage.classList.add("hidden");
   gamePage.classList.remove("hidden");
-
 }
 
 socket.on("updateOnlineUsers", (onlineUsers) => {
   updateOnlineUsersList(onlineUsers);
-})
+});
 
 function updateOnlineUsersList(onlineUsers) {
   onlineUsers.forEach((user) => {
@@ -60,7 +68,7 @@ function updateOnlineUsersList(onlineUsers) {
     for (let i = 0; i < onlineUsersList.children.length; i++) {
       if (onlineUsersList.children[i].innerHTML === user) {
         userExists = true;
-        break; 
+        break;
       }
     }
 
@@ -73,15 +81,12 @@ function updateOnlineUsersList(onlineUsers) {
   });
 }
 
-
-
-//eventlistener that listen for a login confirmation and 
+//eventlistener that listen for a login confirmation and
 //displays a successmessage in the console log
 socket.on("loginConfirmation", (userData) => {
   const { username, userId, userColor } = userData;
   globalUserColor = userColor;
   console.log(`Successful login for user ${username} with userId ${userId} and userColor ${userColor}`);
-
 });
 
 /*
@@ -113,4 +118,4 @@ function assignIdToUser(user) {
   usersOnlineDiv.appendChild(usersOnlineContainer);
   chatContainer.appendChild(usersOnlineDiv);*/
 
-export { loginUser, globalUserColor }; 
+export { loginUser, globalUserColor };

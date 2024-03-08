@@ -5,7 +5,7 @@
 // skapa en timer som räknar ner 10-15s
 // Visa tiden som räknas ner
 // Starta funktionen printStartImage() som visar facit i några sekunder och sedan startar "målargridet"
-
+import { gridContainer } from "./displayGrid.js";
 export { beforeGameStart };
 
 // hämta gridcontainer igen och töm och ändra istället
@@ -13,13 +13,14 @@ const instructions = document.getElementById("instructions");
 
 function beforeGameStart() {
   console.log("BEFORE GAME START");
-  instructions.innerHTML = "";
+  gridContainer.innerHTML = " ";
+  console.log(gridContainer);
   instructions.innerHTML = `
-    <div class="game-start">
+    <div class="game-start" id="gameStart">
     <h2>Welcome!</h2>
-    <div class="itroduction">
+    <div class="introduction" id="introduction">
     <h3>Are you ready for a challenge?</h3>
-    <p class="game-instructions">
+    <p class="game-instructions" id="gameInstructions">
     When four players have joined the game a countdown will tell you when the game starts.
     A pixeled masterpiece will be revealed for 20s - then it's your turn to recreate it! 
     Click the pixels you want to add your color to and watch as your teamwork creates a piece of art. 
@@ -29,4 +30,5 @@ function beforeGameStart() {
     </div>
     </div>    
     `;
+  instructions.appendChild(gameStart);
 }

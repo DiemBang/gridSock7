@@ -1,6 +1,8 @@
 import { socket } from "./main.js";
 import { globalUserColor } from "./loginUser.js";
 
+export { displayGrid, printUpdatedGrid, gridContainer };
+
 let gridContainer = document.getElementById("gridContainer");
 
 function displayGrid() {
@@ -49,4 +51,3 @@ function printUpdatedGrid(gridUpdate) {
     }
   }
 }
-export { displayGrid, printUpdatedGrid };
