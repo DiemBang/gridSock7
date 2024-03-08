@@ -27,7 +27,6 @@ function createGrid() {
       const cell = document.createElement("div");
       cell.classList.add("cell");
       gridContainerPrintImg.appendChild(cell);
-      console.log("Nu kör vi i looopen");
     }
   }
   printImage(randomImg);
@@ -36,7 +35,7 @@ function createGrid() {
 // Changes color on background of cells to print image from array
 function printImage(img) {
   console.log("PRINTAR!");
-  //console.log(chameleonImg);
+
   const cells = document.querySelectorAll(".cell");
   for (let y = 0; y < img.length; y++) {
     for (let x = 0; x < img[y].length; x++) {

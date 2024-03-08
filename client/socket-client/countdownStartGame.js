@@ -1,10 +1,10 @@
-// Tömma gridcontainern på första sidan så att den innehåller välkomsstext
-// + information om hur spelet går till
-// (Visa en räknare som visar hur många spelare som fattas innan spelet startar? )
-// När fyra spelare har anslutit:
-// skapa en timer som räknar ner 10-15s
-// Visa tiden som räknas ner
-// Starta funktionen printStartImage() som visar facit i några sekunder och sedan startar "målargridet"
+// x Tömma gridcontainern på första sidan så att den innehåller välkomsstext
+// x + information om hur spelet går till
+// x (Visa en räknare som visar hur många spelare som fattas innan spelet startar? )
+// x När fyra spelare har anslutit:
+// x skapa en timer som räknar ner 10-15s - finns redan!
+// TODO: Visa tiden som räknas ner
+// TODO: Starta funktionen printStartImage() som visar facit i några sekunder och sedan startar "målargridet"
 import { gridContainer } from "./displayGrid.js";
 export { beforeGameStart };
 
@@ -13,8 +13,8 @@ const instructions = document.getElementById("instructions");
 
 function beforeGameStart() {
   console.log("BEFORE GAME START");
+  instructions.classList.remove("hidden");
   gridContainer.innerHTML = " ";
-  console.log(gridContainer);
   instructions.innerHTML = `
     <div class="game-start" id="gameStart">
         <h2>Welcome!</h2>
@@ -27,7 +27,7 @@ function beforeGameStart() {
                 When the time is out you'll see how close you got to the original image. 
                 Pixel challenge is not just a game - it's an exhilarating journey of collaboration, skill and fun!
             </p>
-    </div>
+         </div>
     </div>    
     `;
   instructions.appendChild(gameStart);

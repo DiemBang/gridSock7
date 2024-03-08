@@ -29,8 +29,7 @@ function loginUser() {
   // Not sure if this will be needed?
   // Depends on where and when displayGrid is called
   gridContainer.innerHTML = "";
-  console.log(instructions);
-  instructions.classList.remove("hidden");
+
   beforeGameStart();
 
   joinGameBtn.addEventListener("click", (event) => {
