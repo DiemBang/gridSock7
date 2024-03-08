@@ -55,6 +55,9 @@ socket.on("updateOnlineUsers", (onlineUsers) => {
 })
 
 function updateOnlineUsersList(onlineUsers) {
+
+  onlineUsersList.innerHTML = "";
+  
   onlineUsers.forEach((user) => {
     let userExists = false;
 
