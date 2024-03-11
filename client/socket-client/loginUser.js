@@ -33,6 +33,7 @@ function loginUser() {
   joinGameBtn.addEventListener("click", (event) => {
     event.preventDefault();
     const username = userName.value;
+    beforeGameStart();
 
     if (username) {
       console.log("username", username);
@@ -52,7 +53,6 @@ function loginUser() {
 
   startPage.classList.add("hidden");
   gamePage.classList.remove("hidden");
-  beforeGameStart();
 }
 
 socket.on("updateOnlineUsers", (onlineUsers) => {
