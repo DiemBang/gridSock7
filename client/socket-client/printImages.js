@@ -1,3 +1,4 @@
+// TODO: add names of all images in img array
 import { chameleonImg, fishImg } from "../../server/imageArrays.js";
 
 export { createGrid, printImage };
@@ -7,12 +8,11 @@ let imgs = [chameleonImg, fishImg];
 
 // Shuffle between images to show at start of game
 function getRandomImage(imgs) {
-  // creates random number < length of array of images and returns random image
+  // creates random number from length of array of images and returns random image
   const randomIndex = Math.floor(Math.random() * imgs.length);
   return imgs[randomIndex];
 }
 
-// NOTE: change name of id when names have been updated
 // Creates a new grid to display chosen image in
 function createGrid() {
   console.log("createGrid körs!");
@@ -29,10 +29,12 @@ function createGrid() {
       gridContainerPrintImg.appendChild(cell);
     }
   }
+  //
   printImage(randomImg);
 }
 
 // Changes color on background of cells to print image from array
+// Can also be used to print images in gallery
 function printImage(img) {
   console.log("PRINTAR!");
 
@@ -44,6 +46,3 @@ function printImage(img) {
     }
   }
 }
-
-// createGrid();
-// printImage(chameleonImg);

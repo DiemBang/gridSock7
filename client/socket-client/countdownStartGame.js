@@ -4,12 +4,11 @@
 // x När fyra spelare har anslutit:
 // x skapa en timer som räknar ner 10-15s - finns redan!
 // TODO: Visa tiden som räknas ner
-// TODO: Starta funktionen printStartImage() som visar facit i några sekunder och sedan startar "målargridet"
+// x Starta funktionen printStartImage() som visar facit i några sekunder och sedan startar "målargridet"
 import { gridContainer } from "./displayGrid.js";
 export { beforeGameStart };
 
-// hämta gridcontainer igen och töm och ändra istället
-const instructions = document.getElementById("instructions");
+// const instructions = document.getElementById("instructions");
 
 function beforeGameStart() {
   console.log("BEFORE GAME START");

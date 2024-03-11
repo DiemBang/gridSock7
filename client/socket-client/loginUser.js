@@ -30,8 +30,6 @@ function loginUser() {
   // Depends on where and when displayGrid is called
   gridContainer.innerHTML = "";
 
-  beforeGameStart();
-
   joinGameBtn.addEventListener("click", (event) => {
     event.preventDefault();
     const username = userName.value;
@@ -50,13 +48,11 @@ function loginUser() {
     chatSection.appendChild(sendMessage);
     chatSection.appendChild(sendBtn);
     chatSection.appendChild(chatListContainer);
-    // commented this out to be able to display instructions for game.
-    // Will this function be called here, or somewhere else?
-    //displayGrid();
   });
 
   startPage.classList.add("hidden");
   gamePage.classList.remove("hidden");
+  beforeGameStart();
 }
 
 socket.on("updateOnlineUsers", (onlineUsers) => {
