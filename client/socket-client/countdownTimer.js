@@ -3,10 +3,8 @@ let time = startingMinutes * 60;
 const countdown = document.getElementById("countdown");
 
 function startGameTimer() {
-  // Move to displayGrid?
   let intervalId = setInterval(updateCountdown, 1000);
 
-  // BUG: check timer
   function updateCountdown() {
     let minutes = Math.floor(time / 60);
     let seconds = time % 60;
@@ -23,6 +21,6 @@ function startGameTimer() {
     }
     time--;
   }
-};
+}
 
 export { startGameTimer };
