@@ -1,21 +1,19 @@
 import { io } from "socket.io-client";
 const socket = io("http://localhost:3000");
-import {
-  chatListContainer,
-  chatList,
-  messageList,
-  sendMessage,
-  sendBtn,
-  messageLabel,
-  onlineUsersHeading,
-  onlineUsersList,
-} from "./chatElements.js";
+
+import { chatListContainer, chatList, messageList, sendMessage, sendBtn, messageLabel, onlineUsersHeading, onlineUsersList } from "./chatElements.js";
+
 import { displayGrid } from "./displayGrid.js";
+import { gridContainer } from "./displayGrid.js";
+("");
+import { beforeGameStart } from "./countdownStartGame.js";
 
 const gamePage = document.getElementById("gamePage");
 const startPage = document.getElementById("startPage");
 const chatSection = document.getElementById("chatSection");
 const chatContainer = document.getElementById("chatContainer");
+// Added this to be able to remove "hidden"
+const instructions = document.getElementById("instructions");
 
 document.addEventListener("DOMContentLoaded", function () {
   startPage.classList.remove("hidden");
@@ -29,9 +27,16 @@ function loginUser() {
   const joinGameBtn = document.getElementById("joinGameBtn");
   const userName = document.getElementById("userName");
 
+
+  // Clear the inneHTML of gridContainer
+  // Not sure if this will be needed?
+  // Depends on where and when displayGrid is called
+  gridContainer.innerHTML = "";
+
   joinGameBtn.addEventListener("click", (event) => {
     event.preventDefault();
     const username = userName.value;
+    beforeGameStart();
 
     if (username) {
       console.log("username", username);
@@ -47,12 +52,11 @@ function loginUser() {
     chatSection.appendChild(sendMessage);
     chatSection.appendChild(sendBtn);
     chatSection.appendChild(chatListContainer);
-
-    displayGrid();
-
-    startPage.classList.add("hidden");
-    gamePage.classList.remove("hidden");
   });
+
+  startPage.classList.add("hidden");
+  gamePage.classList.remove("hidden");
+
 }
 
 socket.on("updateOnlineUsers", (onlineUsers) => {
@@ -81,7 +85,6 @@ function updateOnlineUsersList(onlineUsers) {
     }
   });
 
-  console.log("Online users updated list", onlineUsersList.innerHTML);
 }
 
 //eventlistener that listen for a login confirmation and
@@ -90,7 +93,9 @@ socket.on("loginConfirmation", (userData) => {
   const { username, userId, userColor, socketId } = userData;
   globalUserColor = userColor;
 
+
   console.log(`Successful login for user ${username} with userId ${userId} and userColor ${userColor} and socketId ${socketId}`);
+
 
 });
 
