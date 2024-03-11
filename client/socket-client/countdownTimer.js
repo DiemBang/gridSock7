@@ -2,9 +2,11 @@ let startingMinutes = 2;
 let time = startingMinutes * 60;
 const countdown = document.getElementById("countdown");
 
-let intervalId = setInterval(updateCountdown, 1000);
-
+// BUG: check timer
 function updateCountdown() {
+  // Move to displayGrid?
+  let intervalId = setInterval(updateCountdown, 1000);
+
   let minutes = Math.floor(time / 60);
   let seconds = time % 60;
 

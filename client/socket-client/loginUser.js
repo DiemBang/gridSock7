@@ -5,7 +5,7 @@ import { chatListContainer, chatList, messageList, sendMessage, sendBtn, message
 
 import { displayGrid } from "./displayGrid.js";
 import { gridContainer } from "./displayGrid.js";
-("");
+
 import { beforeGameStart } from "./countdownStartGame.js";
 
 const gamePage = document.getElementById("gamePage");
@@ -26,7 +26,6 @@ let globalUserColor;
 function loginUser() {
   const joinGameBtn = document.getElementById("joinGameBtn");
   const userName = document.getElementById("userName");
-
 
   // Clear the inneHTML of gridContainer
   // Not sure if this will be needed?
@@ -56,7 +55,6 @@ function loginUser() {
 
   startPage.classList.add("hidden");
   gamePage.classList.remove("hidden");
-
 }
 
 socket.on("updateOnlineUsers", (onlineUsers) => {
@@ -64,9 +62,8 @@ socket.on("updateOnlineUsers", (onlineUsers) => {
 });
 
 function updateOnlineUsersList(onlineUsers) {
-
   onlineUsersList.innerHTML = "";
-  
+
   onlineUsers.forEach((user) => {
     let userExists = false;
 
@@ -84,7 +81,6 @@ function updateOnlineUsersList(onlineUsers) {
       newUserItem.classList.add("new-user-item");
     }
   });
-
 }
 
 //eventlistener that listen for a login confirmation and
@@ -93,10 +89,7 @@ socket.on("loginConfirmation", (userData) => {
   const { username, userId, userColor, socketId } = userData;
   globalUserColor = userColor;
 
-
   console.log(`Successful login for user ${username} with userId ${userId} and userColor ${userColor} and socketId ${socketId}`);
-
-
 });
 
 /*
