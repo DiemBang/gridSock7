@@ -1,6 +1,44 @@
 const app = require("express")();
 const server = require("http").createServer(app);
-require("./mongodDB.js");
+
+
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+cors = require('cors');
+
+const indexRouter = require('./routes/index.js');
+const usersRouter = require('./routes/users.js');
+const imagesRouter = require('./routes/images.js');
+
+const MongoClient = require('mongodb').MongoClient;
+
+
+MongoClient.connect('mongodb://127.0.0.1:27017', {
+    useUnifiedTopology: true,
+})
+.then(client => {
+    console.log("Vi är uppkopplade mot databasen");
+
+    const db = client.db('Gridsock7');
+    app.locals.db = db;
+})
+.catch(err => console.error("Ingen kontakt med databasen", err));
+
+app.use(logger('dev'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(cors());
+
+app.use('/', indexRouter);
+app.use('/users', usersRouter);
+app.use('/images', imagesRouter);
+
+module.exports = app;
+
 
 const io = require("socket.io")(server, {
   cors: {
@@ -22,8 +60,8 @@ let userList = [];
 //variabel for checking which userId was assigned the latest
 let latestUserId = 0;
 
-//Create an empty grid
-function emptyGrid() {
+//Create the initial grid that will be used as the game board
+function initialGrid() {
   let grid = [];
   let rows = 15;
   let columns = 15;
@@ -37,13 +75,16 @@ function emptyGrid() {
   return grid;
 }
 
-const globalGrid = emptyGrid();
-//console.log(globalGrid);
 
-const onlineUsers = [];
+const globalGrid = initialGrid();
+console.log(globalGrid);
+
+let onlineUsers = []; 
+
 
 io.on("connection", (socket) => {
-  // console.log("opened connection");
+  console.log(socket.id);
+
   // When a user connects they enter the mainroom
   socket.join(mainRoom);
   //console.log("connection", socket)
@@ -51,7 +92,7 @@ io.on("connection", (socket) => {
 
   //eventlistener for event login
   socket.on("login", (userData) => {
-    const { username } = userData;
+    const { username, socketId } = userData;
     let userId;
 
     //if a user already exists in the userList the assigned userId is the index in the list
@@ -71,10 +112,30 @@ io.on("connection", (socket) => {
 
     let userColor = userColors[userId];
     //a login confirmation is sent to the client side with username and userId
-    socket.emit("loginConfirmation", { username, userId, userColor });
+    socket.emit("loginConfirmation", { username, userId, userColor, socketId });
 
-    onlineUsers.push(username);
+    onlineUsers.push({userName: username, socketId: socketId});
     io.emit("updateOnlineUsers", onlineUsers);
+
+    
+  })
+  // eventlistener for disconnect
+  socket.on("disconnect", () => {
+    console.log(`${socket.id} disconnected`);
+
+    // Find the disconnected user by socketId
+    const disconnectedUser = onlineUsers.find((user) => user.socketId === socket.id);
+
+    if (disconnectedUser) {
+      // Remove the disconnected user from the onlineUsers array
+      onlineUsers = onlineUsers.filter((user) => user.socketId !== socket.id);
+
+      // Update the online users list and inform all clients
+      io.emit("updateOnlineUsers", onlineUsers);
+
+      console.log(`${disconnectedUser.username} disconnected`);
+    }
+
   });
 
   socket.on("chat", (arg) => {

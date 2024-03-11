@@ -145,6 +145,7 @@ header h1 {
   justify-content: space-evenly;
 }
 
+
 .game-start {
   align-items: center;
   display: flex;
@@ -159,6 +160,13 @@ header h1 {
       text-align: center;
     }
   }
+
+#countdown {
+  position: absolute;
+  left: 1em;
+  top: 1em;
+  font-size: 2em;
+
 }
 
 .online-users {

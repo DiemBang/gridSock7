@@ -1,6 +1,8 @@
 import { io } from "socket.io-client";
 const socket = io("http://localhost:3000");
+
 import { chatListContainer, chatList, messageList, sendMessage, sendBtn, messageLabel, onlineUsersHeading, onlineUsersList } from "./chatElements.js";
+
 import { displayGrid } from "./displayGrid.js";
 import { gridContainer } from "./displayGrid.js";
 ("");
@@ -24,6 +26,7 @@ let globalUserColor;
 function loginUser() {
   const joinGameBtn = document.getElementById("joinGameBtn");
   const userName = document.getElementById("userName");
+
 
   // Clear the inneHTML of gridContainer
   // Not sure if this will be needed?
@@ -53,6 +56,7 @@ function loginUser() {
 
   startPage.classList.add("hidden");
   gamePage.classList.remove("hidden");
+
 }
 
 socket.on("updateOnlineUsers", (onlineUsers) => {
@@ -60,6 +64,9 @@ socket.on("updateOnlineUsers", (onlineUsers) => {
 });
 
 function updateOnlineUsersList(onlineUsers) {
+
+  onlineUsersList.innerHTML = "";
+  
   onlineUsers.forEach((user) => {
     let userExists = false;
 
@@ -72,19 +79,24 @@ function updateOnlineUsersList(onlineUsers) {
 
     if (!userExists) {
       let newUserItem = document.createElement("li");
-      newUserItem.innerHTML = user;
+      newUserItem.innerHTML = user.userName;
       onlineUsersList.appendChild(newUserItem);
       newUserItem.classList.add("new-user-item");
     }
   });
+
 }
 
 //eventlistener that listen for a login confirmation and
 //displays a successmessage in the console log
 socket.on("loginConfirmation", (userData) => {
-  const { username, userId, userColor } = userData;
+  const { username, userId, userColor, socketId } = userData;
   globalUserColor = userColor;
-  console.log(`Successful login for user ${username} with userId ${userId} and userColor ${userColor}`);
+
+
+  console.log(`Successful login for user ${username} with userId ${userId} and userColor ${userColor} and socketId ${socketId}`);
+
+
 });
 
 /*

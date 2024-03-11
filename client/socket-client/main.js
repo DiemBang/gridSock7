@@ -4,7 +4,9 @@ import { loginUser } from "./loginUser.js";
 import { chameleonImg, fishImg } from "../../server/imageArrays.js";
 import "./fourPlayersConnected.js";
 import { chatList, sendBtn, sendMessage } from "./chatElements.js";
-//import { printStartImage } from "./printStartImage.js";
+import { updateCountdown } from "./countdownTimer.js";
+
+
 
 export const socket = io("http://localhost:3000");
 
