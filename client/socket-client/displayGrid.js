@@ -7,7 +7,6 @@ export { displayGrid, printUpdatedGrid, gridContainer };
 let gridContainer = document.getElementById("gridContainer");
 
 function displayGrid() {
-  console.log("displayGrid!");
   // Clear grid container from start image
   gridContainer.innerHTML = "";
   updateCountdown();
