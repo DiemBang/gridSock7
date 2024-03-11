@@ -60,6 +60,9 @@ socket.on("updateOnlineUsers", (onlineUsers) => {
 });
 
 function updateOnlineUsersList(onlineUsers) {
+
+  onlineUsersList.innerHTML = "";
+  
   onlineUsers.forEach((user) => {
     let userExists = false;
 
@@ -72,21 +75,23 @@ function updateOnlineUsersList(onlineUsers) {
 
     if (!userExists) {
       let newUserItem = document.createElement("li");
-      newUserItem.innerHTML = user;
+      newUserItem.innerHTML = user.userName;
       onlineUsersList.appendChild(newUserItem);
       newUserItem.classList.add("new-user-item");
     }
   });
+
+  console.log("Online users updated list", onlineUsersList.innerHTML);
 }
 
 //eventlistener that listen for a login confirmation and
 //displays a successmessage in the console log
 socket.on("loginConfirmation", (userData) => {
-  const { username, userId, userColor } = userData;
+  const { username, userId, userColor, socketId } = userData;
   globalUserColor = userColor;
-  console.log(
-    `Successful login for user ${username} with userId ${userId} and userColor ${userColor}`
-  );
+
+  console.log(`Successful login for user ${username} with userId ${userId} and userColor ${userColor} and socketId ${socketId}`);
+
 });
 
 /*
