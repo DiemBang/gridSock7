@@ -40,10 +40,11 @@ function emptyGrid() {
 const globalGrid = emptyGrid();
 console.log(globalGrid);
 
-const onlineUsers = []; 
+let onlineUsers = []; 
 
 io.on("connection", (socket) => {
-  // console.log("opened connection");
+  console.log(socket.id);
+
   // When a user connects they enter the mainroom
   socket.join(mainRoom);
   //console.log("connection", socket)
@@ -51,7 +52,7 @@ io.on("connection", (socket) => {
 
   //eventlistener for event login
   socket.on("login", (userData) => {
-    const { username } = userData;
+    const { username, socketId } = userData;
     let userId;
     
   //if a user already exists in the userList the assigned userId is the index in the list
@@ -71,11 +72,29 @@ io.on("connection", (socket) => {
 
     let userColor = userColors[userId];
     //a login confirmation is sent to the client side with username and userId
-    socket.emit("loginConfirmation", { username, userId, userColor });
+    socket.emit("loginConfirmation", { username, userId, userColor, socketId });
 
-    onlineUsers.push(username);
+    onlineUsers.push({userName: username, socketId: socketId});
     io.emit("updateOnlineUsers", onlineUsers);
+    
   })
+  // eventlistener for disconnect
+  socket.on("disconnect", () => {
+    console.log(`${socket.id} disconnected`);
+
+    // Find the disconnected user by socketId
+    const disconnectedUser = onlineUsers.find((user) => user.socketId === socket.id);
+
+    if (disconnectedUser) {
+      // Remove the disconnected user from the onlineUsers array
+      onlineUsers = onlineUsers.filter((user) => user.socketId !== socket.id);
+
+      // Update the online users list and inform all clients
+      io.emit("updateOnlineUsers", onlineUsers);
+
+      console.log(`${disconnectedUser.username} disconnected`);
+    }
+  });
 
   socket.on("chat", (arg) => {
     let currentTime = new Date();
