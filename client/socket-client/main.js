@@ -7,6 +7,8 @@ import { chatList, sendBtn, sendMessage } from "./chatElements.js";
 // import { updateCountdown } from "./countdownTimer.js";
 import { compareImages, displayResult } from "./compareImages.js";
 
+import { getGallery } from "./gallery.js";
+
 export const socket = io("http://localhost:3000");
 
 let userName = document.getElementById("userName");
@@ -64,6 +66,15 @@ socket.on("fourPlayersConnected", () => {
   console.log("Four players connected");
 });
 
+
+const galleryBtn = document.getElementById("galleryBtn");
+const gallery = document.getElementById("gallery");
+
+galleryBtn.addEventListener("click", () => {
+
+  getGallery();
+
+})
 // Commented out to test printStartImage
 //displayGrid();
 
