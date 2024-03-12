@@ -1,7 +1,7 @@
 // TODO: add names of all images in img array
 import { chameleonImg, fishImg } from "../../server/imageArrays.js";
 
-export { createGrid, printImage };
+export { createGrid, printImage, getRandomImage, randomImage };
 
 // Creates array from all start images
 let imgs = [chameleonImg, fishImg];
@@ -12,6 +12,8 @@ function getRandomImage(imgs) {
   const randomIndex = Math.floor(Math.random() * imgs.length);
   return imgs[randomIndex];
 }
+const randomImage = getRandomImage(imgs);
+console.log("randomImage", randomImage);
 
 // Creates a new grid to display chosen image in
 function createGrid() {

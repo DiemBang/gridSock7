@@ -1,6 +1,6 @@
 import { socket } from "./main.js";
 import { globalUserColor } from "./loginUser.js";
-import { updateCountdown } from "./countdownTimer.js";
+import { startGameTimer } from "./countdownTimer.js";
 
 export { displayGrid, printUpdatedGrid, gridContainer };
 
@@ -9,7 +9,7 @@ let gridContainer = document.getElementById("gridContainer");
 function displayGrid() {
   // Clear grid container from start image
   gridContainer.innerHTML = "";
-  updateCountdown();
+  startGameTimer();
   for (let y = 0; y < 15; y++) {
     for (let x = 0; x < 15; x++) {
       let gridItem = document.createElement("div");

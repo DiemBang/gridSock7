@@ -35,11 +35,12 @@ function loginUser() {
   joinGameBtn.addEventListener("click", (event) => {
     event.preventDefault();
     const username = userName.value;
+    const socketId = socket.id;
     beforeGameStart();
 
     if (username) {
       console.log("username", username);
-      socket.emit("login", { username });
+      socket.emit("login", { username, socketId });
     }
 
     chatList.appendChild(messageList);
@@ -76,7 +77,14 @@ function updateOnlineUsersList(onlineUsers) {
 
     if (!userExists) {
       let newUserItem = document.createElement("li");
-      newUserItem.innerHTML = user.userName;
+
+      let colorDot = document.createElement("span");
+      colorDot.classList.add("user-color-dot");
+      colorDot.style.backgroundColor = user.userColor;
+      
+      newUserItem.appendChild(colorDot);
+      newUserItem.innerHTML += user.userName;
+      
       onlineUsersList.appendChild(newUserItem);
       newUserItem.classList.add("new-user-item");
     }
