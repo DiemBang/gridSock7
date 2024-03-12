@@ -1,3 +1,5 @@
+let globalGrid = require("./globalGrid.js");
+
 const app = require("express")();
 const server = require("http").createServer(app);
 
@@ -76,8 +78,8 @@ function initialGrid() {
 }
 
 
-const globalGrid = initialGrid();
-console.log(globalGrid);
+globalGrid.grid = initialGrid();
+console.log(globalGrid.grid);
 
 let onlineUsers = []; 
 
@@ -101,7 +103,7 @@ io.on("connection", (socket) => {
     } else {
       //if the user doesn't exist in the list the assined userId is +1 of the latest assigned userId
       userId = latestUserId++;
-      if (latestUserId === 4) {
+      if (latestUserId === 1) {
         io.emit("fourPlayersConnected");
         console.log("four user connected");
       }
@@ -176,15 +178,15 @@ io.on("connection", (socket) => {
   socket.on("grid", (gridPositionAndColor) => {
     console.log(gridPositionAndColor);
 
-    let currentColorOnPosition = globalGrid[gridPositionAndColor.x][gridPositionAndColor.y];
+    let currentColorOnPosition = globalGrid.grid[gridPositionAndColor.x][gridPositionAndColor.y];
 
     if (gridPositionAndColor.color === currentColorOnPosition) {
-      globalGrid[gridPositionAndColor.x][gridPositionAndColor.y] = "grey";
+      globalGrid.grid[gridPositionAndColor.x][gridPositionAndColor.y] = "grey";
     } else {
-      globalGrid[gridPositionAndColor.x][gridPositionAndColor.y] = gridPositionAndColor.color;
+      globalGrid.grid[gridPositionAndColor.x][gridPositionAndColor.y] = gridPositionAndColor.color;
     }
-    console.log(globalGrid);
-    io.emit("grid", globalGrid);
+    console.log(globalGrid.grid);
+    io.emit("grid", globalGrid.grid);
   });
 
   //An eventlistener for "joinRoom" where the user exits the mainroom and joins the choosen room
@@ -199,6 +201,7 @@ io.on("connection", (socket) => {
       room: room,
     });
   });
+
 });
 
 server.listen(3000);
