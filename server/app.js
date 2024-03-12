@@ -114,7 +114,7 @@ io.on("connection", (socket) => {
     //a login confirmation is sent to the client side with username and userId
     socket.emit("loginConfirmation", { username, userId, userColor, socketId });
 
-    onlineUsers.push({userName: username, socketId: socketId});
+    onlineUsers.push({userName: username, socketId: socketId, userColor: userColor});
     io.emit("updateOnlineUsers", onlineUsers);
 
     
