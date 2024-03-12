@@ -101,7 +101,7 @@ io.on("connection", (socket) => {
     } else {
       //if the user doesn't exist in the list the assined userId is +1 of the latest assigned userId
       userId = latestUserId++;
-      if (latestUserId === 4) {
+      if (latestUserId === 1) {
         io.emit("fourPlayersConnected");
         console.log("four user connected");
       }
