@@ -13,6 +13,7 @@ function getRandomImage(imgs) {
   return imgs[randomIndex];
 }
 const randomImage = getRandomImage(imgs);
+console.log("randomImage", randomImage);
 
 // Creates a new grid to display chosen image in
 function createGrid() {
