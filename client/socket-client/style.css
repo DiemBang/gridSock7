@@ -227,7 +227,17 @@ header h1 {
   display: inline-block;
 }
 
+.user-color-dot {
+  display: inline-block;
+  width: 10px; 
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 5px; 
+  border: 1px solid grey;
+}
+
 /* Colors for userID (chat name) */
+
 #user0 {
   color: violet;
 }
@@ -314,3 +324,4 @@ header h1 {
 }
 
 /* End color palette */
+
