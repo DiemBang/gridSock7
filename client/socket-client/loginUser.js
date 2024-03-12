@@ -35,11 +35,12 @@ function loginUser() {
   joinGameBtn.addEventListener("click", (event) => {
     event.preventDefault();
     const username = userName.value;
+    const socketId = socket.id;
     beforeGameStart();
 
     if (username) {
       console.log("username", username);
-      socket.emit("login", { username });
+      socket.emit("login", { username, socketId });
     }
 
     chatList.appendChild(messageList);
