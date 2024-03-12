@@ -5,12 +5,7 @@ import { chameleonImg, fishImg } from "../../server/imageArrays.js";
 import "./fourPlayersConnected.js";
 import { chatList, sendBtn, sendMessage } from "./chatElements.js";
 // import { updateCountdown } from "./countdownTimer.js";
-import { compareImages } from "./compareImages.js";
-
-// Anropa compareImages-funktionen med din spelarbild
-// const result = compareImages(playerImage, randomImage);
-// console.log(`Antal korrekta pixlar: ${result}`);
-
+import { compareImages, displayResult } from "./compareImages.js";
 
 export const socket = io("http://localhost:3000");
 

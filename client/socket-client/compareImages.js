@@ -1,20 +1,33 @@
 import { randomImage } from "./printImages.js";
 
 export function compareImages(playerImage, randomImage) {
-    const numRows = playerImage.length;
-    const numCols = playerImage[0].length;
+  const numRows = playerImage.length;
+  const numCols = playerImage[0].length;
 
-    let correct = 0;
+  let correct = 0;
 
-    for (let y = 0; y < numRows; y++) {
-        for (let x = 0; x < numCols; x++) {
-          if (playerImage[y][x] === randomImage[y][x]) {
-            correct++;
-          }
-        }
+  for (let y = 0; y < numRows; y++) {
+    for (let x = 0; x < numCols; x++) {
+      if (playerImage[y][x] === randomImage[y][x]) {
+        correct++;
       }
-    return correct;
+    }
+  }
+    
+  const totalPixels = numRows * numCols;
+  const resultInPercentage = (correct / totalPixels) * 100;
+
+  return resultInPercentage;
 }
+
+
+export function displayResult(resultInPercentage) {
+  const resultContainer = document.getElementById("result-container");
+  resultContainer.innerHTML = `<p>Your result: ${resultInPercentage.toFixed(2)}%</p>`;
+}
+
+
+
 // playerImage should changes to the array that painted by players
 const playerImage = [
   ["blue", "white", "blue", "white", "white", "white", "white", "white", "white", "white", "white", "white", "white", "white", "white"],
@@ -35,4 +48,6 @@ const playerImage = [
 ];
 
 const result = compareImages(playerImage, randomImage);
-console.log(`Antal korrekta pixlar: ${result}`);
+displayResult(result);
+
+console.log("resultat", result);
