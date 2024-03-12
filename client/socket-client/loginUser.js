@@ -77,7 +77,14 @@ function updateOnlineUsersList(onlineUsers) {
 
     if (!userExists) {
       let newUserItem = document.createElement("li");
-      newUserItem.innerHTML = user.userName;
+
+      let colorDot = document.createElement("span");
+      colorDot.classList.add("user-color-dot");
+      colorDot.style.backgroundColor = user.userColor;
+      
+      newUserItem.appendChild(colorDot);
+      newUserItem.innerHTML += user.userName;
+      
       onlineUsersList.appendChild(newUserItem);
       newUserItem.classList.add("new-user-item");
     }
