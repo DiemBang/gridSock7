@@ -98,7 +98,7 @@ io.on("connection", (socket) => {
     } else {
       //if the user doesn't exist in the list the assined userId is +1 of the latest assigned userId
       userId = latestUserId++;
-      if (latestUserId === 1) {
+      if (latestUserId === 2) {
         io.emit("fourPlayersConnected");
         console.log("four user connected");
       }
@@ -193,6 +193,13 @@ io.on("connection", (socket) => {
       room: room,
     });
   });
+
+  // Start new game when clicking on new game
+  socket.on("startNewGame", () => {
+    console.log("received startNewGame");
+    initialGrid();
+    io.emit("startNewGame");
+  })
 });
 
 server.listen(3000);
