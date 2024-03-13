@@ -3,44 +3,41 @@ let globalGrid = require("./globalGrid.js");
 const app = require("express")();
 const server = require("http").createServer(app);
 
+const express = require("express");
+const path = require("path");
+const cookieParser = require("cookie-parser");
+const logger = require("morgan");
+cors = require("cors");
 
-const express = require('express');
-const path = require('path');
-const cookieParser = require('cookie-parser');
-const logger = require('morgan');
-cors = require('cors');
+const indexRouter = require("./routes/index.js");
+const usersRouter = require("./routes/users.js");
+const imagesRouter = require("./routes/images.js");
 
-const indexRouter = require('./routes/index.js');
-const usersRouter = require('./routes/users.js');
-const imagesRouter = require('./routes/images.js');
+const MongoClient = require("mongodb").MongoClient;
 
-const MongoClient = require('mongodb').MongoClient;
-
-
-MongoClient.connect('mongodb://127.0.0.1:27017', {
-    useUnifiedTopology: true,
+MongoClient.connect("mongodb://127.0.0.1:27017", {
+  useUnifiedTopology: true,
 })
-.then(client => {
+  .then((client) => {
     console.log("Vi är uppkopplade mot databasen");
 
-    const db = client.db('Gridsock7');
+    const db = client.db("Gridsock7");
     app.locals.db = db;
-})
-.catch(err => console.error("Ingen kontakt med databasen", err));
+  })
+  .catch((err) => console.error("Ingen kontakt med databasen", err));
 
-app.use(logger('dev'));
+app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, "public")));
 app.use(cors());
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/images', imagesRouter);
+app.use("/", indexRouter);
+app.use("/users", usersRouter);
+app.use("/images", imagesRouter);
 
 module.exports = app;
-
 
 const io = require("socket.io")(server, {
   cors: {
@@ -77,12 +74,10 @@ function initialGrid() {
   return grid;
 }
 
-
 globalGrid.grid = initialGrid();
 console.log(globalGrid.grid);
 
-let onlineUsers = []; 
-
+let onlineUsers = [];
 
 io.on("connection", (socket) => {
   console.log(socket.id);
@@ -103,7 +98,7 @@ io.on("connection", (socket) => {
     } else {
       //if the user doesn't exist in the list the assined userId is +1 of the latest assigned userId
       userId = latestUserId++;
-      if (latestUserId === 4) {
+      if (latestUserId === 1) {
         io.emit("fourPlayersConnected");
         console.log("four user connected");
       }
@@ -116,11 +111,9 @@ io.on("connection", (socket) => {
     //a login confirmation is sent to the client side with username and userId
     socket.emit("loginConfirmation", { username, userId, userColor, socketId });
 
-    onlineUsers.push({userName: username, socketId: socketId, userColor: userColor});
+    onlineUsers.push({ userName: username, socketId: socketId, userColor: userColor });
     io.emit("updateOnlineUsers", onlineUsers);
-
-    
-  })
+  });
   // eventlistener for disconnect
   socket.on("disconnect", () => {
     console.log(`${socket.id} disconnected`);
@@ -137,7 +130,6 @@ io.on("connection", (socket) => {
 
       console.log(`${disconnectedUser.username} disconnected`);
     }
-
   });
 
   socket.on("chat", (arg) => {
@@ -178,12 +170,12 @@ io.on("connection", (socket) => {
   socket.on("grid", (gridPositionAndColor) => {
     console.log(gridPositionAndColor);
 
-    let currentColorOnPosition = globalGrid.grid[gridPositionAndColor.x][gridPositionAndColor.y];
+    let currentColorOnPosition = globalGrid.grid[gridPositionAndColor.y][gridPositionAndColor.x];
 
     if (gridPositionAndColor.color === currentColorOnPosition) {
-      globalGrid.grid[gridPositionAndColor.x][gridPositionAndColor.y] = "grey";
+      globalGrid.grid[gridPositionAndColor.y][gridPositionAndColor.x] = "grey";
     } else {
-      globalGrid.grid[gridPositionAndColor.x][gridPositionAndColor.y] = gridPositionAndColor.color;
+      globalGrid.grid[gridPositionAndColor.y][gridPositionAndColor.x] = gridPositionAndColor.color;
     }
     console.log(globalGrid.grid);
     io.emit("grid", globalGrid.grid);
@@ -201,7 +193,6 @@ io.on("connection", (socket) => {
       room: room,
     });
   });
-
 });
 
 server.listen(3000);

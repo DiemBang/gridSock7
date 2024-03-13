@@ -4,14 +4,19 @@ import { loginUser } from "./loginUser.js";
 import { chameleonImg, fishImg } from "../../server/imageArrays.js";
 import "./fourPlayersConnected.js";
 import { chatList, sendBtn, sendMessage } from "./chatElements.js";
+import { showResultPage } from "./resultPage.js";
 // import { updateCountdown } from "./countdownTimer.js";
-import { compareImages, displayResult } from "./compareImages.js";
+
+// showResultPage();
 
 export const socket = io("http://localhost:3000");
+// Variable that contains the array from the image painted by the players
+export { imageFromGame };
 
 let userName = document.getElementById("userName");
 //let roomBtn = document.getElementById("roomBtn");
 let chatSection = document.getElementById("chatSection");
+let imageFromGame;
 
 sendBtn.addEventListener("click", () => {
   console.log("send chat", sendMessage.value);
@@ -55,7 +60,9 @@ loginUser();
 
 //Receive updated grid from backend
 socket.on("grid", (gridUpdate) => {
-  console.log("update", gridUpdate);
+  //console.log("update", gridUpdate);
+  imageFromGame = gridUpdate;
+  console.log("Array from game:", imageFromGame);
   //add function to print updated grid
   printUpdatedGrid(gridUpdate);
 });
