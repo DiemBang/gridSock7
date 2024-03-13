@@ -10,7 +10,7 @@ function getAndPrintGallery() {
         console.log("Fetched images", data);
   
         // Loopa igenom varje bild och skapa och printa grid för varje bild
-        data.forEach(img => {
+        data[0].img.forEach(img => {
           console.log("Image from db", img);
 
           const gridForGalleryImgs = document.createElement("div");
@@ -19,15 +19,16 @@ function getAndPrintGallery() {
   
           for (let y = 0; y < 15; y++) {
             for (let x = 0; x < 15; x++) {
+                console.log("cell", img[y][x])
               const cell = document.createElement("div");
-              cell.classList.add("cell");
+              cell.classList.add("cell-gallery");
               gridForGalleryImgs.appendChild(cell);
   
               if (img[y] && img[y][x]) {
                 const color = img[y][x];
                 cell.style.backgroundColor = color;
               } else {
-                console.log(`Color not defnied at (${x}, ${y}) in the image.`);
+                //console.log(`Color not defnied at (${x}, ${y}) in the image.`);
               }
             }
           }
