@@ -26,8 +26,10 @@ function beforeGameStart() {
                 When the time is out you'll see how close you got to the original image. 
                 Pixel challenge is not just a game - it's an exhilarating journey of collaboration, skill and fun!
             </p>
+            <h4>The game starts in:</h4>
          </div>
     </div>    
     `;
+
   instructions.appendChild(gameStart);
 }

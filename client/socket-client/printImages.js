@@ -1,8 +1,9 @@
 // TODO: add names of all images in img array
 import { chameleonImg, fishImg } from "../../server/imageArrays.js";
 
-export { createGrid, printImage, getRandomImage, randomImage, imgs};
+export { createGrid, printImage, getRandomImage, randomImage, imgs };
 
+const countdownToGame = document.getElementById("countdownToGame");
 // Creates array from all start images
 let imgs = [chameleonImg, fishImg];
 
@@ -17,6 +18,7 @@ console.log("randomImage", randomImage);
 
 // Creates a new grid to display chosen image in
 function createGrid() {
+  countdownToGame.classList.add("hidden");
   console.log("createGrid körs!");
   const gridContainerPrintImg = document.getElementById("gridContainer");
   gridContainerPrintImg.innerHTML = "";
