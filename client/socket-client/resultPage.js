@@ -23,6 +23,7 @@ export function showResultPage() {
     heading.textContent = "Well done!";
 
     const resultPageButtons = document.getElementById('resultPageButtons');
+    resultPageButtons.innerHTML = ""; 
     const newGameButton = document.createElement("button");
     newGameButton.classList.add('newGameButton');
     newGameButton.textContent = "Play again!";
