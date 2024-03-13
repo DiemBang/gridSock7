@@ -23,7 +23,7 @@ export function compareImages(randomImage) {
 
 export function displayResult(resultInPercentage) {
   const resultContainer = document.getElementById("showResult");
-  resultContainer.innerHTML = `<p>Your result: ${resultInPercentage.toFixed(2)}%</p>`;
+  resultContainer.innerHTML = `<h3>Your result: ${resultInPercentage.toFixed(2)}%</h3>`;
 }
 
 
