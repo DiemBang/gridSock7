@@ -325,3 +325,21 @@ header h1 {
 
 /* End color palette */
 
+/* Style result page  */
+
+.result-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  width: 600px;
+
+  .newGameButton {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: blueviolet;
+    color: white;
+    cursor: pointer;
+  }
+}
