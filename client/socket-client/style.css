@@ -325,12 +325,6 @@ header h1 {
 
 /* End color palette */
 
-.image-container {
-  display: inline-grid;
-  grid-template-columns: repeat(15, 1fr);
-  grid-template-rows: repeat(15, 1fr);
-  padding: 10px;
-}
 /* Style result page  */
 
 .result-container {
@@ -348,4 +342,20 @@ header h1 {
     color: white;
     cursor: pointer;
   }
+}
+
+/* Style Gallery */
+
+.image-container {
+  display: inline-grid;
+  grid-template-columns: repeat(15, 0.5fr);
+  grid-template-rows: repeat(15, 0.5fr);
+  padding: 10px;
+}
+
+.cell-gallery {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  outline: 1px solid rgb(162, 158, 158);
 }
