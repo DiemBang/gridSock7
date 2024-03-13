@@ -325,3 +325,9 @@ header h1 {
 
 /* End color palette */
 
+.image-container {
+  display: inline-grid;
+  grid-template-columns: repeat(15, 1fr);
+  grid-template-rows: repeat(15, 1fr);
+  padding: 10px;
+}
