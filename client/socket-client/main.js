@@ -7,7 +7,7 @@ import { chatList, sendBtn, sendMessage } from "./chatElements.js";
 import { showResultPage } from "./resultPage.js";
 // import { updateCountdown } from "./countdownTimer.js";
 
-showResultPage();
+// showResultPage();
 
 export const socket = io("http://localhost:3000");
 

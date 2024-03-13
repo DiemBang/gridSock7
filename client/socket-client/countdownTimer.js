@@ -1,4 +1,6 @@
-let startingMinutes = 2;
+import { showResultPage } from "./resultPage.js";
+
+let startingMinutes = 0.1;
 let time = startingMinutes * 60;
 const countdown = document.getElementById("countdown");
 
@@ -18,6 +20,7 @@ function startGameTimer() {
       clearInterval(intervalId);
       console.log("Time's up!");
       countdown.innerText = "00:00";
+      showResultPage();
     }
     time--;
   }

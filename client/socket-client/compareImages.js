@@ -22,8 +22,9 @@ export function compareImages(randomImage) {
 
 
 export function displayResult(resultInPercentage) {
+  const roundedResult = Math.round(resultInPercentage);
   const resultContainer = document.getElementById("showResult");
-  resultContainer.innerHTML = `<h3>Your result: ${resultInPercentage.toFixed(2)}%</h3>`;
+  resultContainer.innerHTML = `<h3>Your result: ${roundedResult} % </h3>`;
 }
 
 

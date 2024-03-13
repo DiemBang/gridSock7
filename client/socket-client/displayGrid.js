@@ -5,12 +5,15 @@ import { startGameTimer } from "./countdownTimer.js";
 export { displayGrid, printUpdatedGrid, gridContainer };
 
 let gridContainer = document.getElementById("gridContainer");
+const countDown = document.getElementById('countdown');
 
 function displayGrid() {
   console.log("displayGrid!");
   // Clear grid container from start image
   gridContainer.innerHTML = "";
   startGameTimer();
+  countDown.classList.remove('hidden');
+
   for (let y = 0; y < 15; y++) {
     for (let x = 0; x < 15; x++) {
       let gridItem = document.createElement("div");
