@@ -15,8 +15,10 @@ export function showResultPage() {
 
     const resultContainer = document.getElementById('resultContainer');
     resultContainer.classList.remove("hidden");
+    resultContainer.style.display = "flex";
 
     const resultHeading = document.getElementById('resultHeading');
+    resultHeading.innerHTML = "";
     const heading = document.createElement("h2");
     heading.textContent = "Well done!";
 
