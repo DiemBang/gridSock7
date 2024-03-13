@@ -1,10 +1,12 @@
 import { showResultPage } from "./resultPage.js";
 
-let startingMinutes = 0.1;
-let time = startingMinutes * 60;
+let startingMinutes;
+let time;
 const countdown = document.getElementById("countdown");
 
 function startGameTimer() {
+  startingMinutes = 0.1;
+  time = startingMinutes * 60;
   let intervalId = setInterval(updateCountdown, 1000);
 
   function updateCountdown() {
