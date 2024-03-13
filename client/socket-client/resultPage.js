@@ -3,6 +3,9 @@ import { randomImg } from "./printImages.js";
 import { createGrid } from "./printImages.js";
 import { displayGrid } from "./displayGrid.js";
 
+const viewGalleryBtn = document.createElement("viewGalleryBtn");
+viewGalleryBtn.id = "viewGalleryBtn";
+
 export function showResultPage() {
 
   const gridContainer = document.getElementById("gridContainer");
@@ -47,7 +50,6 @@ export function showResultPage() {
     console.log("image is saved");
   });
 
-  const viewGalleryBtn = document.createElement("viewGalleryBtn");
   viewGalleryBtn.classList.add("view-gallery-btn");
   viewGalleryBtn.textContent = "View gallery";
   viewGalleryBtn.addEventListener("click", () => {
@@ -60,4 +62,6 @@ export function showResultPage() {
   imageBtns.appendChild(saveImgBtn);
   imageBtns.appendChild(viewGalleryBtn);    
 }
+
+export { viewGalleryBtn };
 
