@@ -5,6 +5,7 @@ import { chameleonImg, fishImg } from "../../server/imageArrays.js";
 import "./fourPlayersConnected.js";
 import { chatList, sendBtn, sendMessage } from "./chatElements.js";
 import { showResultPage } from "./resultPage.js";
+import { viewGalleryBtn } from "./resultPage.js";
 // import { updateCountdown } from "./countdownTimer.js";
 
 // showResultPage();
@@ -73,11 +74,7 @@ socket.on("fourPlayersConnected", () => {
   console.log("Four players connected");
 });
 
-
-const galleryBtn = document.getElementById("galleryBtn");
-const gallery = document.getElementById("gallery");
-
-galleryBtn.addEventListener("click", () => {
+viewGalleryBtn.addEventListener("click", () => {
 
   getAndPrintGallery();
 
