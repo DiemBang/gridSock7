@@ -1,9 +1,10 @@
 import { compareImages, displayResult } from "./compareImages.js";
-import { randomImage } from "./printImages.js";
+import { randomImg } from "./printImages.js";
 import { createGrid } from "./printImages.js";
 import { displayGrid } from "./displayGrid.js";
 
 export function showResultPage() {
+
   const gridContainer = document.getElementById("gridContainer");
   gridContainer.style.display = "none";
 
@@ -33,8 +34,8 @@ export function showResultPage() {
     // countDown.classList.remove('hidden');
   });
 
-  const result = compareImages(randomImage);
-  displayResult(result);
+ const result = compareImages(randomImg);
+    displayResult(result);
 
 
   const imageBtns = document.createElement("div");
@@ -57,6 +58,6 @@ export function showResultPage() {
   resultPageButtons.appendChild(newGameButton);
   resultContainer.appendChild(imageBtns);
   imageBtns.appendChild(saveImgBtn);
-  imageBtns.appendChild(viewGalleryBtn);
+  imageBtns.appendChild(viewGalleryBtn);    
 }
 
