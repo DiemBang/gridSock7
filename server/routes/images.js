@@ -20,19 +20,6 @@ router.get("/", function (req, res, next) {
     });
 });
 
-router.post("/add", function (req, res) {
-  req.app.locals.db
-    .collection("images")
-    .insertOne(req.body)
-    .then((result) => {
-      console.log(result);
-      res.status(200).json(result);
-    })
-    .catch((error) => {
-      console.log("error", error);
-    });
-});
-
 router.post("/saveImage", function (req, res) {
   let newImage = {
     user: req.body.user,
