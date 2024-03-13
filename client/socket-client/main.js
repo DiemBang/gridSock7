@@ -7,7 +7,7 @@ import { chatList, sendBtn, sendMessage } from "./chatElements.js";
 // import { updateCountdown } from "./countdownTimer.js";
 import { compareImages, displayResult } from "./compareImages.js";
 
-import { getGallery } from "./gallery.js";
+import { getAndPrintGallery } from "./gallery.js";
 
 export const socket = io("http://localhost:3000");
 // Variable that contains the array from the image painted by the players
@@ -77,7 +77,7 @@ const gallery = document.getElementById("gallery");
 
 galleryBtn.addEventListener("click", () => {
 
-  getGallery();
+  getAndPrintGallery();
 
 })
 // Commented out to test printStartImage
