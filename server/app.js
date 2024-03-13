@@ -197,7 +197,7 @@ io.on("connection", (socket) => {
   // Start new game when clicking on new game
   socket.on("startNewGame", () => {
     console.log("received startNewGame");
-    initialGrid();
+    globalGrid.grid = initialGrid();
     io.emit("startNewGame");
   })
 });
