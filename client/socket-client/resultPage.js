@@ -4,7 +4,6 @@ import { createGrid } from "./printImages.js";
 import { displayGrid } from "./displayGrid.js";
 
 export function showResultPage() {
-
   const gridContainer = document.getElementById("gridContainer");
   gridContainer.style.display = "none";
 
@@ -34,11 +33,11 @@ export function showResultPage() {
     // countDown.classList.remove('hidden');
   });
 
- const result = compareImages(randomImg);
-    displayResult(result);
+  const result = compareImages(randomImg);
+  displayResult(result);
 
-
-  const imageBtns = document.createElement("div");
+  const imgBtns = document.getElementById("imgBtns");
+  imgBtns.innerHTML = "";
 
   const saveImgBtn = document.createElement("saveImgBtn");
   saveImgBtn.classList.add("save-img-btn");
@@ -56,8 +55,7 @@ export function showResultPage() {
 
   resultHeading.appendChild(heading);
   resultPageButtons.appendChild(newGameButton);
-  resultContainer.appendChild(imageBtns);
-  imageBtns.appendChild(saveImgBtn);
-  imageBtns.appendChild(viewGalleryBtn);    
+  resultContainer.appendChild(imgBtns);
+  imgBtns.appendChild(saveImgBtn);
+  imgBtns.appendChild(viewGalleryBtn);
 }
-
