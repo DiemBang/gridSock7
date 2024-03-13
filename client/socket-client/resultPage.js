@@ -44,6 +44,34 @@ export function showResultPage() {
   saveImgBtn.textContent = "Save image";
   saveImgBtn.addEventListener("click", () => {
     console.log("image is saved");
+    // let inputName = document.createElement("input");
+    // inputName.placeholder = "Image title";
+    // let saveBtn = document.createElement("button");
+    // saveBtn.innerText = "Save";
+
+    // saveImgBtn.append(
+    //     inputName,
+    //     saveBtn
+    //   );
+
+    // let newImage = {
+    //   name: inputName.value,
+    // };
+
+    fetch("http://localhost:3000/images/saveImage", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({}),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("svar från server", data);
+
+        // //EMPTY FIELD INPUTS
+        // imgTitle.value = "";
+      });
   });
 
   const viewGalleryBtn = document.createElement("viewGalleryBtn");
