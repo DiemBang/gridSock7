@@ -7,7 +7,6 @@ export { displayGrid, printUpdatedGrid, gridContainer };
 let gridContainer = document.getElementById("gridContainer");
 
 function displayGrid() {
-  console.log("displayGrid!");
   // Clear grid container from start image
   gridContainer.innerHTML = "";
   startGameTimer();
@@ -47,7 +46,7 @@ function printUpdatedGrid(gridUpdate) {
       gridItem.addEventListener("click", function () {
         addColor(x, y);
       });
-      let color = gridUpdate[x][y];
+      let color = gridUpdate[y][x];
       gridItem.classList.add(color);
 
       gridContainer.append(gridItem);
