@@ -1,8 +1,13 @@
 // Funktionen för att hämta bilder från databasen + printa dem på sidan i en varsin grid
 function getAndPrintGallery() {
-  const gallery = document.getElementById("gallery");
+  const galleryPage = document.getElementById("galleryPage");
+  const gamePage = document.getElementById("gamePage");
+  const galleryHeading = document.createElement("h2");
 
-  gallery.classList.remove("hidden");
+  galleryPage.classList.remove("hidden");
+  gamePage.classList.add("hidden");
+  galleryHeading.innerText = "Gallery";
+  galleryPage.appendChild(galleryHeading);
 
   fetch("http://localhost:3000/images")
     .then(res => res.json())
@@ -15,7 +20,7 @@ function getAndPrintGallery() {
 
         const gridForGalleryImgs = document.createElement("div");
         gridForGalleryImgs.classList.add("image-container");
-        gallery.appendChild(gridForGalleryImgs);
+        galleryPage.appendChild(gridForGalleryImgs);
 
         for (let y = 0; y < 15; y++) {
           for (let x = 0; x < 15; x++) {
