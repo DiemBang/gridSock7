@@ -1,6 +1,10 @@
 import { randomImage } from "./printImages.js";
+import { imageFromGame } from "./main.js";
 
-export function compareImages(playerImage, randomImage) {
+
+
+export function compareImages(randomImage) {
+  const playerImage = imageFromGame;
   const numRows = playerImage.length;
   const numCols = playerImage[0].length;
 
@@ -27,27 +31,7 @@ export function displayResult(resultInPercentage) {
 }
 
 
+// const result = compareImages(randomImage);
+// displayResult(result);
 
-// playerImage should changes to the array that painted by players
-const playerImage = [
-  ["blue", "white", "blue", "white", "white", "white", "white", "white", "white", "white", "white", "white", "white", "white", "white"],
-  ["white", "white", "blue", "blue", "white", "white", "white", "white", "white", "blue", "blue", "white", "white", "white", "white"],
-  ["white", "blue", "blue", "blue", "white", "white", "white", "white", "blue", "blue", "blue", "blue", "white", "white", "white"],
-  ["white", "blue", "white", "white", "white", "blue", "blue", "white", "blue", "blue", "white", "white", "blue", "white", "white"],
-  ["white", "blue", "white", "white", "blue", "black", "blue", "blue", "blue", "blue", "white", "black", "blue", "blue", "white"],
-  ["white", "blue", "white", "blue", "blue", "blue", "blue", "black", "blue", "blue", "blue", "blue", "blue", "blue", "white"],
-  ["white", "blue", "blue", "blue", "black", "blue", "blue", "blue", "blue", "blue", "blue", "blue", "blue", "white", "white"],
-  ["white", "white", "blue", "blue", "blue", "blue", "blue", "blue", "blue", "blue", "white", "white", "white", "white", "white"],
-  ["white", "white", "white", "white", "blue", "blue", "blue", "blue", "blue", "white", "white", "white", "red", "red", "red"],
-  ["white", "white", "white", "white", "white", "blue", "white", "white", "blue", "white", "red", "red", "red", "red", "red"],
-  ["white", "white", "white", "white", "white", "blue", "blue", "red", "blue", "blue", "red", "red", "red", "red", "red"],
-  ["white", "white", "white", "red", "red", "red", "red", "red", "red", "red", "red", "red", "red", "black", "black"],
-  ["white", "white", "white", "red", "red", "red", "red", "red", "red", "red", "red", "red", "black", "black", "black"],
-  ["red", "red", "red", "red", "red", "red", "red", "red", "red", "black", "black", "black", "black", "black", "black"],
-  ["red", "red", "red", "red", "red", "red", "black", "black", "black", "black", "black", "black", "black", "black", "black"],
-];
-
-const result = compareImages(playerImage, randomImage);
-displayResult(result);
-
-console.log("resultat", result);
+// console.log("resultat", result);
