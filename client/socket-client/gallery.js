@@ -1,19 +1,40 @@
-import { io } from "socket.io-client";
-
-function getGallery() {
+// Funktionen för att hämta bilder från databasen + printa dem på sidan i en varsin grid
+function getAndPrintGallery() {
     const gallery = document.getElementById("gallery");
-
-    gallery.classList.remove("hidden"); 
-    
+  
+    gallery.classList.remove("hidden");
+  
     fetch("http://localhost:3000/images")
-    .then(res => res.json())
-    .then(data => {
+      .then(res => res.json())
+      .then(data => {
         console.log("Fetched images", data);
-        const image = printSavedImages(data.img);
-        gallery.innerHTML = image;
-    })
-    .catch(error => console.log("Error fetching images", error));
-}
+  
+        // Loopa igenom varje bild och skapa och printa grid för varje bild
+        data.forEach(img => {
+          console.log("Image from db", img);
 
-
-export { getGallery };
+          const gridForGalleryImgs = document.createElement("div");
+          gridForGalleryImgs.classList.add("image-container");
+          gallery.appendChild(gridForGalleryImgs);
+  
+          for (let y = 0; y < 15; y++) {
+            for (let x = 0; x < 15; x++) {
+              const cell = document.createElement("div");
+              cell.classList.add("cell");
+              gridForGalleryImgs.appendChild(cell);
+  
+              if (img[y] && img[y][x]) {
+                const color = img[y][x];
+                cell.style.backgroundColor = color;
+              } else {
+                console.log(`Color not defnied at (${x}, ${y}) in the image.`);
+              }
+            }
+          }
+        });
+      })
+      .catch(error => console.log("Error fetching images", error));
+  }
+  
+  export { getAndPrintGallery };
+  
