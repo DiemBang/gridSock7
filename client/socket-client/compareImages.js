@@ -1,6 +1,6 @@
 import { randomImage } from "./printImages.js";
 
-export function compareImages(playerImage, randomImage) {
+export function compareImages(randomImage) {
   const numRows = playerImage.length;
   const numCols = playerImage[0].length;
 
@@ -22,8 +22,9 @@ export function compareImages(playerImage, randomImage) {
 
 
 export function displayResult(resultInPercentage) {
-  const resultContainer = document.getElementById("result-container");
-  resultContainer.innerHTML = `<p>Your result: ${resultInPercentage.toFixed(2)}%</p>`;
+  const roundedResult = Math.round(resultInPercentage);
+  const resultContainer = document.getElementById("showResult");
+  resultContainer.innerHTML = `<h3>Your result: ${roundedResult} % </h3>`;
 }
 
 
@@ -47,7 +48,7 @@ const playerImage = [
   ["red", "red", "red", "red", "red", "red", "black", "black", "black", "black", "black", "black", "black", "black", "black"],
 ];
 
-const result = compareImages(playerImage, randomImage);
-displayResult(result);
+// const result = compareImages(playerImage, randomImage);
+// displayResult(result);
 
-console.log("resultat", result);
+// console.log("resultat", result);
