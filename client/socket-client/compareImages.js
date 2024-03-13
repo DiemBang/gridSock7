@@ -1,7 +1,8 @@
-import { randomImage } from "./printImages.js";
+// import { randomImage } from "./printImages.js";
+import { randomImg } from "./printImages.js";
 import { imageFromGame } from "./main.js";
 
-export function compareImages(randomImage) {
+export function compareImages() {
   const playerImage = imageFromGame;
   const numRows = playerImage.length;
   const numCols = playerImage[0].length;
@@ -10,7 +11,7 @@ export function compareImages(randomImage) {
 
   for (let y = 0; y < numRows; y++) {
     for (let x = 0; x < numCols; x++) {
-      if (playerImage[y][x] === randomImage[y][x]) {
+      if (playerImage[y][x] === randomImg[y][x]) {
         correct++;
       }
     }

@@ -1,5 +1,5 @@
 import { compareImages, displayResult } from "./compareImages.js";
-import { randomImage } from "./printImages.js";
+import { randomImg } from "./printImages.js";
 import { createGrid } from "./printImages.js";
 import { displayGrid } from "./displayGrid.js";
 
@@ -36,7 +36,7 @@ export function showResultPage() {
         // countDown.classList.remove('hidden');
     })
 
-    const result = compareImages(randomImage);
+    const result = compareImages(randomImg);
     displayResult(result);
 
 
