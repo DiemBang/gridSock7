@@ -15,7 +15,7 @@ const imagesRouter = require("./routes/images.js");
 
 const MongoClient = require("mongodb").MongoClient;
 
-MongoClient.connect("mongodb://127.0.0.1:27017", {
+MongoClient.connect("mongodb+srv://diembang09:gridSock7@diemclustercluck.m7xqzzg.mongodb.net/?retryWrites=true&w=majority&appName=DiemClusterCluck", {
   useUnifiedTopology: true,
 })
   .then((client) => {
