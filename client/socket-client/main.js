@@ -5,9 +5,12 @@ import { chameleonImg, fishImg } from "../../server/imageArrays.js";
 import "./fourPlayersConnected.js";
 import { chatList, sendBtn, sendMessage } from "./chatElements.js";
 import { showResultPage } from "./resultPage.js";
+import { viewGalleryBtn } from "./resultPage.js";
 // import { updateCountdown } from "./countdownTimer.js";
 
 // showResultPage();
+
+import { getAndPrintGallery } from "./gallery.js";
 
 export const socket = io("http://localhost:3000");
 // Variable that contains the array from the image painted by the players
@@ -71,6 +74,11 @@ socket.on("fourPlayersConnected", () => {
   console.log("Four players connected");
 });
 
+viewGalleryBtn.addEventListener("click", () => {
+
+  getAndPrintGallery();
+
+})
 // Commented out to test printStartImage
 //displayGrid();
 

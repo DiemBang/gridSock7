@@ -4,10 +4,14 @@ import { randomImg } from "./printImages.js";
 import { createGrid } from "./printImages.js";
 import { displayGrid } from "./displayGrid.js";
 
+const viewGalleryBtn = document.createElement("viewGalleryBtn");
+viewGalleryBtn.id = "viewGalleryBtn";
+
 const socket = io("http://localhost:3000");
 
 const gridContainer = document.getElementById("gridContainer");
 const resultContainer = document.getElementById("resultContainer");
+
 
 export function showResultPage() {
 
@@ -78,7 +82,6 @@ export function showResultPage() {
       });
   });
 
-  const viewGalleryBtn = document.createElement("viewGalleryBtn");
   viewGalleryBtn.classList.add("view-gallery-btn");
   viewGalleryBtn.textContent = "View gallery";
   viewGalleryBtn.addEventListener("click", () => {
@@ -92,7 +95,6 @@ export function showResultPage() {
   imgBtns.appendChild(viewGalleryBtn);
 }
 
-
 // all four players are receiving this and starting a new game
 socket.on("startNewGame", () => {
     resultContainer.style.display = "none";
@@ -103,4 +105,4 @@ socket.on("startNewGame", () => {
     // countDown.classList.remove('hidden');
 })
 
-
+export { viewGalleryBtn };

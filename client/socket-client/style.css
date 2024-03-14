@@ -358,10 +358,32 @@ header h1 {
   .save-img-btn {
     text-decoration: underline;
     padding-right: 1em;
+    cursor: pointer;
   }
 
   .view-gallery-btn {
     text-decoration: underline;
+    cursor: pointer;
   }
+}
+
+/* Style Gallery */
+
+.image-container {
+  display: inline-grid;
+  grid-template-columns: repeat(15, 0.5fr);
+  grid-template-rows: repeat(15, 0.5fr);
+  padding: 10px;
+}
+
+.cell-gallery {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  outline: 1px solid rgb(162, 158, 158);
+}
+
+.gallery-page {
+  text-align: center;
 }
 
