@@ -95,6 +95,10 @@ io.on("connection", (socket) => {
     //if a user already exists in the userList the assigned userId is the index in the list
     if (userList.includes(username)) {
       userId = userList.indexOf(username);
+      if (latestUserId === 2) {
+        io.emit("fourPlayersConnected");
+        console.log("four user connected");
+      }
     } else {
       //if the user doesn't exist in the list the assined userId is +1 of the latest assigned userId
       userId = latestUserId++;
