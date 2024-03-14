@@ -9,7 +9,7 @@ function getAndPrintGallery() {
   galleryHeading.innerText = "Gallery";
   galleryPage.appendChild(galleryHeading);
 
-  fetch("http://localhost:3000/images")
+  fetch("https://multiplayergame-frontend-qrt3j.ondigitalocean.app/images")
     .then(res => res.json())
     .then(data => {
       console.log("Fetched images", data);
