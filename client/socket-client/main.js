@@ -12,7 +12,7 @@ import { viewGalleryBtn } from "./resultPage.js";
 
 import { getAndPrintGallery } from "./gallery.js";
 
-export const socket = io("http://localhost:3000");
+export const socket = io("https://multiplayergame-si78l.ondigitalocean.app/");
 // Variable that contains the array from the image painted by the players
 export { imageFromGame };
 
