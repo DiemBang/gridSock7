@@ -11,7 +11,8 @@ const resultContainer = document.getElementById("resultContainer");
 
 export function showResultPage() {
 
-  
+  const gridContainer = document.getElementById("gridContainer");
+
   gridContainer.style.display = "none";
 
   const countDown = document.getElementById("countdown");
@@ -36,17 +37,45 @@ export function showResultPage() {
     socket.emit("startNewGame");
   });
 
- const result = compareImages(randomImg);
-    displayResult(result);
+  const result = compareImages(randomImg);
+  displayResult(result);
 
-
-  const imageBtns = document.createElement("div");
+  const imgBtns = document.getElementById("imgBtns");
+  imgBtns.innerHTML = "";
 
   const saveImgBtn = document.createElement("saveImgBtn");
   saveImgBtn.classList.add("save-img-btn");
   saveImgBtn.textContent = "Save image";
   saveImgBtn.addEventListener("click", () => {
     console.log("image is saved");
+    // let inputName = document.createElement("input");
+    // inputName.placeholder = "Image title";
+    // let saveBtn = document.createElement("button");
+    // saveBtn.innerText = "Save";
+
+    // saveImgBtn.append(
+    //     inputName,
+    //     saveBtn
+    //   );
+
+    // let newImage = {
+    //   name: inputName.value,
+    // };
+
+    fetch("http://localhost:3000/images/saveImage", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({}),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("svar från server", data);
+
+        // //EMPTY FIELD INPUTS
+        // imgTitle.value = "";
+      });
   });
 
   const viewGalleryBtn = document.createElement("viewGalleryBtn");
@@ -58,10 +87,11 @@ export function showResultPage() {
 
   resultHeading.appendChild(heading);
   resultPageButtons.appendChild(newGameButton);
-  resultContainer.appendChild(imageBtns);
-  imageBtns.appendChild(saveImgBtn);
-  imageBtns.appendChild(viewGalleryBtn);    
+  resultContainer.appendChild(imgBtns);
+  imgBtns.appendChild(saveImgBtn);
+  imgBtns.appendChild(viewGalleryBtn);
 }
+
 
 // all four players are receiving this and starting a new game
 socket.on("startNewGame", () => {
@@ -72,4 +102,5 @@ socket.on("startNewGame", () => {
     gridContainer.style.display = "inline-grid";
     // countDown.classList.remove('hidden');
 })
+
 
