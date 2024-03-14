@@ -202,4 +202,4 @@ io.on("connection", (socket) => {
   })
 });
 
-server.listen("https://multiplayergame-frontend-qrt3j.ondigitalocean.app/");
+server.listen(process.env.PORT || '3000');
