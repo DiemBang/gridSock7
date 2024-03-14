@@ -4,7 +4,6 @@ import { createGrid } from "./printImages.js";
 import { displayGrid } from "./displayGrid";
 import { updateCountdown } from "./timer.js";
 const socket = io("http://localhost:3000");
-//const { randomImg } = require(".app.js");
 
 socket.on("fourPlayersConnected", (randomImg) => {
   console.log("Four players connected");
@@ -25,9 +24,3 @@ socket.on("fourPlayersConnected", (randomImg) => {
     updateCountdown
   );
 });
-// ÄNDRAT TEST
-// socket.emit("requestRandomNumber");
-// socket.on("randomNumber", (randomNumber) => {
-//   // Log the received random number to the console
-//   console.log("Random Number:", randomNumber);
-// });

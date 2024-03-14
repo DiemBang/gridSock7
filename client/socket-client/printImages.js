@@ -7,10 +7,6 @@ import { io } from "socket.io-client";
 export { createGrid, printImage };
 
 const countdownToGame = document.getElementById("countdownToGame");
-// Creates array from all start images
-//ÄNDRAT - kommenterat ut, flyttat till app.js: , getRandomImage, randomImg, imgs
-// let imgs = [chameleonImg, fishImg];
-// let randomImg;
 
 // Shuffle between images to show at start of game
 // function getRandomImage(imgs) {
@@ -26,9 +22,6 @@ function createGrid(randomImg) {
   const gridContainerPrintImg = document.getElementById("gridContainer");
   gridContainerPrintImg.innerHTML = "";
 
-  // assigns variable randomImg the value that was randomised in getRandomImage
-  // let randomImg = getRandomImage(imgs);
-
   for (let y = 0; y < 15; y++) {
     for (let x = 0; x < 15; x++) {
       const cell = document.createElement("div");
@@ -36,8 +29,7 @@ function createGrid(randomImg) {
       gridContainerPrintImg.appendChild(cell);
     }
   }
-  //
-  //randomImg = getRandomImage(imgs);
+
   printImage(randomImg);
   console.log("facitbild", randomImg);
 }

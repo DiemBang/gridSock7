@@ -39,7 +39,7 @@ const robotImg = [[], [], [], [], [], [], [], [], [], [], [], [], [], [], []];
 const cupcakeImg = [[], [], [], [], [], [], [], [], [], [], [], [], [], [], []];
 
 // TODO: add all image arrays to export
-// TODO: add all image arrays to import in printImages.js
+
 let imgs = [chameleonImg, fishImg];
-//export { chameleonImg, fishImg, imgs };
+
 module.exports = { chameleonImg, fishImg, imgs };
