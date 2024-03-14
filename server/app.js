@@ -1,5 +1,5 @@
 let globalGrid = require("./globalGrid.js");
-let imgs = require("./imageArrays.js");
+let imgObject = require("./imageArrays.js");
 
 const app = require("express")();
 const server = require("http").createServer(app);
@@ -62,6 +62,7 @@ let userList = [];
 let latestUserId = 0;
 // variable to generate random image
 let randomImg;
+let imgs = imgObject.imgs;
 
 //Create the initial grid that will be used as the game board
 function initialGrid() {
@@ -107,6 +108,7 @@ io.on("connection", (socket) => {
         randomImg = getRandomImage(imgs);
         // Emit randomImg to all clients
         io.emit("fourPlayersConnected", randomImg);
+        io.emit("randomImg", randomImg);
         console.log("four user connected");
 
         console.log("Random image for this game:", randomImg);

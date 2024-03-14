@@ -3,6 +3,8 @@ import { compareImages, displayResult } from "./compareImages.js";
 import { createGrid } from "./printImages.js";
 import { displayGrid } from "./displayGrid.js";
 
+let randomImgResults;
+
 const viewGalleryBtn = document.createElement("viewGalleryBtn");
 viewGalleryBtn.id = "viewGalleryBtn";
 
@@ -37,7 +39,7 @@ export function showResultPage() {
     socket.emit("startNewGame");
   });
 
-  const result = compareImages(randomImg);
+  const result = compareImages(randomImgResults);
   displayResult(result);
 
   const imgBtns = document.getElementById("imgBtns");
@@ -91,6 +93,10 @@ export function showResultPage() {
   imgBtns.appendChild(viewGalleryBtn);
 }
 
+socket.on("randomImg", (randomImg) => {
+  randomImgResults = randomImg;
+});
+
 // all four players are receiving this and starting a new game
 socket.on("startNewGame", () => {
   resultContainer.style.display = "none";
@@ -101,4 +107,4 @@ socket.on("startNewGame", () => {
   // countDown.classList.remove('hidden');
 });
 
-export { viewGalleryBtn };
+export { viewGalleryBtn, randomImgResults };

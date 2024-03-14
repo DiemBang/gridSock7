@@ -22,7 +22,7 @@ const countdownToGame = document.getElementById("countdownToGame");
 // Creates a new grid to display chosen image in
 function createGrid(randomImg) {
   countdownToGame.classList.add("hidden");
-  console.log("createGrid körs!");
+  console.log("createGrid körs!", randomImg);
   const gridContainerPrintImg = document.getElementById("gridContainer");
   gridContainerPrintImg.innerHTML = "";
 
