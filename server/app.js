@@ -202,4 +202,4 @@ io.on("connection", (socket) => {
   })
 });
 
-server.listen(3000);
+server.listen("https://multiplayergame-frontend-qrt3j.ondigitalocean.app/");
