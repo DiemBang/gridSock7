@@ -1,16 +1,24 @@
+import { io } from "socket.io-client";
 import { compareImages, displayResult } from "./compareImages.js";
 import { randomImg } from "./printImages.js";
 import { createGrid } from "./printImages.js";
 import { displayGrid } from "./displayGrid.js";
 
+const socket = io("http://localhost:3000");
+
+const gridContainer = document.getElementById("gridContainer");
+const resultContainer = document.getElementById("resultContainer");
+
 export function showResultPage() {
+
   const gridContainer = document.getElementById("gridContainer");
+
   gridContainer.style.display = "none";
 
   const countDown = document.getElementById("countdown");
   countDown.classList.add("hidden");
 
-  const resultContainer = document.getElementById("resultContainer");
+  
   resultContainer.classList.remove("hidden");
   resultContainer.style.display = "flex";
 
@@ -25,12 +33,8 @@ export function showResultPage() {
   newGameButton.classList.add("newGameButton");
   newGameButton.textContent = "Play again!";
   newGameButton.addEventListener("click", () => {
-    resultContainer.style.display = "none";
-    createGrid();
-    // getRandomImage(imgs);
-    setTimeout(displayGrid, 3000);
-    gridContainer.style.display = "inline-grid";
-    // countDown.classList.remove('hidden');
+    console.log("clicked on Start New Game");
+    socket.emit("startNewGame");
   });
 
   const result = compareImages(randomImg);
@@ -87,3 +91,16 @@ export function showResultPage() {
   imgBtns.appendChild(saveImgBtn);
   imgBtns.appendChild(viewGalleryBtn);
 }
+
+
+// all four players are receiving this and starting a new game
+socket.on("startNewGame", () => {
+    resultContainer.style.display = "none";
+    createGrid();
+    // getRandomImage(imgs);
+    setTimeout(displayGrid, 3000);
+    gridContainer.style.display = "inline-grid";
+    // countDown.classList.remove('hidden');
+})
+
+
