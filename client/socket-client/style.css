@@ -143,6 +143,7 @@ header h1 {
 .game-page {
   display: flex;
   justify-content: space-evenly;
+  margin: 25px;
 }
 
 .game-start {
@@ -159,6 +160,16 @@ header h1 {
       text-align: center;
     }
   }
+}
+
+.instructions {
+  height: 320px;
+  outline: 3px solid red;
+}
+
+.countdown-to-game {
+  text-align: center;
+  outline: 3px solid orange;
 }
 
 #countdown {
@@ -229,10 +240,10 @@ header h1 {
 
 .user-color-dot {
   display: inline-block;
-  width: 10px; 
+  width: 10px;
   height: 10px;
   border-radius: 50%;
-  margin-right: 5px; 
+  margin-right: 5px;
   border: 1px solid grey;
 }
 
@@ -343,6 +354,7 @@ header h1 {
     cursor: pointer;
   }
 
+
   .save-img-btn {
     text-decoration: underline;
     padding-right: 1em;
@@ -374,3 +386,4 @@ header h1 {
 .gallery-page {
   text-align: center;
 }
+

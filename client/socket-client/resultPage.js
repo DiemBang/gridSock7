@@ -1,3 +1,4 @@
+import { io } from "socket.io-client";
 import { compareImages, displayResult } from "./compareImages.js";
 import { randomImg } from "./printImages.js";
 import { createGrid } from "./printImages.js";
@@ -6,15 +7,22 @@ import { displayGrid } from "./displayGrid.js";
 const viewGalleryBtn = document.createElement("viewGalleryBtn");
 viewGalleryBtn.id = "viewGalleryBtn";
 
+const socket = io("http://localhost:3000");
+
+const gridContainer = document.getElementById("gridContainer");
+const resultContainer = document.getElementById("resultContainer");
+
+
 export function showResultPage() {
 
   const gridContainer = document.getElementById("gridContainer");
+
   gridContainer.style.display = "none";
 
   const countDown = document.getElementById("countdown");
   countDown.classList.add("hidden");
 
-  const resultContainer = document.getElementById("resultContainer");
+  
   resultContainer.classList.remove("hidden");
   resultContainer.style.display = "flex";
 
@@ -29,25 +37,49 @@ export function showResultPage() {
   newGameButton.classList.add("newGameButton");
   newGameButton.textContent = "Play again!";
   newGameButton.addEventListener("click", () => {
-    resultContainer.style.display = "none";
-    createGrid();
-    // getRandomImage(imgs);
-    setTimeout(displayGrid, 3000);
-    gridContainer.style.display = "inline-grid";
-    // countDown.classList.remove('hidden');
+    console.log("clicked on Start New Game");
+    socket.emit("startNewGame");
   });
 
- const result = compareImages(randomImg);
-    displayResult(result);
+  const result = compareImages(randomImg);
+  displayResult(result);
 
-
-  const imageBtns = document.createElement("div");
+  const imgBtns = document.getElementById("imgBtns");
+  imgBtns.innerHTML = "";
 
   const saveImgBtn = document.createElement("saveImgBtn");
   saveImgBtn.classList.add("save-img-btn");
   saveImgBtn.textContent = "Save image";
   saveImgBtn.addEventListener("click", () => {
     console.log("image is saved");
+    // let inputName = document.createElement("input");
+    // inputName.placeholder = "Image title";
+    // let saveBtn = document.createElement("button");
+    // saveBtn.innerText = "Save";
+
+    // saveImgBtn.append(
+    //     inputName,
+    //     saveBtn
+    //   );
+
+    // let newImage = {
+    //   name: inputName.value,
+    // };
+
+    fetch("http://localhost:3000/images/saveImage", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({}),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("svar från server", data);
+
+        // //EMPTY FIELD INPUTS
+        // imgTitle.value = "";
+      });
   });
 
   viewGalleryBtn.classList.add("view-gallery-btn");
@@ -58,10 +90,19 @@ export function showResultPage() {
 
   resultHeading.appendChild(heading);
   resultPageButtons.appendChild(newGameButton);
-  resultContainer.appendChild(imageBtns);
-  imageBtns.appendChild(saveImgBtn);
-  imageBtns.appendChild(viewGalleryBtn);    
+  resultContainer.appendChild(imgBtns);
+  imgBtns.appendChild(saveImgBtn);
+  imgBtns.appendChild(viewGalleryBtn);
 }
 
-export { viewGalleryBtn };
+// all four players are receiving this and starting a new game
+socket.on("startNewGame", () => {
+    resultContainer.style.display = "none";
+    createGrid();
+    // getRandomImage(imgs);
+    setTimeout(displayGrid, 3000);
+    gridContainer.style.display = "inline-grid";
+    // countDown.classList.remove('hidden');
+})
 
+export { viewGalleryBtn };
