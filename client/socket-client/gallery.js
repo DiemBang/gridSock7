@@ -16,7 +16,7 @@ function getAndPrintGallery() {
 
       // Loopa igenom varje bild och skapa och printa grid för varje bild
       data.forEach(img => {
-        console.log("Image from db", img.img);
+        console.log("Image from db", img.grid);
 
         const gridForGalleryImgs = document.createElement("div");
         gridForGalleryImgs.classList.add("image-container");
@@ -28,7 +28,7 @@ function getAndPrintGallery() {
             cell.classList.add("cell-gallery");
             gridForGalleryImgs.appendChild(cell);
 
-            const color = img.img[y][x];
+            const color = img.grid[y][x];
             cell.style.backgroundColor = color;
           }
         }
@@ -38,5 +38,3 @@ function getAndPrintGallery() {
 }
 
 export { getAndPrintGallery };
-
-  
