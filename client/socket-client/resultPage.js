@@ -7,7 +7,7 @@ import { displayGrid } from "./displayGrid.js";
 const viewGalleryBtn = document.createElement("viewGalleryBtn");
 viewGalleryBtn.id = "viewGalleryBtn";
 
-const socket = io("https://multiplayergame-frontend-qrt3j.ondigitalocean.app/");
+const socket = io("https://multiplayergame-si78l.ondigitalocean.app/");
 
 const gridContainer = document.getElementById("gridContainer");
 const resultContainer = document.getElementById("resultContainer");
