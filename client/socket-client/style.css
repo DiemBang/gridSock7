@@ -353,4 +353,15 @@ header h1 {
     color: white;
     cursor: pointer;
   }
+
+
+  .save-img-btn {
+    text-decoration: underline;
+    padding-right: 1em;
+  }
+
+  .view-gallery-btn {
+    text-decoration: underline;
+  }
 }
+
