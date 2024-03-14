@@ -4,8 +4,9 @@ import { createGrid } from "./printImages.js";
 import { displayGrid } from "./displayGrid";
 import { updateCountdown } from "./timer.js";
 const socket = io("http://localhost:3000");
+const { randomImg } = require(".app.js");
 
-socket.on("fourPlayersConnected", () => {
+socket.on("fourPlayersConnected", (randomImg) => {
   console.log("Four players connected");
   // Callback function that will start timer that counts down to game start
   // TODO: change timer to appropiate value (s) before game starts
@@ -15,7 +16,7 @@ socket.on("fourPlayersConnected", () => {
       console.log("Timer finished! GAME STARTS");
       instructions.classList.add("hidden");
       // Displays start image and displays it for the number of seconds chosen in the Timeout
-      createGrid();
+      createGrid(randomImg);
 
       // TODO: change number of seconds to appropriate value
       // delays start of displaying game grid
@@ -24,8 +25,9 @@ socket.on("fourPlayersConnected", () => {
     updateCountdown
   );
 });
-socket.emit("requestRandomNumber");
-socket.on("randomNumber", (randomNumber) => {
-  // Log the received random number to the console
-  console.log("Random Number:", randomNumber);
-});
+// ÄNDRAT TEST
+// socket.emit("requestRandomNumber");
+// socket.on("randomNumber", (randomNumber) => {
+//   // Log the received random number to the console
+//   console.log("Random Number:", randomNumber);
+// });

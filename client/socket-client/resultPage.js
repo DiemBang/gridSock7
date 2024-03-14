@@ -1,9 +1,8 @@
 import { io } from "socket.io-client";
 import { compareImages, displayResult } from "./compareImages.js";
-import { randomImg } from "./printImages.js";
 import { createGrid } from "./printImages.js";
 import { displayGrid } from "./displayGrid.js";
-
+const { randomImg } = require(".app.js");
 const viewGalleryBtn = document.createElement("viewGalleryBtn");
 viewGalleryBtn.id = "viewGalleryBtn";
 
@@ -12,9 +11,7 @@ const socket = io("http://localhost:3000");
 const gridContainer = document.getElementById("gridContainer");
 const resultContainer = document.getElementById("resultContainer");
 
-
 export function showResultPage() {
-
   const gridContainer = document.getElementById("gridContainer");
 
   gridContainer.style.display = "none";
@@ -22,7 +19,6 @@ export function showResultPage() {
   const countDown = document.getElementById("countdown");
   countDown.classList.add("hidden");
 
-  
   resultContainer.classList.remove("hidden");
   resultContainer.style.display = "flex";
 
@@ -97,12 +93,12 @@ export function showResultPage() {
 
 // all four players are receiving this and starting a new game
 socket.on("startNewGame", () => {
-    resultContainer.style.display = "none";
-    createGrid();
-    // getRandomImage(imgs);
-    setTimeout(displayGrid, 3000);
-    gridContainer.style.display = "inline-grid";
-    // countDown.classList.remove('hidden');
-})
+  resultContainer.style.display = "none";
+  createGrid();
+  // getRandomImage(imgs);
+  setTimeout(displayGrid, 3000);
+  gridContainer.style.display = "inline-grid";
+  // countDown.classList.remove('hidden');
+});
 
 export { viewGalleryBtn };
