@@ -1,5 +1,6 @@
 // TODO: add names of all images in img array
-import { chameleonImg, fishImg } from "../../server/imageArrays.js";
+//import { chameleonImg, fishImg, imgs } from "./server/imageArrays.js";
+
 // ÄNDRAT
 import { io } from "socket.io-client";
 
