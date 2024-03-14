@@ -1,7 +1,7 @@
 // import { randomImage } from "./printImages.js";
 //import { randomImg } from "./printImages.js";
 import { imageFromGame } from "./main.js";
-import { randomImg } from "../../server/app.js";
+//import { randomImg } from "./app.js";
 
 export function compareImages() {
   const playerImage = imageFromGame;

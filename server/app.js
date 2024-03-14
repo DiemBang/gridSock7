@@ -106,7 +106,9 @@ io.on("connection", (socket) => {
         randomImg = getRandomImage(imgs);
         // Emit randomImg to all clients
         io.emit("fourPlayersConnected", randomImg);
-        console.log("four user connected", randomImg);
+        console.log("four user connected");
+
+        console.log("Random image for this game:", randomImg);
       }
       //the new userId gets pushed to the userList
       userList.push(username);
@@ -221,7 +223,5 @@ function getRandomImage(imgs) {
   const randomIndex = Math.floor(Math.random() * imgs.length);
   return imgs[randomIndex];
 }
-
-module.exports = { randomImg };
 
 server.listen(3000);

@@ -4,7 +4,7 @@ import { createGrid } from "./printImages.js";
 import { displayGrid } from "./displayGrid";
 import { updateCountdown } from "./timer.js";
 const socket = io("http://localhost:3000");
-const { randomImg } = require(".app.js");
+//const { randomImg } = require(".app.js");
 
 socket.on("fourPlayersConnected", (randomImg) => {
   console.log("Four players connected");

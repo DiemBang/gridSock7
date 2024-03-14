@@ -2,7 +2,7 @@ import { io } from "socket.io-client";
 import { compareImages, displayResult } from "./compareImages.js";
 import { createGrid } from "./printImages.js";
 import { displayGrid } from "./displayGrid.js";
-const { randomImg } = require(".app.js");
+
 const viewGalleryBtn = document.createElement("viewGalleryBtn");
 viewGalleryBtn.id = "viewGalleryBtn";
 
