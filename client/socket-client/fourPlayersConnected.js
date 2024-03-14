@@ -16,10 +16,16 @@ socket.on("fourPlayersConnected", () => {
       instructions.classList.add("hidden");
       // Displays start image and displays it for the number of seconds chosen in the Timeout
       createGrid();
+
       // TODO: change number of seconds to appropriate value
       // delays start of displaying game grid
       setTimeout(displayGrid, 3000);
     },
     updateCountdown
   );
+});
+socket.emit("requestRandomNumber");
+socket.on("randomNumber", (randomNumber) => {
+  // Log the received random number to the console
+  console.log("Random Number:", randomNumber);
 });

@@ -199,7 +199,13 @@ io.on("connection", (socket) => {
     console.log("received startNewGame");
     globalGrid.grid = initialGrid();
     io.emit("startNewGame");
-  })
+  });
+
+  socket.on("requestRandomNumber", () => {
+    const randomNumber = Math.floor(Math.random() * 100) + 1;
+    console.log("Random number:", randomNumber);
+    socket.emit("randomNumber", randomNumber);
+  });
 });
 
 server.listen(3000);
