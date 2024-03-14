@@ -7,7 +7,7 @@ import { displayGrid } from "./displayGrid.js";
 const viewGalleryBtn = document.createElement("viewGalleryBtn");
 viewGalleryBtn.id = "viewGalleryBtn";
 
-const socket = io("http://localhost:3000");
+const socket = io("https://multiplayergame-frontend-qrt3j.ondigitalocean.app/");
 
 const gridContainer = document.getElementById("gridContainer");
 const resultContainer = document.getElementById("resultContainer");
@@ -66,7 +66,7 @@ export function showResultPage() {
     //   name: inputName.value,
     // };
 
-    fetch("http://localhost:3000/images/saveImage", {
+    fetch("https://multiplayergame-frontend-qrt3j.ondigitalocean.app/images/saveImage", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

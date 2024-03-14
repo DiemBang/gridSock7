@@ -3,7 +3,7 @@ import { timer } from "./timer.js";
 import { createGrid } from "./printImages.js";
 import { displayGrid } from "./displayGrid";
 import { updateCountdown } from "./timer.js";
-const socket = io("http://localhost:3000");
+const socket = io("https://multiplayergame-frontend-qrt3j.ondigitalocean.app/");
 
 socket.on("fourPlayersConnected", () => {
   console.log("Four players connected");
