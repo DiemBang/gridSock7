@@ -214,7 +214,6 @@ io.on("connection", (socket) => {
     io.emit("startNewGame");
   });
 
-
   // // ÄNDRAT TEST
   // socket.on("requestRandomNumber", () => {
   //   const randomNumber = Math.floor(Math.random() * 10) + 1;
@@ -222,7 +221,7 @@ io.on("connection", (socket) => {
 
   //   socket.emit("randomNumber", randomNumber);
   // });
-//});
+});
 
 function getRandomImage(imgs) {
   // creates random number from length of array of images and returns random image
@@ -230,9 +229,4 @@ function getRandomImage(imgs) {
   return imgs[randomIndex];
 }
 
-
-
-
-
 server.listen(process.env.PORT || "3000");
-
