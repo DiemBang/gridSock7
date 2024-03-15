@@ -31,11 +31,10 @@ const fishImg = [
   ["blue", "blue", "blue", "blue", "blue", "blue", "red", "red", "red", "red", "black", "blue", "blue", "blue", "blue"],
   ["blue", "blue", "blue", "blue", "blue", "blue", "blue", "blue", "red", "black", "black", "blue", "blue", "blue", "blue"],
   ["blue", "blue", "blue", "blue", "blue", "blue", "blue", "blue", "blue", "blue", "blue", "black", "blue", "blue", "blue"],
-  ["blue", "blue", "blue", "blue", "blue", "blue", "blue", "blue", "blue", "blue", "blue", "blue", "blue", "blue", "blue"]
-]
+  ["blue", "blue", "blue", "blue", "blue", "blue", "blue", "blue", "blue", "blue", "blue", "blue", "blue", "blue", "blue"],
+];
 
-const penguinImg =
-[
+const penguinImg = [
   ["blue", "blue", "blue", "blue", "blue", "blue", "blue", "blue", "blue", "blue", "blue", "blue", "blue", "blue", "blue"],
   ["blue", "blue", "blue", "blue", "blue", "black", "black", "black", "black", "black", "blue", "blue", "blue", "blue", "blue"],
   ["blue", "blue", "blue", "blue", "black", "white", "white", "black", "white", "white", "black", "blue", "blue", "blue", "blue"],
@@ -50,8 +49,8 @@ const penguinImg =
   ["white", "white", "black", "red", "red", "red", "red", "white", "red", "red", "red", "red", "black", "white", "white"],
   ["white", "white", "white", "red", "red", "red", "red", "black", "red", "red", "red", "red", "white", "white", "white"],
   ["white", "white", "white", "white", "red", "red", "black", "white", "black", "red", "red", "white", "white", "white", "white"],
-  ["white", "white", "white", "white", "white", "white", "white", "white", "white", "white", "white", "white", "white", "white", "white"]
-]
+  ["white", "white", "white", "white", "white", "white", "white", "white", "white", "white", "white", "white", "white", "white", "white"],
+];
 
 const robotImg = [
   ["white", "white", "red", "red", "white", "white", "red", "red", "white", "red", "red", "white", "white", "red", "red"],
@@ -68,8 +67,8 @@ const robotImg = [
   ["red", "white", "white", "red", "red", "black", "black", "black", "black", "black", "red", "red", "white", "white", "red"],
   ["white", "white", "red", "red", "white", "white", "black", "white", "black", "red", "red", "white", "white", "red", "red"],
   ["white", "red", "red", "white", "white", "black", "black", "white", "black", "black", "white", "white", "red", "red", "white"],
-  ["red", "red", "white", "white", "red", "red", "white", "red", "red", "white", "white", "red", "red", "white", "white"]
-]
+  ["red", "red", "white", "white", "red", "red", "white", "red", "red", "white", "white", "red", "red", "white", "white"],
+];
 
 const cupcakeImg = [
   ["blue", "blue", "blue", "blue", "blue", "blue", "blue", "blue", "blue", "blue", "blue", "blue", "blue", "blue", "blue"],
@@ -86,15 +85,13 @@ const cupcakeImg = [
   ["black", "black", "black", "red", "red", "red", "red", "red", "red", "red", "red", "red", "black", "black", "black"],
   ["black", "black", "black", "red", "red", "red", "red", "red", "red", "red", "red", "red", "black", "black", "black"],
   ["black", "black", "black", "black", "red", "red", "red", "red", "red", "red", "red", "black", "black", "black", "black"],
-  ["black", "black", "black", "black", "black", "black", "black", "black", "black", "black", "black", "black", "black", "black", "black"]
-]
+  ["black", "black", "black", "black", "black", "black", "black", "black", "black", "black", "black", "black", "black", "black", "black"],
+];
 
-export { chameleonImg, fishImg, cupcakeImg, robotImg, penguinImg };
-
+//export { chameleonImg, fishImg, cupcakeImg, robotImg, penguinImg };
 
 // TODO: add all image arrays to export
 
 let imgs = [chameleonImg, fishImg];
 
 module.exports = { chameleonImg, fishImg, imgs };
-
