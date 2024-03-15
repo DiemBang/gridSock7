@@ -164,12 +164,11 @@ header h1 {
 
 .instructions {
   height: 320px;
-  outline: 3px solid red;
 }
 
 .countdown-to-game {
+  font-size: 1em;
   text-align: center;
-  outline: 3px solid orange;
 }
 
 #countdown {
@@ -354,7 +353,6 @@ header h1 {
     cursor: pointer;
   }
 
-
   .save-img-btn {
     text-decoration: underline;
     padding-right: 1em;
@@ -412,4 +410,3 @@ header h1 {
   top: 0;
   right: 10px;
 }
-
