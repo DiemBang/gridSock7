@@ -18,7 +18,7 @@ socket.on("fourPlayersConnected", () => {
       createGrid();
       // TODO: change number of seconds to appropriate value
       // delays start of displaying game grid
-      setTimeout(displayGrid, 3000);
+      setTimeout(displayGrid, 10000);
     },
     updateCountdown
   );

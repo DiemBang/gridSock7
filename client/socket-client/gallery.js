@@ -1,5 +1,5 @@
 import { io } from "socket.io-client";
-const socket = io("http://localhost:3000");
+const socket = io("https://multiplayergame-frontend-qrt3j.ondigitalocean.app");
 import { createGrid } from "./printImages.js";
 import { displayGrid } from "./displayGrid.js";
 
