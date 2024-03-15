@@ -367,6 +367,20 @@ header h1 {
   }
 }
 
+.result-image {
+  display: inline-grid;
+  grid-template-columns: repeat(15, 0.5fr);
+  grid-template-rows: repeat(15, 0.5fr);
+  padding: 10px;
+}
+
+.cell-result {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  outline: 1px solid rgb(162, 158, 158);
+}
+
 /* Style Gallery */
 
 .image-container {

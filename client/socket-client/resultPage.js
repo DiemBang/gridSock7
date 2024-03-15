@@ -3,6 +3,7 @@ import { compareImages, displayResult } from "./compareImages.js";
 import { randomImg } from "./printImages.js";
 import { createGrid } from "./printImages.js";
 import { displayGrid } from "./displayGrid.js";
+import { createResultGrid } from "./showResultImage.js";
 
 const viewGalleryBtn = document.createElement("viewGalleryBtn");
 viewGalleryBtn.id = "viewGalleryBtn";
@@ -43,6 +44,7 @@ export function showResultPage() {
 
   const result = compareImages(randomImg);
   displayResult(result);
+  createResultGrid();
 
   const imgBtns = document.getElementById("imgBtns");
   imgBtns.innerHTML = "";
