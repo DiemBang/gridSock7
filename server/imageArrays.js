@@ -91,3 +91,10 @@ const cupcakeImg = [
 
 export { chameleonImg, fishImg, cupcakeImg, robotImg, penguinImg };
 
+
+// TODO: add all image arrays to export
+
+let imgs = [chameleonImg, fishImg];
+
+module.exports = { chameleonImg, fishImg, imgs };
+

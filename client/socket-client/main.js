@@ -1,7 +1,7 @@
 import { io } from "socket.io-client";
 import { displayGrid, printUpdatedGrid } from "./displayGrid.js";
 import { loginUser } from "./loginUser.js";
-import { chameleonImg, fishImg } from "../../server/imageArrays.js";
+//import { chameleonImg, fishImg } from "../../server/imageArrays.js";
 import "./fourPlayersConnected.js";
 import { chatList, sendBtn, sendMessage } from "./chatElements.js";
 import { showResultPage } from "./resultPage.js";
@@ -75,10 +75,8 @@ socket.on("fourPlayersConnected", () => {
 });
 
 viewGalleryBtn.addEventListener("click", () => {
-
   getAndPrintGallery();
-
-})
+});
 // Commented out to test printStartImage
 //displayGrid();
 

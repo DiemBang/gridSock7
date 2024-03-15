@@ -1,4 +1,5 @@
 let globalGrid = require("./globalGrid.js");
+let imgObject = require("./imageArrays.js");
 
 const app = require("express")();
 const server = require("http").createServer(app);
@@ -12,6 +13,7 @@ cors = require("cors");
 const indexRouter = require("./routes/index.js");
 const usersRouter = require("./routes/users.js");
 const imagesRouter = require("./routes/images.js");
+//const { getRandomImage } = require("../client/socket-client/printImages.js");
 
 const MongoClient = require("mongodb").MongoClient;
 
@@ -58,6 +60,9 @@ const mainRoom = "main";
 let userList = [];
 //variabel for checking which userId was assigned the latest
 let latestUserId = 0;
+// variable to generate random image
+let randomImg;
+let imgs = imgObject.imgs;
 
 //Create the initial grid that will be used as the game board
 function initialGrid() {
@@ -98,9 +103,17 @@ io.on("connection", (socket) => {
     } else {
       //if the user doesn't exist in the list the assined userId is +1 of the latest assigned userId
       userId = latestUserId++;
-      if (latestUserId === 4) {
-        io.emit("fourPlayersConnected");
+
+      if (latestUserId === 2) {
+        // Generate a random number when 4 players have connected
+        randomImg = getRandomImage(imgs);
+        // Emit randomImg to all clients
+        io.emit("fourPlayersConnected", randomImg);
+        io.emit("randomImg", randomImg);
+
         console.log("four user connected");
+
+        console.log("Random image for this game:", randomImg);
       }
       //the new userId gets pushed to the userList
       userList.push(username);
@@ -200,6 +213,26 @@ io.on("connection", (socket) => {
     globalGrid.grid = initialGrid();
     io.emit("startNewGame");
   });
-});
+
+
+  // // ÄNDRAT TEST
+  // socket.on("requestRandomNumber", () => {
+  //   const randomNumber = Math.floor(Math.random() * 10) + 1;
+  //   console.log("Generated random number:", randomNumber);
+
+  //   socket.emit("randomNumber", randomNumber);
+  // });
+//});
+
+function getRandomImage(imgs) {
+  // creates random number from length of array of images and returns random image
+  const randomIndex = Math.floor(Math.random() * imgs.length);
+  return imgs[randomIndex];
+}
+
+
+
+
 
 server.listen(process.env.PORT || "3000");
+

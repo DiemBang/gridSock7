@@ -1,30 +1,33 @@
 // TODO: add names of all images in img array
-import { chameleonImg, fishImg, cupcakeImg, robotImg, penguinImg } from "../../server/imageArrays.js";
+//import { chameleonImg, fishImg, imgs } from "./server/imageArrays.js";
 
-export { createGrid, printImage, getRandomImage, randomImg, imgs };
+// ÄNDRAT
+import { io } from "socket.io-client";
+
+export { createGrid, printImage };
 
 const countdownToGame = document.getElementById("countdownToGame");
+
+
 // Creates array from all start images
-let imgs = [penguinImg];
+//let imgs = [penguinImg];
 // chameleonImg, fishImg, cupcakeImg, robotImg,
-let randomImg;
+//let randomImg;
+
 
 // Shuffle between images to show at start of game
-function getRandomImage(imgs) {
-  // creates random number from length of array of images and returns random image
-  const randomIndex = Math.floor(Math.random() * imgs.length);
-  return imgs[randomIndex];
-}
+// function getRandomImage(imgs) {
+//   // creates random number from length of array of images and returns random image
+//   const randomIndex = Math.floor(Math.random() * imgs.length);
+//   return imgs[randomIndex];
+// }
 
 // Creates a new grid to display chosen image in
-function createGrid() {
+function createGrid(randomImg) {
   countdownToGame.classList.add("hidden");
-  console.log("createGrid körs!");
+  console.log("createGrid körs!", randomImg);
   const gridContainerPrintImg = document.getElementById("gridContainer");
   gridContainerPrintImg.innerHTML = "";
-
-  // assigns variable randomImg the value that was randomised in getRandomImage
-  // let randomImg = getRandomImage(imgs);
 
   for (let y = 0; y < 15; y++) {
     for (let x = 0; x < 15; x++) {
@@ -33,10 +36,9 @@ function createGrid() {
       gridContainerPrintImg.appendChild(cell);
     }
   }
-  //
-  randomImg = getRandomImage(imgs);
+
   printImage(randomImg);
-  console.log("facit bild", randomImg);
+  console.log("facitbild", randomImg);
 }
 
 // Changes color on background of cells to print image from array
