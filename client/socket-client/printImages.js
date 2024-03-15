@@ -8,6 +8,13 @@ export { createGrid, printImage };
 
 const countdownToGame = document.getElementById("countdownToGame");
 
+
+// Creates array from all start images
+//let imgs = [penguinImg];
+// chameleonImg, fishImg, cupcakeImg, robotImg,
+//let randomImg;
+
+
 // Shuffle between images to show at start of game
 // function getRandomImage(imgs) {
 //   // creates random number from length of array of images and returns random image

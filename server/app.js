@@ -17,7 +17,7 @@ const imagesRouter = require("./routes/images.js");
 
 const MongoClient = require("mongodb").MongoClient;
 
-MongoClient.connect("mongodb://127.0.0.1:27017", {
+MongoClient.connect("mongodb+srv://diembang09:gridSock7@diemclustercluck.m7xqzzg.mongodb.net/?retryWrites=true&w=majority&appName=DiemClusterCluck", {
   useUnifiedTopology: true,
 })
   .then((client) => {
@@ -103,12 +103,14 @@ io.on("connection", (socket) => {
     } else {
       //if the user doesn't exist in the list the assined userId is +1 of the latest assigned userId
       userId = latestUserId++;
+
       if (latestUserId === 2) {
         // Generate a random number when 4 players have connected
         randomImg = getRandomImage(imgs);
         // Emit randomImg to all clients
         io.emit("fourPlayersConnected", randomImg);
         io.emit("randomImg", randomImg);
+
         console.log("four user connected");
 
         console.log("Random image for this game:", randomImg);
@@ -212,6 +214,7 @@ io.on("connection", (socket) => {
     io.emit("startNewGame");
   });
 
+
   // // ÄNDRAT TEST
   // socket.on("requestRandomNumber", () => {
   //   const randomNumber = Math.floor(Math.random() * 10) + 1;
@@ -219,7 +222,7 @@ io.on("connection", (socket) => {
 
   //   socket.emit("randomNumber", randomNumber);
   // });
-});
+//});
 
 function getRandomImage(imgs) {
   // creates random number from length of array of images and returns random image
@@ -227,4 +230,9 @@ function getRandomImage(imgs) {
   return imgs[randomIndex];
 }
 
-server.listen(3000);
+
+
+
+
+server.listen(process.env.PORT || "3000");
+

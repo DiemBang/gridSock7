@@ -164,12 +164,11 @@ header h1 {
 
 .instructions {
   height: 320px;
-  outline: 3px solid red;
 }
 
 .countdown-to-game {
+  font-size: 1em;
   text-align: center;
-  outline: 3px solid orange;
 }
 
 #countdown {
@@ -354,7 +353,6 @@ header h1 {
     cursor: pointer;
   }
 
-
   .save-img-btn {
     text-decoration: underline;
     padding-right: 1em;
@@ -365,6 +363,20 @@ header h1 {
     text-decoration: underline;
     cursor: pointer;
   }
+}
+
+.result-image {
+  display: inline-grid;
+  grid-template-columns: repeat(15, 0.5fr);
+  grid-template-rows: repeat(15, 0.5fr);
+  padding: 10px;
+}
+
+.cell-result {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  outline: 1px solid rgb(162, 158, 158);
 }
 
 /* Style Gallery */
@@ -387,3 +399,14 @@ header h1 {
   text-align: center;
 }
 
+.new-game-gallery-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: blueviolet;
+  color: white;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  right: 10px;
+}

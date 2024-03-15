@@ -2,13 +2,14 @@ import { io } from "socket.io-client";
 import { compareImages, displayResult } from "./compareImages.js";
 import { createGrid } from "./printImages.js";
 import { displayGrid } from "./displayGrid.js";
+import { createResultGrid } from "./showResultImage.js";
 
 let randomImgResults;
 
 const viewGalleryBtn = document.createElement("viewGalleryBtn");
 viewGalleryBtn.id = "viewGalleryBtn";
 
-const socket = io("http://localhost:3000");
+const socket = io("https://multiplayergame-si78l.ondigitalocean.app/");
 
 const gridContainer = document.getElementById("gridContainer");
 const resultContainer = document.getElementById("resultContainer");
@@ -41,6 +42,7 @@ export function showResultPage() {
 
   const result = compareImages(randomImgResults);
   displayResult(result);
+  createResultGrid();
 
   const imgBtns = document.getElementById("imgBtns");
   imgBtns.innerHTML = "";
@@ -64,7 +66,7 @@ export function showResultPage() {
     //   name: inputName.value,
     // };
 
-    fetch("http://localhost:3000/images/saveImage", {
+    fetch("https://multiplayergame-si78l.ondigitalocean.app/images/saveImage", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -3,7 +3,7 @@ import { timer } from "./timer.js";
 import { createGrid } from "./printImages.js";
 import { displayGrid } from "./displayGrid";
 import { updateCountdown } from "./timer.js";
-const socket = io("http://localhost:3000");
+const socket = io("https://multiplayergame-si78l.ondigitalocean.app/");
 
 socket.on("fourPlayersConnected", (randomImg) => {
   console.log("Four players connected");
@@ -19,7 +19,7 @@ socket.on("fourPlayersConnected", (randomImg) => {
 
       // TODO: change number of seconds to appropriate value
       // delays start of displaying game grid
-      setTimeout(displayGrid, 3000);
+      setTimeout(displayGrid, 20000);
     },
     updateCountdown
   );
