@@ -68,7 +68,7 @@ export function showResultPage() {
     //   name: inputName.value,
     // };
 
-    fetch("https://multiplayergame-frontend-qrt3j.ondigitalocean.app/images/saveImage", {
+    fetch("https://multiplayergame-si78l.ondigitalocean.app/images/saveImage", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -18,7 +18,7 @@ function getAndPrintGallery() {
   galleryHeading.innerText = "Gallery";
   galleryPage.appendChild(galleryHeading);
 
-  fetch("https://multiplayergame-frontend-qrt3j.ondigitalocean.app/images")
+  fetch("https://multiplayergame-si78l.ondigitalocean.app/images")
     .then(res => res.json())
     .then(data => {
       console.log("Fetched images", data);
