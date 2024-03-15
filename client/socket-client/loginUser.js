@@ -1,5 +1,5 @@
 import { io } from "socket.io-client";
-const socket = io("https://multiplayergame-si78l.ondigitalocean.app/");
+const socket = io("https://localhost:3000");
 
 import { chatListContainer, chatList, messageList, sendMessage, sendBtn, messageLabel, onlineUsersHeading, onlineUsersList } from "./chatElements.js";
 
