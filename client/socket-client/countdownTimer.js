@@ -5,7 +5,7 @@ let time;
 const countdown = document.getElementById("countdown");
 
 function startGameTimer() {
-  startingMinutes = 0.1;
+  startingMinutes = 2;
   time = startingMinutes * 60;
   let intervalId = setInterval(updateCountdown, 1000);
 

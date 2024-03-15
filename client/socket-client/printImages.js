@@ -1,13 +1,12 @@
 // TODO: add names of all images in img array
 import { chameleonImg, fishImg, cupcakeImg, robotImg, penguinImg } from "../../server/imageArrays.js";
 
-
-export { createGrid, printImage, getRandomImage, randomImg, imgs};
-
+export { createGrid, printImage, getRandomImage, randomImg, imgs };
 
 const countdownToGame = document.getElementById("countdownToGame");
 // Creates array from all start images
-let imgs = [chameleonImg, fishImg, cupcakeImg, robotImg, penguinImg];
+let imgs = [penguinImg];
+// chameleonImg, fishImg, cupcakeImg, robotImg,
 let randomImg;
 
 // Shuffle between images to show at start of game
