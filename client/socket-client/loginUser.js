@@ -11,7 +11,6 @@ import { beforeGameStart } from "./countdownStartGame.js";
 const gamePage = document.getElementById("gamePage");
 const startPage = document.getElementById("startPage");
 const chatSection = document.getElementById("chatSection");
-const chatContainer = document.getElementById("chatContainer");
 // Added this to be able to remove "hidden"
 const instructions = document.getElementById("instructions");
 
@@ -100,33 +99,5 @@ socket.on("loginConfirmation", (userData) => {
   console.log(`Successful login for user ${username} with userId ${userId} and userColor ${userColor} and socketId ${socketId}`);
 });
 
-/*
-let userList = [];
-
-function assignIdToUser(user) {
-  if (userList.includes(user)) {
-      console.log("userList", userList);
-      let userId = userList.indexOf(user);
-      return userId;
-  } else { 
-    let userListLength = userList.push(user);
-    return userListLength - 1;
-  }
-};
-
-
-
-  /*const usersOnlineDiv = document.getElementById("onlineUsers");
-  const usersOnlineContainer = document.createElement("div");
-  const onlineUsersHeading = document.createElement("h2");
-  const onlineUsersList = document.createElement("li");
-  onlineUsersList.className = "user-online";
-  onlineUsersHeading.textContent = "Online users"
-
-  
-  usersOnlineContainer.appendChild(onlineUsersHeading);
-  usersOnlineContainer.appendChild(onlineUsersList);
-  usersOnlineDiv.appendChild(usersOnlineContainer);
-  chatContainer.appendChild(usersOnlineDiv);*/
 
 export { loginUser, globalUserColor };
