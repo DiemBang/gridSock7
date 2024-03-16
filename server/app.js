@@ -99,6 +99,7 @@ io.on("connection", (socket) => {
   socket.on("login", (userData) => {
     const { username, socketId } = userData;
     let userId;
+    let userColor;
 
     // check if username exists in onlineIsers list
     const foundUser = onlineUsers.find((user) => user.username === username);
@@ -106,16 +107,31 @@ io.on("connection", (socket) => {
     //if foundUser exists in the onlineUsers list the assigned userId is the index in the list
     if (foundUser) {
       userId = onlineUsers.indexOf(foundUser);
+      userColor = userColors[userId];
       //userId = userList.indexOf(username);
       if (onlineUsers.length === 2) {
         io.emit("fourPlayersConnected", randomImg);
         io.emit("randomImg", randomImg);
       }
     } else {
-      // Add user to onlineUsers list
-      
-      // And if there are 4 users in onlineUsers list, start game
+      // assign userID based on knowing:
+      // * before adding a new user, the last user in the list has userid length-1
+      // * if adding a new user, it will have one higher id number which is length
+      userId = onlineUsers.length;
+      userColor = userColors[userId];
+      // add new user to onlineUsers list
+      let newUser = {
+        userName: username,
+        socketId: socketId,
+        userColor: userColor,
+      }
+      onlineUsers.push(newUser);
 
+      // if four users are on onlineUsers list start new game
+      if (onlineUsers.length === 2) {
+        io.emit("fourPlayersConnected", randomImg);
+        io.emit("randomImg", randomImg);
+      }
     }
 
     // } else {
@@ -138,15 +154,11 @@ io.on("connection", (socket) => {
     //   io.emit("updatedOnlineUsers", onlineUsers);
     // }
 
-    let userColor = userColors[userId];
+    
     //a login confirmation is sent to the client side with username and userId
     socket.emit("loginConfirmation", { username, userId, userColor, socketId });
 
-    onlineUsers.push({
-      userName: username,
-      socketId: socketId,
-      userColor: userColor,
-    });
+    
     io.emit("updateOnlineUsers", onlineUsers);
   });
   // eventlistener for disconnect
