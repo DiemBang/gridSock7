@@ -13,8 +13,6 @@ cors = require("cors");
 const indexRouter = require("./routes/index.js");
 const usersRouter = require("./routes/users.js");
 const imagesRouter = require("./routes/images.js");
-//const { getRandomImage } = require("../client/socket-client/printImages.js");
-
 const MongoClient = require("mongodb").MongoClient;
 
 MongoClient.connect("mongodb+srv://diembang09:gridSock7@diemclustercluck.m7xqzzg.mongodb.net/?retryWrites=true&w=majority&appName=DiemClusterCluck", {

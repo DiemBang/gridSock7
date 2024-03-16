@@ -1,7 +1,4 @@
-// import { randomImage } from "./printImages.js";
-
 import { imageFromGame } from "./main.js";
-
 import { randomImgResults } from "./resultPage.js";
 
 export function compareImages() {
