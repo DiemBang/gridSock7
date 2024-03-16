@@ -28,9 +28,8 @@ function displayGrid() {
 }
 
 function addColor(x, y) {
-  // TODO: send coordinates to backend in order to update color matrix
+  // Send coordinates to backend in order to update grid
   console.log("clicked " + x + " " + y);
-  // To be updated when color has been assigned to user
   let color = globalUserColor;
   socket.emit("grid", {
     x: x,

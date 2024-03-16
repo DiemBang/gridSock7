@@ -52,19 +52,6 @@ export function showResultPage() {
   saveImgBtn.textContent = "Save image";
   saveImgBtn.addEventListener("click", () => {
     console.log("image is saved");
-    // let inputName = document.createElement("input");
-    // inputName.placeholder = "Image title";
-    // let saveBtn = document.createElement("button");
-    // saveBtn.innerText = "Save";
-
-    // saveImgBtn.append(
-    //     inputName,
-    //     saveBtn
-    //   );
-
-    // let newImage = {
-    //   name: inputName.value,
-    // };
 
     fetch("https://localhost:3000/images/saveImage", {
       method: "POST",
@@ -76,9 +63,6 @@ export function showResultPage() {
       .then((res) => res.json())
       .then((data) => {
         console.log("svar från server", data);
-
-        // //EMPTY FIELD INPUTS
-        // imgTitle.value = "";
       });
   });
 
@@ -103,10 +87,8 @@ socket.on("randomImg", (randomImg) => {
 socket.on("startNewGame", () => {
   resultContainer.style.display = "none";
   createGrid();
-  // getRandomImage(imgs);
   setTimeout(displayGrid, 3000);
   gridContainer.style.display = "inline-grid";
-  // countDown.classList.remove('hidden');
 });
 
 export { viewGalleryBtn, randomImgResults };

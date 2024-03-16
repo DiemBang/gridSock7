@@ -63,7 +63,6 @@ loginUser();
 
 //Receive updated grid from backend
 socket.on("grid", (gridUpdate) => {
-  //console.log("update", gridUpdate);
   imageFromGame = gridUpdate;
   console.log("Array from game:", imageFromGame);
   //add function to print updated grid

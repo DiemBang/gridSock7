@@ -89,9 +89,7 @@ io.on("connection", (socket) => {
 
   // When a user connects they enter the mainroom
   socket.join(mainRoom);
-  //console.log("connection", socket)
-  //socket.emit("chat", {name: "computer", message:"Hello World", timestamp: "2024"})
-
+  
   //eventlistener for event login
   socket.on("login", (userData) => {
     const { username, socketId } = userData;
