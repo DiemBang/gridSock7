@@ -112,6 +112,7 @@ io.on("connection", (socket) => {
       if (onlineUsers.length === 2) {
         // Generate a random number when 4 players have connected
         randomImg = getRandomImage(imgs);
+        globalGrid.grid = initialGrid();
         io.emit("fourPlayersConnected", randomImg);
         io.emit("randomImg", randomImg);
       }
@@ -133,6 +134,7 @@ io.on("connection", (socket) => {
       if (onlineUsers.length === 2) {
         // Generate a random number when 4 players have connected
         randomImg = getRandomImage(imgs);
+        globalGrid.grid = initialGrid();
         io.emit("fourPlayersConnected", randomImg);
         io.emit("randomImg", randomImg);
       }
