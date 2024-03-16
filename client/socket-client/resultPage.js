@@ -3,6 +3,7 @@ import { compareImages, displayResult } from "./compareImages.js";
 import { createGrid } from "./printImages.js";
 import { displayGrid } from "./displayGrid.js";
 import { createResultGrid } from "./showResultImage.js";
+import { getAndPrintGallery } from "./gallery.js";
 
 let randomImgResults;
 
@@ -69,7 +70,7 @@ export function showResultPage() {
   viewGalleryBtn.classList.add("view-gallery-btn");
   viewGalleryBtn.textContent = "View gallery";
   viewGalleryBtn.addEventListener("click", () => {
-    console.log("view gallery");
+    getAndPrintGallery();
   });
 
   resultHeading.appendChild(heading);

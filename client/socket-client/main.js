@@ -10,7 +10,7 @@ import { viewGalleryBtn } from "./resultPage.js";
 
 // showResultPage();
 
-import { getAndPrintGallery } from "./gallery.js";
+
 
 export const socket = io("https://localhost:3000");
 // Variable that contains the array from the image painted by the players
@@ -73,9 +73,7 @@ socket.on("fourPlayersConnected", () => {
   console.log("Four players connected");
 });
 
-viewGalleryBtn.addEventListener("click", () => {
-  getAndPrintGallery();
-});
+
 // Commented out to test printStartImage
 //displayGrid();
 
