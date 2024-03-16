@@ -8,16 +8,16 @@ const socket = io("http://localhost:3000");
 socket.on("fourPlayersConnected", (randomImg) => {
   console.log("Four players connected");
   // Callback function that will start timer that counts down to game start
-  // TODO: change timer to appropiate value (s) before game starts
+  // Timer starts when four players are connected
+  // and the remaining seconds to game starts shows below the instructions
   timer(
     10,
     () => {
       console.log("Timer finished! GAME STARTS");
       instructions.classList.add("hidden");
-      // Displays start image and displays it for the number of seconds chosen in the Timeout
+      // Displays start image and displays it for the number of seconds chosen in the Timeout below
       createGrid(randomImg);
 
-      // TODO: change number of seconds to appropriate value
       // delays start of displaying game grid
       setTimeout(displayGrid, 20000);
     },

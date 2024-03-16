@@ -1,26 +1,8 @@
-// TODO: add names of all images in img array
-//import { chameleonImg, fishImg, imgs } from "./server/imageArrays.js";
-
-// ÄNDRAT
 import { io } from "socket.io-client";
 
 export { createGrid, printImage };
 
 const countdownToGame = document.getElementById("countdownToGame");
-
-
-// Creates array from all start images
-//let imgs = [penguinImg];
-// chameleonImg, fishImg, cupcakeImg, robotImg,
-//let randomImg;
-
-
-// Shuffle between images to show at start of game
-// function getRandomImage(imgs) {
-//   // creates random number from length of array of images and returns random image
-//   const randomIndex = Math.floor(Math.random() * imgs.length);
-//   return imgs[randomIndex];
-// }
 
 // Creates a new grid to display chosen image in
 function createGrid(randomImg) {
