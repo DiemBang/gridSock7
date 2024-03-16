@@ -110,6 +110,8 @@ io.on("connection", (socket) => {
       userColor = userColors[userId];
       //userId = userList.indexOf(username);
       if (onlineUsers.length === 2) {
+        // Generate a random number when 4 players have connected
+        randomImg = getRandomImage(imgs);
         io.emit("fourPlayersConnected", randomImg);
         io.emit("randomImg", randomImg);
       }
@@ -129,6 +131,8 @@ io.on("connection", (socket) => {
 
       // if four users are on onlineUsers list start new game
       if (onlineUsers.length === 2) {
+        // Generate a random number when 4 players have connected
+        randomImg = getRandomImage(imgs);
         io.emit("fourPlayersConnected", randomImg);
         io.emit("randomImg", randomImg);
       }
