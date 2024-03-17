@@ -53,11 +53,10 @@ newGameGalleryBtn.addEventListener("click", () => {
 });
 
 // all four players are receiving this and starting a new game
-socket.on("startNewGame", () => {
+socket.on("startNewGame", (randomImg) => {
   galleryPage.classList.add("hidden");
   gamePage.classList.remove("hidden");
-  createGrid();
-  
+  createGrid(randomImg);
   setTimeout(displayGrid, 3000);
   gridContainer.style.display = "inline-grid";
 })

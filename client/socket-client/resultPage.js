@@ -85,9 +85,9 @@ socket.on("randomImg", (randomImg) => {
 });
 
 // all four players are receiving this and starting a new game
-socket.on("startNewGame", () => {
+socket.on("startNewGame", (randomImg) => {
   resultContainer.style.display = "none";
-  createGrid();
+  createGrid(randomImg);
   setTimeout(displayGrid, 3000);
   gridContainer.style.display = "inline-grid";
 });
