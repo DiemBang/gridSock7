@@ -27,12 +27,12 @@ Throughout this project we used agile methodologies - including, for example, sp
 
 ## Screen shots
 
-![Start page](assets\screen-shots\start-page.png)
-![Game view - start image](assets\screen-shots\game-start-image.png)
-![Game view - paint image 1](assets\screen-shots\game-painting.png)
-![Game view - paint image 2](assets\screen-shots\game-painting-2.png)
-![Result page](assets\screen-shots\result-page.png)
-![Gallery view](assets\screen-shots\gallery-view.png)
+![Start page](/assets/screen-shots/start-page.png)
+![Game view - start image](/assets/screen-shots/game-start-image.png)
+![Game view - paint image 1](/assets/screen-shots/game-painting.png)
+![Game view - paint image 2](/assets/screen-shots/game-painting-2.png)
+![Result page](/assets/screen-shots/result-page.png)
+![Gallery view](/assets/screen-shots/gallery-view.png)
 
 ## Assigment details
 
