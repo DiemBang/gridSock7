@@ -57,10 +57,9 @@ socket.on("startNewGame", () => {
   galleryPage.classList.add("hidden");
   gamePage.classList.remove("hidden");
   createGrid();
-  // getRandomImage(imgs);
+  
   setTimeout(displayGrid, 3000);
   gridContainer.style.display = "inline-grid";
-  // countDown.classList.remove('hidden');
 })
 
 export { getAndPrintGallery };

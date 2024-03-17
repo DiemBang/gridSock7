@@ -12,6 +12,7 @@ export { imageFromGame };
 
 let userName = document.getElementById("userName");
 let chatSection = document.getElementById("chatSection");
+
 let imageFromGame;
 
 sendBtn.addEventListener("click", () => {
@@ -27,13 +28,6 @@ socket.on("chat", (arg) => {
   console.log("socket", arg);
   updateChat(arg);
 });
-
-//When the user clicks on the room button the user enters the choosen room, if nothing is written in
-//the room input, then the user stays in the main room
-/*roomBtn.addEventListener("click", () => {
-  let room = roomInput.value || "main";
-  socket.emit("joinRoom", room);
-});*/
 
 function updateChat(chat) {
   let li = document.createElement("li");
