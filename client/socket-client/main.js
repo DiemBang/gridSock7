@@ -1,22 +1,18 @@
 import { io } from "socket.io-client";
 import { displayGrid, printUpdatedGrid } from "./displayGrid.js";
 import { loginUser } from "./loginUser.js";
-//import { chameleonImg, fishImg } from "../../server/imageArrays.js";
 import "./fourPlayersConnected.js";
 import { chatList, sendBtn, sendMessage } from "./chatElements.js";
 import { showResultPage } from "./resultPage.js";
 import { viewGalleryBtn } from "./resultPage.js";
-// import { updateCountdown } from "./countdownTimer.js";
-
-// showResultPage();
-
 import { getAndPrintGallery } from "./gallery.js";
 
-export const socket = io("http://localhost:3000");
-// Variable that contains the array from the image painted by the players
+export const socket = io("https://localhost:3000");
 export { imageFromGame };
 
 let userName = document.getElementById("userName");
+let chatSection = document.getElementById("chatSection");
+
 let imageFromGame;
 
 sendBtn.addEventListener("click", () => {
@@ -61,14 +57,6 @@ socket.on("grid", (gridUpdate) => {
   printUpdatedGrid(gridUpdate);
 });
 
-socket.on("fourPlayersConnected", () => {
-  console.log("Four players connected");
-});
-
 viewGalleryBtn.addEventListener("click", () => {
   getAndPrintGallery();
 });
-// Commented out to test printStartImage
-//displayGrid();
-
-//printStartImage();
