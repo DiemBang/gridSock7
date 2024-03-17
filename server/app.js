@@ -13,7 +13,6 @@ cors = require("cors");
 const indexRouter = require("./routes/index.js");
 const usersRouter = require("./routes/users.js");
 const imagesRouter = require("./routes/images.js");
-//const { getRandomImage } = require("../client/socket-client/printImages.js");
 
 const MongoClient = require("mongodb").MongoClient;
 
@@ -211,14 +210,6 @@ io.on("connection", (socket) => {
     globalGrid.grid = initialGrid();
     io.emit("startNewGame");
   });
-
-  // // ÄNDRAT TEST
-  // socket.on("requestRandomNumber", () => {
-  //   const randomNumber = Math.floor(Math.random() * 10) + 1;
-  //   console.log("Generated random number:", randomNumber);
-
-  //   socket.emit("randomNumber", randomNumber);
-  // });
 });
 
 function getRandomImage(imgs) {
@@ -227,4 +218,4 @@ function getRandomImage(imgs) {
   return imgs[randomIndex];
 }
 
-server.listen(process.env.PORT || "3000");
+server.listen(3000);

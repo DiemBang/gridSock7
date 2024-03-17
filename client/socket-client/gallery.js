@@ -1,5 +1,5 @@
 import { io } from "socket.io-client";
-const socket = io("https://localhost:3000");
+const socket = io("http://localhost:3000");
 import { createGrid } from "./printImages.js";
 import { displayGrid } from "./displayGrid.js";
 
@@ -18,7 +18,7 @@ function getAndPrintGallery() {
   galleryHeading.innerText = "Gallery";
   galleryPage.appendChild(galleryHeading);
 
-  fetch("https://localhost:3000/images")
+  fetch("http://localhost:3000/images")
     .then(res => res.json())
     .then(data => {
       console.log("Fetched images", data);
@@ -57,10 +57,9 @@ socket.on("startNewGame", () => {
   galleryPage.classList.add("hidden");
   gamePage.classList.remove("hidden");
   createGrid();
-  // getRandomImage(imgs);
+  
   setTimeout(displayGrid, 3000);
   gridContainer.style.display = "inline-grid";
-  // countDown.classList.remove('hidden');
 })
 
 export { getAndPrintGallery };

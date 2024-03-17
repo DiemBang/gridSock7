@@ -1,5 +1,5 @@
 import { io } from "socket.io-client";
-const socket = io("https://localhost:3000");
+const socket = io("http://localhost:3000");
 
 import { chatListContainer, chatList, messageList, sendMessage, sendBtn, messageLabel, onlineUsersHeading, onlineUsersList } from "./chatElements.js";
 
@@ -11,8 +11,9 @@ import { beforeGameStart } from "./countdownStartGame.js";
 const gamePage = document.getElementById("gamePage");
 const startPage = document.getElementById("startPage");
 const chatSection = document.getElementById("chatSection");
+
 const chatContainer = document.getElementById("chatContainer");
-// Added this to be able to remove "hidden"
+
 const instructions = document.getElementById("instructions");
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -27,9 +28,6 @@ function loginUser() {
   const joinGameBtn = document.getElementById("joinGameBtn");
   const userName = document.getElementById("userName");
 
-  // Clear the inneHTML of gridContainer
-  // Not sure if this will be needed?
-  // Depends on where and when displayGrid is called
   gridContainer.innerHTML = "";
 
   joinGameBtn.addEventListener("click", (event) => {
@@ -81,10 +79,10 @@ function updateOnlineUsersList(onlineUsers) {
       let colorDot = document.createElement("span");
       colorDot.classList.add("user-color-dot");
       colorDot.style.backgroundColor = user.userColor;
-      
+
       newUserItem.appendChild(colorDot);
       newUserItem.innerHTML += user.userName;
-      
+
       onlineUsersList.appendChild(newUserItem);
       newUserItem.classList.add("new-user-item");
     }
@@ -100,33 +98,5 @@ socket.on("loginConfirmation", (userData) => {
   console.log(`Successful login for user ${username} with userId ${userId} and userColor ${userColor} and socketId ${socketId}`);
 });
 
-/*
-let userList = [];
-
-function assignIdToUser(user) {
-  if (userList.includes(user)) {
-      console.log("userList", userList);
-      let userId = userList.indexOf(user);
-      return userId;
-  } else { 
-    let userListLength = userList.push(user);
-    return userListLength - 1;
-  }
-};
-
-
-
-  /*const usersOnlineDiv = document.getElementById("onlineUsers");
-  const usersOnlineContainer = document.createElement("div");
-  const onlineUsersHeading = document.createElement("h2");
-  const onlineUsersList = document.createElement("li");
-  onlineUsersList.className = "user-online";
-  onlineUsersHeading.textContent = "Online users"
-
-  
-  usersOnlineContainer.appendChild(onlineUsersHeading);
-  usersOnlineContainer.appendChild(onlineUsersList);
-  usersOnlineDiv.appendChild(usersOnlineContainer);
-  chatContainer.appendChild(usersOnlineDiv);*/
 
 export { loginUser, globalUserColor };

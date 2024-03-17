@@ -1,15 +1,8 @@
-// x Tömma gridcontainern på första sidan så att den innehåller välkomsstext
-// x + information om hur spelet går till
-// x (Visa en räknare som visar hur många spelare som fattas innan spelet startar? )
-// x När fyra spelare har anslutit:
-// x skapa en timer som räknar ner 10-15s - finns redan!
-// TODO: Visa tiden som räknas ner
-// x Starta funktionen printStartImage() som visar facit i några sekunder och sedan startar "målargridet"
 import { gridContainer } from "./displayGrid.js";
 export { beforeGameStart };
 
-// const instructions = document.getElementById("instructions");
-
+// Starts when a user logs in
+// Shows the instructions for the game
 function beforeGameStart() {
   console.log("BEFORE GAME START");
   instructions.classList.remove("hidden");
