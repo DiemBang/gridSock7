@@ -58,9 +58,5 @@ socket.on("grid", (gridUpdate) => {
   printUpdatedGrid(gridUpdate);
 });
 
-viewGalleryBtn.addEventListener("click", () => {
-  getAndPrintGallery();
-
-});
 
 
