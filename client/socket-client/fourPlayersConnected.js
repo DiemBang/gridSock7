@@ -10,11 +10,12 @@ socket.on("fourPlayersConnected", (randomImg) => {
   // Callback function that will start timer that counts down to game start
   // Timer starts when four players are connected
   // and the remaining seconds to game starts shows below the instructions
+
   timer(
     10,
     () => {
-      console.log("Timer finished! GAME STARTS");
       instructions.classList.add("hidden");
+
       // Displays start image and displays it for the number of seconds chosen in the Timeout below
       createGrid(randomImg);
 

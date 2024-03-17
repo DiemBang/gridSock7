@@ -5,18 +5,16 @@ import "./fourPlayersConnected.js";
 import { chatList, sendBtn, sendMessage } from "./chatElements.js";
 import { showResultPage } from "./resultPage.js";
 import { viewGalleryBtn } from "./resultPage.js";
-// import { updateCountdown } from "./countdownTimer.js";
-
-// showResultPage();
-
 import { getAndPrintGallery } from "./gallery.js";
 
+
 export const socket = io("http://localhost:3000");
+
 export { imageFromGame };
 
 let userName = document.getElementById("userName");
-//let roomBtn = document.getElementById("roomBtn");
 let chatSection = document.getElementById("chatSection");
+
 // Variable that contains the array from the image painted by the players
 let imageFromGame;
 
@@ -33,13 +31,6 @@ socket.on("chat", (arg) => {
   console.log("socket", arg);
   updateChat(arg);
 });
-
-//When the user clicks on the room button the user enters the choosen room, if nothing is written in
-//the room input, then the user stays in the main room
-/*roomBtn.addEventListener("click", () => {
-  let room = roomInput.value || "main";
-  socket.emit("joinRoom", room);
-});*/
 
 function updateChat(chat) {
   let li = document.createElement("li");
@@ -69,10 +60,8 @@ socket.on("grid", (gridUpdate) => {
   printUpdatedGrid(gridUpdate);
 });
 
-socket.on("fourPlayersConnected", () => {
-  console.log("Four players connected");
-});
-
 viewGalleryBtn.addEventListener("click", () => {
   getAndPrintGallery();
+
 });
+
