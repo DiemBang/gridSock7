@@ -13,6 +13,7 @@ cors = require("cors");
 const indexRouter = require("./routes/index.js");
 const usersRouter = require("./routes/users.js");
 const imagesRouter = require("./routes/images.js");
+
 const MongoClient = require("mongodb").MongoClient;
 
 MongoClient.connect("mongodb+srv://diembang09:gridSock7@diemclustercluck.m7xqzzg.mongodb.net/?retryWrites=true&w=majority&appName=DiemClusterCluck", {
@@ -211,14 +212,6 @@ io.on("connection", (socket) => {
     globalGrid.grid = initialGrid();
     io.emit("startNewGame");
   });
-
-  // // ÄNDRAT TEST
-  // socket.on("requestRandomNumber", () => {
-  //   const randomNumber = Math.floor(Math.random() * 10) + 1;
-  //   console.log("Generated random number:", randomNumber);
-
-  //   socket.emit("randomNumber", randomNumber);
-  // });
 });
 
 function getRandomImage(imgs) {

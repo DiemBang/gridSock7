@@ -11,7 +11,9 @@ import { beforeGameStart } from "./countdownStartGame.js";
 const gamePage = document.getElementById("gamePage");
 const startPage = document.getElementById("startPage");
 const chatSection = document.getElementById("chatSection");
-// Added this to be able to remove "hidden"
+
+const chatContainer = document.getElementById("chatContainer");
+
 const instructions = document.getElementById("instructions");
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -26,9 +28,6 @@ function loginUser() {
   const joinGameBtn = document.getElementById("joinGameBtn");
   const userName = document.getElementById("userName");
 
-  // Clear the inneHTML of gridContainer
-  // Not sure if this will be needed?
-  // Depends on where and when displayGrid is called
   gridContainer.innerHTML = "";
 
   joinGameBtn.addEventListener("click", (event) => {
@@ -80,10 +79,10 @@ function updateOnlineUsersList(onlineUsers) {
       let colorDot = document.createElement("span");
       colorDot.classList.add("user-color-dot");
       colorDot.style.backgroundColor = user.userColor;
-      
+
       newUserItem.appendChild(colorDot);
       newUserItem.innerHTML += user.userName;
-      
+
       onlineUsersList.appendChild(newUserItem);
       newUserItem.classList.add("new-user-item");
     }

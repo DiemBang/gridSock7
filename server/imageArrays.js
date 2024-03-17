@@ -88,10 +88,6 @@ const cupcakeImg = [
   ["black", "black", "black", "black", "black", "black", "black", "black", "black", "black", "black", "black", "black", "black", "black"],
 ];
 
-//export { chameleonImg, fishImg, cupcakeImg, robotImg, penguinImg };
-
-// TODO: add all image arrays to export
-
 let imgs = [chameleonImg, fishImg];
 
-module.exports = { chameleonImg, fishImg, imgs };
+module.exports = { chameleonImg, fishImg, penguinImg, robotImg, cupcakeImg, imgs };
