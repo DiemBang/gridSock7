@@ -57,6 +57,7 @@ function loginUser() {
 }
 
 socket.on("updateOnlineUsers", (onlineUsers) => {
+  console.log("onlineUsers", onlineUsers);
   updateOnlineUsersList(onlineUsers);
 });
 
