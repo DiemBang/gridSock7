@@ -223,7 +223,9 @@ io.on("connection", (socket) => {
   socket.on("startNewGame", () => {
     console.log("received startNewGame");
     globalGrid.grid = initialGrid();
-    io.emit("startNewGame");
+    randomImg = getRandomImage(imgs);
+    io.emit("randomImg", randomImg);
+    io.emit("startNewGame", randomImg);
   });
 });
 
