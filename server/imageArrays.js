@@ -88,6 +88,6 @@ const cupcakeImg = [
   ["black", "black", "black", "black", "black", "black", "black", "black", "black", "black", "black", "black", "black", "black", "black"],
 ];
 
-let imgs = [chameleonImg, fishImg];
+let imgs = [chameleonImg, fishImg, penguinImg, robotImg, cupcakeImg];
 
 module.exports = { chameleonImg, fishImg, penguinImg, robotImg, cupcakeImg, imgs };

@@ -16,12 +16,9 @@ const imagesRouter = require("./routes/images.js");
 
 const MongoClient = require("mongodb").MongoClient;
 
-MongoClient.connect(
-  "mongodb+srv://diembang09:gridSock7@diemclustercluck.m7xqzzg.mongodb.net/?retryWrites=true&w=majority&appName=DiemClusterCluck",
-  {
-    useUnifiedTopology: true,
-  }
-)
+MongoClient.connect("mongodb+srv://diembang09:gridSock7@diemclustercluck.m7xqzzg.mongodb.net/?retryWrites=true&w=majority&appName=DiemClusterCluck", {
+  useUnifiedTopology: true,
+})
   .then((client) => {
     console.log("Vi är uppkopplade mot databasen");
 
@@ -91,7 +88,7 @@ io.on("connection", (socket) => {
 
   // When a user connects they enter the mainroom
   socket.join(mainRoom);
-  
+
   //eventlistener for event login
   socket.on("login", (userData) => {
     const { username, socketId } = userData;
@@ -106,7 +103,7 @@ io.on("connection", (socket) => {
       userId = onlineUsers.indexOf(foundUser);
       userColor = userColors[userId];
       //userId = userList.indexOf(username);
-      if (onlineUsers.length === 2) {
+      if (onlineUsers.length === 4) {
         // Generate a random number when 4 players have connected
         randomImg = getRandomImage(imgs);
         globalGrid.grid = initialGrid();
@@ -124,11 +121,11 @@ io.on("connection", (socket) => {
         userName: username,
         socketId: socketId,
         userColor: userColor,
-      }
+      };
       onlineUsers.push(newUser);
 
       // if four users are on onlineUsers list start new game
-      if (onlineUsers.length === 2) {
+      if (onlineUsers.length === 4) {
         // Generate a random number when 4 players have connected
         randomImg = getRandomImage(imgs);
         globalGrid.grid = initialGrid();
@@ -137,31 +134,9 @@ io.on("connection", (socket) => {
       }
     }
 
-    // } else {
-    //   //if the user doesn't exist in the list the assined userId is +1 of the latest assigned userId
-    //   userId = latestUserId++;
-
-    //   if (latestUserId === 2) {
-    //     // Generate a random number when 4 players have connected
-    //     randomImg = getRandomImage(imgs);
-    //     // Emit randomImg to all clients
-    //     io.emit("fourPlayersConnected", randomImg);
-    //     io.emit("randomImg", randomImg);
-
-    //     console.log("four user connected");
-
-    //     console.log("Random image for this game:", randomImg);
-    //   }
-    //   //the new userId gets pushed to the userList
-    //   userList.push(username);
-    //   io.emit("updatedOnlineUsers", onlineUsers);
-    // }
-
-    
     //a login confirmation is sent to the client side with username and userId
     socket.emit("loginConfirmation", { username, userId, userColor, socketId });
 
-    
     io.emit("updateOnlineUsers", onlineUsers);
   });
   // eventlistener for disconnect
@@ -169,9 +144,7 @@ io.on("connection", (socket) => {
     console.log(`${socket.id} disconnected`);
 
     // Find the disconnected user by socketId
-    const disconnectedUser = onlineUsers.find(
-      (user) => user.socketId === socket.id
-    );
+    const disconnectedUser = onlineUsers.find((user) => user.socketId === socket.id);
 
     if (disconnectedUser) {
       // Remove the disconnected user from the onlineUsers array
@@ -222,14 +195,12 @@ io.on("connection", (socket) => {
   socket.on("grid", (gridPositionAndColor) => {
     console.log(gridPositionAndColor);
 
-    let currentColorOnPosition =
-      globalGrid.grid[gridPositionAndColor.y][gridPositionAndColor.x];
+    let currentColorOnPosition = globalGrid.grid[gridPositionAndColor.y][gridPositionAndColor.x];
 
     if (gridPositionAndColor.color === currentColorOnPosition) {
       globalGrid.grid[gridPositionAndColor.y][gridPositionAndColor.x] = "grey";
     } else {
-      globalGrid.grid[gridPositionAndColor.y][gridPositionAndColor.x] =
-        gridPositionAndColor.color;
+      globalGrid.grid[gridPositionAndColor.y][gridPositionAndColor.x] = gridPositionAndColor.color;
     }
     console.log(globalGrid.grid);
     io.emit("grid", globalGrid.grid);
