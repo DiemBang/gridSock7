@@ -7,7 +7,6 @@ import { showResultPage } from "./resultPage.js";
 import { viewGalleryBtn } from "./resultPage.js";
 import { getAndPrintGallery } from "./gallery.js";
 
-
 export const socket = io("http://localhost:3000");
 
 export { imageFromGame };
@@ -53,7 +52,6 @@ loginUser();
 
 //Receive updated grid from backend
 socket.on("grid", (gridUpdate) => {
-  //console.log("update", gridUpdate);
   imageFromGame = gridUpdate;
   console.log("Array from game:", imageFromGame);
   //add function to print updated grid
@@ -64,4 +62,5 @@ viewGalleryBtn.addEventListener("click", () => {
   getAndPrintGallery();
 
 });
+
 
