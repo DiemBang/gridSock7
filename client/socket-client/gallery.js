@@ -1,5 +1,5 @@
 import { io } from "socket.io-client";
-const socket = io("http://localhost:3000");
+const socket = io("https://multiplayergame-si78l.ondigitalocean.app/");
 import { createGrid } from "./printImages.js";
 import { displayGrid } from "./displayGrid.js";
 
@@ -18,7 +18,7 @@ function getAndPrintGallery() {
   galleryHeading.innerText = "Gallery";
   galleryPage.appendChild(galleryHeading);
 
-  fetch("http://localhost:3000/images")
+  fetch("https://multiplayergame-si78l.ondigitalocean.app/")
     .then(res => res.json())
     .then(data => {
       console.log("Fetched images", data);

@@ -10,7 +10,7 @@ let randomImgResults;
 const viewGalleryBtn = document.createElement("viewGalleryBtn");
 viewGalleryBtn.id = "viewGalleryBtn";
 
-const socket = io("http://localhost:3000");
+const socket = io("https://multiplayergame-si78l.ondigitalocean.app/");
 
 const gridContainer = document.getElementById("gridContainer");
 const resultContainer = document.getElementById("resultContainer");
@@ -54,7 +54,7 @@ export function showResultPage() {
   saveImgBtn.addEventListener("click", () => {
     console.log("image is saved");
 
-    fetch("http://localhost:3000/images/saveImage", {
+    fetch("https://multiplayergame-si78l.ondigitalocean.app/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
