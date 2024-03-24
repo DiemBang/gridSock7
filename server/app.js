@@ -235,4 +235,4 @@ function getRandomImage(imgs) {
   return imgs[randomIndex];
 }
 
-server.listen(3000);
+server.listen(process.env.PORT || '3000');
