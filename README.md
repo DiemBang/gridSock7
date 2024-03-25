@@ -10,17 +10,6 @@ See section Assignment details for the full assignment (in Swedish).
 
 Throughout this project we used agile methodologies - including, for example, sprint planning and daily stand-ups.
 
-## How to play
-
-To start playing our multiplayer game, follow these steps:
-
-1. Visit the game website: [Multiplayer Game](https://multiplayergame-frontend-qrt3j.ondigitalocean.app/)
-2. Enter your name and click the "Join game" button.
-3. Invite three friends to join. Once they've entered, the game will start.
-4. Enjoy the game!
-
-This application has been deployed on Digital Ocean.
-
 ## Authors
 
 - [@DiemBang](https://www.github.com/DiemBang)
